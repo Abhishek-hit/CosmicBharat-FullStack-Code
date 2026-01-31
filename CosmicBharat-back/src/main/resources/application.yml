@@ -1,0 +1,13 @@
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: "COSMIC-BHARAT"
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: CosmicBharat
+
