@@ -14,6 +14,7 @@ public class AncientSicenceService {
     @Autowired
     private AncientScienceRepository ancientScienceRepository;
 
+    //add data
 public ResponseEntity<ApiResponse> addTopic(List<AncientScience> topic){
 
 
@@ -25,11 +26,13 @@ public ResponseEntity<ApiResponse> addTopic(List<AncientScience> topic){
     List<AncientScience> ancientScience=ancientScienceRepository.saveAll (topic);
     return ResponseEntity.ok (new ApiResponse (true,"topics created successfully",ancientScience ));
    }
-
+//get all the information
 public ResponseEntity<ApiResponse> getalltopic(){
         List<AncientScience> ancientSciences=ancientScienceRepository.findAll ();
         return ResponseEntity.ok ( new ApiResponse ( true,"get al the topic",ancientSciences ) );
     }
+
+    //get by specific or by category
  public ResponseEntity<ApiResponse> getTopicsByCategory(String category){
     List<AncientScience> ancientScience=ancientScienceRepository.findByCategory (category);
     return  ResponseEntity.ok ( new ApiResponse ( true,"get al the topic",ancientScience ) );
