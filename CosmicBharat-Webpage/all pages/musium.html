@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharohar - Virtual Museum | BharatRoots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #050201;
+            --gold: #e0aa3e;
+            --gold-glow: rgba(224, 170, 62, 0.5);
+            --spotlight: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.9) 70%);
+            --text-white: #e0e0e0;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+        }
+
+        /* --- Header --- */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: black;
+        }
+
+        /* --- Hero --- */
+        .museum-hero {
+            text-align: center;
+            padding: 120px 20px 40px;
+            background: radial-gradient(circle at top, rgba(224, 170, 62, 0.1), transparent 60%);
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px var(--gold));
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .museum-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .museum-hero p {
+            font-size: 1.2rem;
+            color: #aaa;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- Categories --- */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-white);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        /* --- Exhibit Gallery --- */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+        }
+
+        /* 3D Artifact Card */
+        .artifact-stage {
+            height: 500px;
+            perspective: 1000px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .artifact-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #1a1a1a, #050505);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 0 1px var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .spotlight {
+            position: absolute;
+            top: -50px;
+            width: 100%;
+            height: 300px;
+            background: var(--spotlight);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .artifact-img-container {
+            height: 300px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transform: translateZ(50px);
+            margin-top: 20px;
+        }
+
+        .artifact-img {
+            max-height: 220px;
+            max-width: 80%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8));
+            transition: 0.5s;
+            cursor: grab;
+        }
+
+        .artifact-icon {
+            font-size: 8rem;
+            color: #444;
+            transform: rotate(-15deg);
+            filter: drop-shadow(0 10px 10px #000);
+        }
+
+        .artifact-card:hover .artifact-img {
+            transform: scale(1.1) rotateY(10deg);
+        }
+
+        .artifact-card:hover .artifact-icon {
+            transform: scale(1.1) rotate(-5deg);
+            color: #666;
+        }
+
+        .artifact-info {
+            width: 100%;
+            padding: 20px 30px;
+            z-index: 3;
+            transform: translateZ(30px);
+            background: linear-gradient(to top, #000 90%, transparent);
+            border-top: 1px solid var(--glass-border);
+            position: absolute;
+            bottom: 0;
+        }
+
+        .artifact-era {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .artifact-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .artifact-desc {
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .btn-view {
+            margin-top: 15px;
+            display: inline-block;
+            color: var(--gold);
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-view:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        /* --- Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 1100px;
+            height: 85vh;
+            background: #0a0502;
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 0 50px rgba(224, 170, 62, 0.2);
+            position: relative;
+        }
+
+        .modal-visual {
+            flex: 1;
+            background: radial-gradient(circle, #1a1a1a, #000);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #222;
+            position: relative;
+        }
+
+        .modal-img {
+            max-width: 80%;
+            max-height: 80%;
+            filter: drop-shadow(0 20px 40px #000);
+            animation: floatModal 6s infinite ease-in-out;
+        }
+
+        .modal-icon {
+            font-size: 15rem;
+            color: #222;
+            animation: floatModal 6s infinite ease-in-out;
+        }
+
+        @keyframes floatModal {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .modal-text {
+            flex: 1;
+            padding: 60px 40px;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--gold);
+            transform: rotate(90deg);
+        }
+
+        .detail-label {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .detail-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 30px;
+            line-height: 1;
+        }
+
+        .detail-desc {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .fact-box {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 20px;
+            border-left: 4px solid var(--gold);
+            border-radius: 5px;
+        }
+
+        .fact-box h4 {
+            color: var(--gold);
+            margin-bottom: 5px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .fact-box p {
+            font-size: 0.9rem;
+            color: #eee;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .modal-content {
+                flex-direction: column;
+                height: 90vh;
+            }
+
+            .modal-visual {
+                height: 40%;
+                border-right: none;
+                border-bottom: 1px solid #222;
+            }
+
+            .modal-text {
+                height: 60%;
+                padding: 30px;
+            }
+
+            .museum-hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo"><i class="fa-solid fa-landmark"></i> Dharohar</a>
+        <a href="index.html" class="back-btn">Exit Museum</a>
+    </nav>
+
+    <section class="museum-hero">
+        <i class="fa-solid fa-cube hero-icon"></i>
+        <h1>Virtual <span>Museum</span></h1>
+        <p>Preserving the Artifacts of a Civilization that Never Died.</p>
+    </section>
+
+    <div class="category-filter">
+        <button class="filter-btn active" onclick="filterArtifacts('all')">All</button>
+        <button class="filter-btn" onclick="filterArtifacts('indus')">Indus Valley</button>
+        <button class="filter-btn" onclick="filterArtifacts('weapon')">Weaponry</button>
+        <button class="filter-btn" onclick="filterArtifacts('art')">Coins & Art</button>
+        <button class="filter-btn" onclick="filterArtifacts('manuscript')">Manuscripts</button>
+    </div>
+
+    <div class="gallery-container" id="gallery">
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark modal-close" onclick="closeModal()"></i>
+            <div class="modal-visual" id="modal-visual">
+            </div>
+            <div class="modal-text">
+                <span class="detail-label" id="m-era">Era</span>
+                <h2 class="detail-title" id="m-title">Title</h2>
+                <div class="detail-desc" id="m-desc">Description</div>
+                <div class="fact-box">
+                    <h4>Historical Significance</h4>
+                    <p id="m-fact">Fact</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA: The Artifacts Database ---
+        const artifacts = [
+            {
+                id: 1,
+                category: 'indus',
+                title: 'Pashupati Seal',
+                era: 'Indus Valley (2500 BCE)',
+                type: 'image', // image or icon
+                src: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Shiva_Pashupati.jpg',
+                desc: "Discovered in Mohenjo-daro, this steatite seal depicts a seated figure in a yogic posture (Mulabandhasana), surrounded by animals. It is considered one of the earliest depictions of Shiva (Pashupati - Lord of Animals) or a Proto-Yogi.",
+                fact: "The seal proves that Yoga and meditation practices existed in India at least 4500 years ago."
+            },
+            {
+                id: 2,
+                category: 'art',
+                title: 'Dancing Girl',
+                era: 'Harappan (2300 BCE)',
+                type: 'image',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Dancing_Girl_of_Mohenjo-daro.jpg',
+                desc: "A 4.1-inch bronze statuette found in Mohenjo-daro. The confident posture and elaborate jewelry showcase the artistic sophistication of the Harappan people. It was made using the 'Lost Wax' casting technique.",
+                fact: "This technique of metal casting is still used by tribal communities in India today, showing an unbroken lineage of craftsmanship."
+            },
+            {
+                id: 3,
+                category: 'weapon',
+                title: 'Bhavani Talwar',
+                era: 'Maratha Empire (1650 CE)',
+                type: 'icon',
+                src: 'fa-khanda', // FontAwesome Icon Class
+                desc: "The legendary sword of Chhatrapati Shivaji Maharaj. It is said to be a symbol of divine strength given by Goddess Bhavani. It represents the fight for Swarajya (Self-rule) and the protection of Dharma.",
+                fact: "Shivaji's swords were known for their superior Genovese steel blades, imported and adapted for Indian warfare."
+            },
+            {
+                id: 4,
+                category: 'art',
+                title: 'Gupta Gold Coin',
+                era: 'Gupta Empire (350 CE)',
+                type: 'icon',
+                src: 'fa-coins',
+                desc: "A gold Dinar from the reign of Samudragupta. One side depicts the Emperor playing the Veena, showcasing that he was not just a conqueror but also a patron of the arts and music.",
+                fact: "The Gupta period is called the 'Golden Age' not just for wealth, but for the explosion of art, science, and literature."
+            },
+            {
+                id: 5,
+                category: 'manuscript',
+                title: 'Rig Veda Manuscript',
+                era: 'Vedic Period (c. 1500 BCE)',
+                type: 'icon',
+                src: 'fa-scroll',
+                desc: "Birch bark manuscripts preserving the oldest hymns of the Rig Veda. These texts contain the foundations of Indian philosophy, cosmology, and rituals. They were preserved orally for millennia before being written down.",
+                fact: "UNESCO has included the Rig Veda manuscripts in the Memory of the World Register."
+            },
+            {
+                id: 6,
+                category: 'weapon',
+                title: 'Urumi (Flexible Sword)',
+                era: 'Ancient Kerala',
+                type: 'icon',
+                src: 'fa-ring',
+                desc: "A whip-like flexible sword originating from Kalaripayattu martial arts. It has multiple steel blades and wraps around the waist. It is one of the most dangerous weapons to master.",
+                fact: "In battle, a single warrior spinning an Urumi could hold off a crowd of 20 opponents."
+            },
+            {
+                id: 7,
+                category: 'art',
+                title: 'Chola Bronze Nataraja',
+                era: 'Chola Period (10th Century)',
+                type: 'image',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Nataraja_LACMA_M.75.1.jpg',
+                desc: "The iconic depiction of Shiva as the Lord of Dance. The ring of fire represents the cosmos, the drum represents creation, and the fire represents destruction. It captures the cyclical nature of time.",
+                fact: "The CERN physics laboratory in Geneva has a statue of Nataraja, symbolizing the cosmic dance of subatomic particles."
+            },
+            {
+                id: 8,
+                category: 'indus',
+                title: 'The Great Bath',
+                era: 'Mohenjo-daro (2500 BCE)',
+                type: 'icon',
+                src: 'fa-water',
+                desc: "An ancient public water tank. It was built with precise brickwork and waterproofed with bitumen (tar). It suggests that ritual purification and hygiene were central to the Indus civilization.",
+                fact: "It had a sophisticated drainage system that could empty and refill the tank, a marvel of hydraulic engineering."
+            }
+        ];
+
+        const gallery = document.getElementById('gallery');
+        const modal = document.getElementById('modal');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        // --- FUNCTION: Render Artifacts ---
+        function renderArtifacts(filter) {
+            gallery.innerHTML = ''; // Clear current
+
+            const filteredData = filter === 'all'
+                ? artifacts
+                : artifacts.filter(item => item.category === filter);
+
+            filteredData.forEach(item => {
+                // Create Card HTML
+                const card = document.createElement('div');
+                card.className = 'artifact-stage';
+
+                let visualContent = '';
+                if (item.type === 'image') {
+                    visualContent = `<img src="${item.src}" alt="${item.title}" class="artifact-img">`;
+                } else {
+                    visualContent = `<i class="fa-solid ${item.src} artifact-icon"></i>`;
+                }
+
+                card.innerHTML = `
+                    <div class="artifact-card" onmousemove="rotateCard(event, this)" onmouseleave="resetCard(this)">
+                        <div class="spotlight"></div>
+                        <div class="artifact-img-container">
+                            ${visualContent}
+                        </div>
+                        <div class="artifact-info">
+                            <span class="artifact-era">${item.era}</span>
+                            <h2 class="artifact-title">${item.title}</h2>
+                            <p class="artifact-desc">${item.desc}</p>
+                            <a class="btn-view" onclick="openModal(${item.id})">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                `;
+                gallery.appendChild(card);
+            });
+        }
+
+        // --- FUNCTION: Filter Logic ---
+        function filterArtifacts(category) {
+            // Update active button
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            renderArtifacts(category);
+        }
+
+        // --- FUNCTION: 3D Tilt Effect ---
+        function rotateCard(event, element) {
+            const x = event.clientX;
+            const y = event.clientY;
+            const rect = element.getBoundingClientRect();
+            const cardMiddleX = rect.left + rect.width / 2;
+            const cardMiddleY = rect.top + rect.height / 2;
+            const offsetX = ((x - cardMiddleX) / rect.width) * 20;
+            const offsetY = ((y - cardMiddleY) / rect.height) * 20;
+            element.style.transform = `rotateY(${offsetX}deg) rotateX(${-offsetY}deg)`;
+        }
+
+        function resetCard(element) {
+            element.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        }
+
+        // --- FUNCTION: Modal Logic ---
+        function openModal(id) {
+            const item = artifacts.find(a => a.id === id);
+            if (!item) return;
+
+            document.getElementById('m-title').innerText = item.title;
+            document.getElementById('m-era').innerText = item.era;
+            document.getElementById('m-desc').innerText = item.desc;
+            document.getElementById('m-fact').innerText = item.fact;
+
+            const visualBox = document.getElementById('modal-visual');
+            if (item.type === 'image') {
+                visualBox.innerHTML = `<img src="${item.src}" class="modal-img">`;
+            } else {
+                visualBox.innerHTML = `<i class="fa-solid ${item.src} modal-icon"></i>`;
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Initialize with All
+        renderArtifacts('all');
+
+    </script>
+
+</body>
+
+</html>

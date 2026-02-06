@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Values & Wisdom - BharatRoots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f0800;
+            --card-bg: rgba(30, 15, 0, 0.6);
+            --saffron: #ff7b00;
+            --wisdom-gold: #ffcc33;
+            --text-white: #f5f5f5;
+            --text-grey: #c2b2a3;
+            --glow: rgba(255, 123, 0, 0.15);
+            --border-light: rgba(255, 204, 51, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 50% 20%, var(--glow) 0%, transparent 60%),
+                url('https://www.transparenttextures.com/patterns/dark-wood.png');
+            overflow-x: hidden;
+        }
+
+        /* --- Nav --- */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15, 8, 0, 0.95); border-bottom: 1px solid var(--border-light);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700;
+            color: var(--saffron); text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .nav-links a {
+            color: var(--text-white); text-decoration: none; margin-left: 30px;
+            font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--wisdom-gold); }
+
+        /* --- Hero --- */
+        .hero { text-align: center; padding: 100px 20px 60px; position: relative; }
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: 4rem; margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--saffron));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { color: var(--text-grey); max-width: 750px; margin: 0 auto 40px; font-size: 1.3rem; }
+        .hero-icon { font-size: 4rem; color: var(--saffron); margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* --- Core Values --- */
+        .values-section { padding: 60px 5%; }
+        .section-title {
+            text-align: center; font-family: 'Cinzel', serif; font-size: 2.5rem;
+            color: var(--wisdom-gold); margin-bottom: 50px;
+        }
+        .values-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .value-card {
+            background: var(--card-bg); padding: 30px; border-radius: 15px;
+            border: 1px solid var(--border-light); text-align: center; transition: 0.3s;
+        }
+        .value-card:hover { transform: translateY(-10px); border-color: var(--saffron); box-shadow: 0 10px 30px rgba(255, 123, 0, 0.2); }
+        .value-icon { font-size: 3rem; color: var(--saffron); margin-bottom: 20px; }
+        .value-sanskrit { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #fff; margin-bottom: 5px; display: block; }
+        .value-english { color: var(--wisdom-gold); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: block; }
+        .value-desc { color: var(--text-grey); font-size: 0.95rem; line-height: 1.6; }
+
+        /* --- NEW: The 4 Purusharthas (Goals of Life) --- */
+        .goals-section {
+            padding: 80px 5%; background: linear-gradient(to bottom, #0f0800, #1a1000);
+            border-top: 1px solid var(--border-light);
+        }
+        .goals-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto;
+        }
+        .goal-card {
+            border: 1px solid var(--wisdom-gold); border-radius: 10px; padding: 20px;
+            text-align: center; background: rgba(255, 255, 255, 0.02); transition: 0.3s;
+        }
+        .goal-card:hover { background: rgba(255, 204, 51, 0.1); }
+        .goal-title { color: var(--saffron); font-family: 'Cinzel', serif; font-size: 1.5rem; margin-bottom: 10px; }
+        .goal-sub { color: #fff; font-weight: 600; margin-bottom: 10px; display: block; }
+        .goal-text { font-size: 0.9rem; color: var(--text-grey); }
+
+        /* --- NEW: Ashrama (Stages of Life) --- */
+        .ashrama-section { padding: 80px 5%; text-align: center; }
+        .steps-container {
+            display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; margin-top: 40px;
+        }
+        .step-box {
+            width: 220px; padding: 20px; border-radius: 15px; border: 1px solid var(--text-grey); position: relative;
+        }
+        .step-box::after { /* Connector Line */
+            content: '➜'; position: absolute; right: -30px; top: 50%; transform: translateY(-50%);
+            color: var(--wisdom-gold); font-size: 1.5rem;
+        }
+        .step-box:last-child::after { display: none; }
+        .step-icon { font-size: 2rem; color: var(--wisdom-gold); margin-bottom: 10px; }
+        .step-name { font-size: 1.2rem; color: #fff; margin-bottom: 5px; font-weight: 600; }
+        .step-age { font-size: 0.8rem; color: var(--saffron); }
+
+        /* --- Sanskrit & Niti --- */
+        .lang-section, .niti-section { padding: 80px 5%; border-top: 1px solid var(--border-light); }
+        .niti-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; }
+        .niti-card {
+            background: rgba(255,255,255,0.03); width: 400px; padding: 30px; border-radius: 15px;
+            border-left: 4px solid var(--wisdom-gold); text-align: left; transition: 0.3s;
+        }
+        .niti-quote { font-family: 'Tiro Sanskrit', serif; font-size: 1.3rem; color: var(--wisdom-gold); margin-bottom: 15px; }
+        .niti-meaning { font-size: 1rem; color: #fff; margin-bottom: 15px; font-weight: 600; }
+        .niti-apply { font-size: 0.9rem; color: var(--text-grey); font-style: italic; }
+
+        /* --- NEW: Interactive Sankalp Widget --- */
+        .sankalp-section {
+            padding: 60px 20px; text-align: center; background: radial-gradient(circle, rgba(255, 123, 0, 0.1), transparent 60%);
+            margin: 60px auto; max-width: 800px; border: 1px solid var(--saffron); border-radius: 20px;
+        }
+        .sankalp-btn {
+            padding: 15px 30px; background: var(--saffron); color: #000; font-weight: 700; border: none;
+            border-radius: 50px; cursor: pointer; font-size: 1rem; margin-top: 20px; transition: 0.3s;
+        }
+        .sankalp-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--glow); }
+        #sankalp-text {
+            margin-top: 30px; font-size: 1.5rem; font-family: 'Cinzel', serif; color: var(--wisdom-gold); min-height: 50px;
+        }
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-light); color: #666; font-size: 0.8rem; }
+
+        @media (max-width: 900px) {
+            .goals-grid { grid-template-columns: 1fr 1fr; }
+            .steps-container { flex-direction: column; gap: 20px; }
+            .step-box::after { content: '⬇'; right: 50%; top: 100%; transform: translateX(50%); bottom: -30px; }
+            .step-box:last-child::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo"><i class="fa-solid fa-hands-praying"></i> BharatRoots</a>
+        <div class="nav-links">
+            <a href="explore_ultimate.html">Back to Explore</a>
+            <a href="#values">Values</a>
+            <a href="#goals">Purusharthas</a>
+            <a href="#niti">Niti</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <i class="fa-solid fa-seedling hero-icon"></i>
+        <h1>Sanskar & <span>Sanskriti</span></h1>
+        <p>The soul of Bharat lies in its values. Discover the blueprint of a meaningful life through Dharma, Language, and Ancient Wisdom.</p>
+    </section>
+
+    <section class="values-section" id="values">
+        <h2 class="section-title">The 4 Pillars of Dharma</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <i class="fa-solid fa-scale-balanced value-icon"></i>
+                <span class="value-sanskrit">Satya</span>
+                <span class="value-english">Truth</span>
+                <p class="value-desc">Living authentically. "Satyameva Jayate" (Truth alone triumphs) is the foundation of Indian ethos.</p>
+            </div>
+            <div class="value-card">
+                <i class="fa-solid fa-hand-holding-heart value-icon"></i>
+                <span class="value-sanskrit">Ahimsa</span>
+                <span class="value-english">Non-Violence</span>
+                <p class="value-desc">Respecting all forms of life in thought, word, and deed. Understanding interconnection.</p>
+            </div>
+            <div class="value-card">
+                <i class="fa-solid fa-shield-halved value-icon"></i>
+                <span class="value-sanskrit">Dharma</span>
+                <span class="value-english">Righteous Duty</span>
+                <p class="value-desc">The cosmic order. Doing your duty (Karma) based on your role in family and society.</p>
+            </div>
+            <div class="value-card">
+                <i class="fa-solid fa-recycle value-icon"></i>
+                <span class="value-sanskrit">Karma</span>
+                <span class="value-english">Action & Effect</span>
+                <p class="value-desc">The law of cause and effect. Every action has a consequence, empowering you to shape destiny.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="goals-section" id="goals">
+        <h2 class="section-title">Why Do We Live? (The 4 Goals)</h2>
+        <p style="text-align: center; color: var(--text-grey); margin-bottom: 40px;">Indian culture balances the spiritual and the material.</p>
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-title">Dharma</div>
+                <span class="goal-sub">Righteousness</span>
+                <p class="goal-text">The foundation. Living ethically and doing one's duty.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-title">Artha</div>
+                <span class="goal-sub">Wealth</span>
+                <p class="goal-text">Economic prosperity is necessary, but it must be earned via Dharma.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-title">Kama</div>
+                <span class="goal-sub">Desire</span>
+                <p class="goal-text">Emotional and aesthetic pleasure is valid, if controlled by Dharma.</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-title">Moksha</div>
+                <span class="goal-sub">Liberation</span>
+                <p class="goal-text">The ultimate goal. Freedom from the cycle of birth and suffering.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ashrama-section">
+        <h2 class="section-title">The 4 Stages of Life</h2>
+        <div class="steps-container">
+            <div class="step-box">
+                <i class="fa-solid fa-book-open-reader step-icon"></i>
+                <div class="step-name">Brahmacharya</div>
+                <div class="step-age">Student (0-25)</div>
+            </div>
+            <div class="step-box">
+                <i class="fa-solid fa-house-chimney step-icon"></i>
+                <div class="step-name">Grihastha</div>
+                <div class="step-age">Householder (25-50)</div>
+            </div>
+            <div class="step-box">
+                <i class="fa-solid fa-tree step-icon"></i>
+                <div class="step-name">Vanaprastha</div>
+                <div class="step-age">Retired (50-75)</div>
+            </div>
+            <div class="step-box">
+                <i class="fa-solid fa-om step-icon"></i>
+                <div class="step-name">Sannyasa</div>
+                <div class="step-age">Renunciate (75+)</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="niti-section" id="niti">
+        <h2 class="section-title">Timeless Wisdom</h2>
+        <div class="niti-grid">
+            <div class="niti-card">
+                <div class="niti-quote">नात्यन्तं सरलैर्भाव्यं...</div>
+                <div class="niti-meaning">"Do not be too straight. Go and see the forest."</div>
+                <p class="niti-apply">Straight trees are cut first. In life, being too naive leads to exploitation. Be kind, but smart.</p>
+            </div>
+            <div class="niti-card">
+                <div class="niti-quote">विद्या मित्रं प्रवासेषु...</div>
+                <div class="niti-meaning">"Knowledge is your friend on a journey."</div>
+                <p class="niti-apply">Wealth can be lost, but skills (Vidya) stay with you everywhere. Invest in yourself.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sankalp-section">
+        <h3>Take a Daily Sankalp (Resolution)</h3>
+        <p style="color: #ccc;">Click to receive a guiding thought from the Vedas.</p>
+        <div id="sankalp-text"></div>
+        <button class="sankalp-btn" onclick="getSankalp()">Generate Sankalp</button>
+    </section>
+
+    <footer>
+        &copy; 2025 BharatRoots. Preserving Values for the Future.
+    </footer>
+
+    <script>
+        const sankalps = [
+            "Speak the Truth. Walk on the path of Dharma. (Taittiriya Upanishad)",
+            "Arise, Awake, and stop not till the goal is reached. (Katha Upanishad)",
+            "Perform your duty without attachment to results. (Bhagavad Gita)",
+            "Let noble thoughts come to us from all sides. (Rig Veda)",
+            "Be a light unto yourself. (Appo Deepo Bhava)"
+        ];
+
+        function getSankalp() {
+            const randomIndex = Math.floor(Math.random() * sankalps.length);
+            document.getElementById("sankalp-text").innerText = `"${sankalps[randomIndex]}"`;
+        }
+    </script>
+
+</body>
+</html>

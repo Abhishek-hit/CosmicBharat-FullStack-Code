@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity in Diversity - BharatRoots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Outfit:wght@300;400;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #050205;
+            --card-bg: rgba(20, 20, 25, 0.6);
+            --gold: #ffd700;
+            --saffron: #ff9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --text-grey: #b0b0b0;
+            --border-glow: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--white);
+            /* Tri-color subtle gradient background */
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 153, 51, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(19, 136, 8, 0.08) 0%, transparent 50%),
+                url('https://www.transparenttextures.com/patterns/stardust.png');
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 2, 5, 0.95); border-bottom: 1px solid var(--border-glow);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700;
+            background: linear-gradient(to right, var(--saffron), var(--white), var(--green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .nav-links a {
+            color: var(--white); text-decoration: none; margin-left: 30px;
+            font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center; padding: 120px 20px 80px; position: relative;
+        }
+        .hero-symbol {
+            font-size: 5rem; margin-bottom: 20px; display: flex; justify-content: center; gap: 20px;
+            animation: float 4s infinite ease-in-out;
+        }
+        .hero-symbol i { opacity: 0.8; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: 4.5rem; margin-bottom: 20px;
+            background: linear-gradient(to right, var(--saffron), #fff, var(--green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: var(--text-grey); max-width: 800px; margin: 0 auto 40px; font-size: 1.3rem; line-height: 1.6;
+        }
+
+        /* --- Section Headers --- */
+        .section-title {
+            text-align: center; font-family: 'Cinzel', serif; font-size: 2.5rem;
+            color: var(--gold); margin: 80px 0 50px; position: relative;
+        }
+        .section-title::after {
+            content: ''; display: block; width: 60px; height: 3px; background: linear-gradient(to right, var(--saffron), var(--green));
+            margin: 10px auto 0;
+        }
+
+        /* --- RELIGIONS GRID (Harmony Grid) --- */
+        .faith-grid {
+            max-width: 1300px; margin: 0 auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+
+        .faith-card {
+            background: var(--card-bg); border-radius: 20px; padding: 40px 30px;
+            border: 1px solid var(--border-glow); transition: 0.4s; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .faith-card:hover { transform: translateY(-10px); }
+
+        /* Color Themes for Cards */
+        .faith-card.hindu:hover { border-color: var(--saffron); box-shadow: 0 10px 40px rgba(255, 153, 51, 0.2); }
+        .faith-card.islam:hover { border-color: var(--green); box-shadow: 0 10px 40px rgba(19, 136, 8, 0.2); }
+        .faith-card.sikh:hover { border-color: var(--gold); box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2); }
+        .faith-card.christian:hover { border-color: #3b82f6; box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2); }
+        .faith-card.buddhist:hover { border-color: #f59e0b; box-shadow: 0 10px 40px rgba(245, 158, 11, 0.2); }
+        .faith-card.jain:hover { border-color: #10b981; box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2); }
+
+        .faith-icon { font-size: 4rem; margin-bottom: 20px; transition: 0.3s; }
+        .faith-card:hover .faith-icon { transform: scale(1.1); }
+
+        .faith-title { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 10px; color: #fff; }
+        .faith-desc { color: var(--text-grey); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+        .faith-quote { font-style: italic; font-size: 0.9rem; color: #fff; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
+
+        /* --- CULTURAL TAPESTRY --- */
+        .culture-section {
+            background: linear-gradient(to bottom, #050205, #110511);
+            padding: 80px 20px;
+        }
+        .tapestry-grid {
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+        }
+        .culture-box {
+            width: 250px; text-align: center;
+        }
+        .culture-img {
+            width: 200px; height: 200px; border-radius: 50%; background: #222; margin: 0 auto 20px;
+            border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
+        }
+        .culture-img i { font-size: 5rem; color: rgba(255,255,255,0.1); }
+        .culture-box h3 { color: var(--gold); margin-bottom: 10px; font-family: 'Cinzel', serif; }
+        .culture-box p { color: var(--text-grey); font-size: 0.9rem; }
+
+        /* --- Languages --- */
+        .lang-scroller {
+            overflow: hidden; white-space: nowrap; padding: 40px 0;
+            background: rgba(255,255,255,0.02); margin: 60px 0;
+        }
+        .lang-track {
+            display: inline-block; animation: slide 20s linear infinite;
+        }
+        .lang-item {
+            display: inline-block; font-family: 'Tiro Devanagari Hindi', serif;
+            font-size: 2rem; color: rgba(255,255,255,0.3); margin: 0 30px;
+        }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+        /* --- Philosophy of Coexistence --- */
+        .unity-banner {
+            max-width: 1000px; margin: 0 auto 80px; padding: 50px; text-align: center;
+            background: linear-gradient(135deg, rgba(255,153,51,0.1), rgba(19,136,8,0.1));
+            border-radius: 20px; border: 1px solid var(--border-glow);
+        }
+        .sanskrit-unity { font-family: 'Tiro Devanagari Hindi', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 10px; }
+        .unity-text { font-size: 1.2rem; color: #ddd; }
+
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-glow); color: #666; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero-symbol { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo"><i class="fa-solid fa-users-rays"></i> BharatRoots</a>
+        <div class="nav-links">
+            <a href="explore_ultimate.html">Back to Explore</a>
+            <a href="#faiths">Faiths</a>
+            <a href="#culture">Culture</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-symbol">
+            <i class="fa-solid fa-om" style="color: var(--saffron)"></i>
+            <i class="fa-solid fa-star-and-crescent" style="color: var(--green)"></i>
+            <i class="fa-solid fa-khanda" style="color: var(--gold)"></i>
+            <i class="fa-solid fa-cross" style="color: #3b82f6"></i>
+            <i class="fa-solid fa-dharmachakra" style="color: #f59e0b"></i>
+        </div>
+        <h1>Unity in <span>Diversity</span></h1>
+        <p>Bharat is not just a land; it is a feeling. A civilization where multiple faiths, thousands of languages, and diverse cultures weave a single beautiful tapestry.</p>
+    </section>
+
+    <h2 class="section-title" id="faiths">The Garden of Faiths</h2>
+    <div class="faith-grid">
+        
+        <div class="faith-card hindu">
+            <i class="fa-solid fa-om faith-icon" style="color: var(--saffron);"></i>
+            <h3 class="faith-title">Sanatan Dharma</h3>
+            <p class="faith-desc">The eternal way. Emphasizes Dharma (duty), Karma (action), and Moksha (liberation). It sees the divine in everything.</p>
+            <div class="faith-quote">"Truth is One, sages call it by many names." - Rig Veda</div>
+        </div>
+
+        <div class="faith-card islam">
+            <i class="fa-solid fa-star-and-crescent faith-icon" style="color: var(--green);"></i>
+            <h3 class="faith-title">Islam</h3>
+            <p class="faith-desc">India is home to the world's second-largest Muslim population. Contribution to architecture, music (Sufi), and cuisine is immense.</p>
+            <div class="faith-quote">"Peace be upon you." (Salaam)</div>
+        </div>
+
+        <div class="faith-card sikh">
+            <i class="fa-solid fa-khanda faith-icon" style="color: var(--gold);"></i>
+            <h3 class="faith-title">Sikhism</h3>
+            <p class="faith-desc">Founded on equality and service (Seva). The Langar tradition ensures no one goes hungry.</p>
+            <div class="faith-quote">"Recognize the whole human race as one." - Guru Gobind Singh</div>
+        </div>
+
+        <div class="faith-card christian">
+            <i class="fa-solid fa-cross faith-icon" style="color: #3b82f6;"></i>
+            <h3 class="faith-title">Christianity</h3>
+            <p class="faith-desc">One of the oldest communities (St. Thomas arrived in 52 AD). Known for immense contributions to education and healthcare.</p>
+            <div class="faith-quote">"Love thy neighbor as thyself."</div>
+        </div>
+
+        <div class="faith-card buddhist">
+            <i class="fa-solid fa-dharmachakra faith-icon" style="color: #f59e0b;"></i>
+            <h3 class="faith-title">Buddhism</h3>
+            <p class="faith-desc">Born in India. Focuses on non-violence (Ahimsa), compassion, and the path to Nirvana.</p>
+            <div class="faith-quote">"Peace comes from within. Do not seek it without."</div>
+        </div>
+
+        <div class="faith-card jain">
+            <i class="fa-solid fa-hand-holding-heart faith-icon" style="color: #10b981;"></i>
+            <h3 class="faith-title">Jainism</h3>
+            <p class="faith-desc">The path of extreme non-violence. Teaching respect for all living beings, even the smallest insects.</p>
+            <div class="faith-quote">"Live and let live."</div>
+        </div>
+
+    </div>
+
+    <div class="lang-scroller">
+        <div class="lang-track">
+            <span class="lang-item">नमस्ते (Hindi)</span>
+            <span class="lang-item">ਸਤ ਸ੍ਰੀ ਅਕਾਲ (Punjabi)</span>
+            <span class="lang-item">வணக்கம் (Tamil)</span>
+            <span class="lang-item">নমস্কার (Bengali)</span>
+            <span class="lang-item">નમસ્તે (Gujarati)</span>
+            <span class="lang-item">നമസ്കാരം (Malayalam)</span>
+            <span class="lang-item">నమస్కారం (Telugu)</span>
+            <span class="lang-item">آداب (Urdu)</span>
+            <span class="lang-item">नमस्ते (Sanskrit)</span>
+        </div>
+    </div>
+
+    <section class="culture-section" id="culture">
+        <h2 class="section-title" style="margin-top: 0;">Cultural Tapestry</h2>
+        <div class="tapestry-grid">
+            <div class="culture-box">
+                <div class="culture-img" style="border-color: #ff0055;"><i class="fa-solid fa-shirt"></i></div>
+                <h3>Attire</h3>
+                <p>From the Saree of the South to the Phulkari of the North, clothing is an expression of identity.</p>
+            </div>
+            <div class="culture-box">
+                <div class="culture-img" style="border-color: #ffa500;"><i class="fa-solid fa-utensils"></i></div>
+                <h3>Cuisine</h3>
+                <p>The land of spices. Every 100km, the taste of water and food changes.</p>
+            </div>
+            <div class="culture-box">
+                <div class="culture-img" style="border-color: #00d2ff;"><i class="fa-solid fa-music"></i></div>
+                <h3>Festivals</h3>
+                <p>We celebrate everything—harvest, seasons, victory of good over evil. Every day is a festival somewhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="unity-banner">
+        <div class="sanskrit-unity">सर्व धर्म समभाव</div>
+        <h3 style="font-family: 'Cinzel', serif; color: #fff; margin-bottom: 10px;">"Sarva Dharma Sambhava"</h3>
+        <p class="unity-text">The concept that all religions are equal paths to the same truth. This is the bedrock of Indian secularism.</p>
+    </div>
+
+    <footer>
+        &copy; 2025 BharatRoots. One Nation, Many Souls.
+    </footer>
+
+</body>
+</html>

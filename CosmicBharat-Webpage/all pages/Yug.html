@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samrajya: The Timeline of Kings - BharatRoots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-void: #020103;
+            --gold: #ffd700;
+            --gold-dim: #b8860b;
+            --yuga-satya: #e0f7fa;
+            --yuga-treta: #ff5e00;
+            --yuga-dwapara: #7b00ff;
+            --yuga-kali: #c0c0c0;
+            --text-main: #e2e8f0;
+            --border-glow: rgba(255, 215, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-void);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
+        }
+
+        /* --- Particles (Subtle) --- */
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.3; animation: twinkle 8s infinite;
+        }
+        @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.5; } }
+
+        /* --- Nav --- */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(2, 1, 3, 0.9); border-bottom: 1px solid var(--gold-dim);
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700; color: var(--gold);
+            text-decoration: none; display: flex; align-items: center; gap: 10px; text-shadow: 0 0 10px var(--gold-dim);
+        }
+        .back-btn {
+            color: white; text-decoration: none; border: 1px solid var(--gold);
+            padding: 8px 20px; border-radius: 30px; transition: 0.3s; font-weight: 600;
+        }
+        .back-btn:hover { background: var(--gold); color: black; box-shadow: 0 0 15px var(--gold); }
+
+        /* --- Hero --- */
+        .hero {
+            text-align: center; padding: 140px 20px 60px; position: relative; z-index: 1;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05), transparent 70%);
+        }
+        .chakra-icon {
+            font-size: 6rem; color: var(--gold); margin-bottom: 20px;
+            animation: spin 40s linear infinite; filter: drop-shadow(0 0 20px var(--gold-dim));
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: 4.5rem; margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: slideDown 1s ease-out;
+        }
+        .hero p {
+            color: #aaa; max-width: 800px; margin: 0 auto; font-size: 1.2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- YUGA NAVIGATOR --- */
+        .yuga-nav {
+            display: flex; justify-content: center; gap: 20px; padding: 20px;
+            background: rgba(255,255,255,0.02); border-top: 1px solid #333; border-bottom: 1px solid #333;
+            position: sticky; top: 80px; z-index: 900; backdrop-filter: blur(10px); flex-wrap: wrap;
+        }
+        .yuga-btn {
+            background: transparent; border: 1px solid #555; color: #aaa;
+            padding: 10px 30px; border-radius: 5px; font-family: 'Cinzel', serif;
+            font-weight: 600; cursor: pointer; transition: 0.4s; text-transform: uppercase; letter-spacing: 2px;
+        }
+        .yuga-btn:hover { transform: scale(1.1); }
+        
+        .yuga-btn.satya:hover, .yuga-btn.satya.active { border-color: var(--yuga-satya); color: var(--yuga-satya); box-shadow: 0 0 15px rgba(224,247,250,0.3); }
+        .yuga-btn.treta:hover, .yuga-btn.treta.active { border-color: var(--yuga-treta); color: var(--yuga-treta); box-shadow: 0 0 15px rgba(255,94,0,0.3); }
+        .yuga-btn.dwapara:hover, .yuga-btn.dwapara.active { border-color: var(--yuga-dwapara); color: var(--yuga-dwapara); box-shadow: 0 0 15px rgba(123,0,255,0.3); }
+        .yuga-btn.kali:hover, .yuga-btn.kali.active { border-color: var(--yuga-kali); color: var(--yuga-kali); box-shadow: 0 0 15px rgba(192,192,192,0.3); }
+
+        /* --- Timeline --- */
+        .timeline-container {
+            max-width: 1300px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1;
+        }
+
+        /* Era Section Animation */
+        .era-section { display: none; animation: fadeInUp 0.8s ease-out; }
+        .era-section.active { display: block; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .era-header {
+            text-align: center; margin-bottom: 60px; padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .era-title { font-size: 3rem; font-family: 'Cinzel', serif; margin-bottom: 10px; animation: pulseGlow 3s infinite alternate; }
+        .era-desc { font-size: 1.1rem; color: #bbb; }
+        @keyframes pulseGlow { from { text-shadow: 0 0 10px currentColor; } to { text-shadow: 0 0 25px currentColor; } }
+
+        /* --- Emperor Card (3D Hover) --- */
+        .emperor-card {
+            display: grid; grid-template-columns: 300px 1fr;
+            background: rgba(20, 20, 25, 0.6); border: 1px solid var(--border-glow);
+            border-radius: 20px; overflow: hidden; margin-bottom: 50px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
+            transform-style: preserve-3d; perspective: 1000px;
+        }
+        .emperor-card:hover {
+            transform: translateY(-10px) scale(1.02); border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6); z-index: 5;
+        }
+
+        .emp-visual {
+            background: #000; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .emp-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
+        .emperor-card:hover .emp-visual img { opacity: 1; transform: scale(1.1); }
+        
+        .emp-content { padding: 40px; position: relative; transform: translateZ(20px); }
+        
+        .emp-name { font-family: 'Cinzel', serif; font-size: 2.5rem; color: #fff; margin-bottom: 5px; text-shadow: 0 2px 5px black; }
+        .emp-title { color: var(--gold); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block; }
+        .emp-desc { font-size: 1rem; line-height: 1.7; color: #ccc; margin-bottom: 30px; }
+        
+        .data-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px;
+            padding: 20px; background: rgba(0,0,0,0.3); border-radius: 10px; border-left: 3px solid var(--gold);
+            transition: 0.3s;
+        }
+        .emperor-card:hover .data-grid { background: rgba(255, 215, 0, 0.05); }
+        
+        .data-item strong { color: #fff; display: block; font-size: 0.9rem; }
+        .data-item span { color: #aaa; font-size: 0.9rem; }
+
+        /* Action Buttons */
+        .action-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        
+        .btn-action {
+            padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05);
+            color: #fff; border-radius: 30px; cursor: pointer; transition: 0.3s; font-size: 0.85rem;
+            display: flex; align-items: center; gap: 8px; font-weight: 600; text-transform: uppercase;
+        }
+        .btn-action:hover { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 0 15px var(--gold-dim); transform: translateY(-2px); }
+        
+        /* --- Modal --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+            z-index: 2000; display: none; justify-content: center; align-items: center;
+        }
+        .modal-overlay.active { display: flex; animation: fadeIn 0.3s; }
+        
+        .modal-box {
+            background: #111; border: 1px solid var(--gold); padding: 40px; border-radius: 15px;
+            max-width: 800px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.15);
+        }
+        .modal-close { position: absolute; top: 20px; right: 20px; color: #fff; cursor: pointer; font-size: 1.5rem; transition: 0.3s; }
+        .modal-close:hover { color: var(--gold); transform: rotate(90deg); }
+        .modal-title { font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 20px; font-size: 2rem; }
+        
+        /* Tree Animation */
+        .tree ul { padding-top: 20px; position: relative; transition: all 0.5s; }
+        .tree li { float: left; text-align: center; list-style-type: none; position: relative; padding: 20px 5px 0 5px; }
+        .tree li::before, .tree li::after { content: ''; position: absolute; top: 0; right: 50%; border-top: 1px solid #555; width: 50%; height: 20px; }
+        .tree li::after { right: auto; left: 50%; border-left: 1px solid #555; }
+        .tree li:only-child::after, .tree li:only-child::before { display: none; }
+        .tree li:only-child { padding-top: 0; }
+        .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+        .tree li:last-child::before { border-right: 1px solid #555; border-radius: 0 5px 0 0; }
+        .tree li:first-child::after { border-radius: 5px 0 0 0; }
+        .tree ul ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 1px solid #555; width: 0; height: 20px; }
+        
+        .tree div {
+            border: 1px solid #444; padding: 10px 20px; text-decoration: none; color: #fff;
+            font-family: 'Outfit', sans-serif; font-size: 0.85rem; display: inline-block;
+            border-radius: 50px; transition: all 0.3s; background: #222;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; transform: scale(0.5);
+        }
+        /* Staggered animation for tree nodes handled by simple delay in CSS is hard without JS loop, so using simple popIn */
+        .tree div:hover { background: var(--gold); color: #000; border-color: var(--gold); transform: scale(1.1); box-shadow: 0 0 20px var(--gold); z-index: 10; }
+
+        @keyframes popIn { to { opacity: 1; transform: scale(1); } }
+
+        @media (max-width: 900px) {
+            .emperor-card { grid-template-columns: 1fr; }
+            .emp-visual { height: 250px; }
+            .hero h1 { font-size: 3rem; }
+            .yuga-nav { gap: 10px; justify-content: center; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="particles"></div>
+
+    <nav>
+        <a href="#" class="logo"><i class="fa-solid fa-crown"></i> Samrajya</a>
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </nav>
+
+    <section class="hero">
+        <div class="chakra-icon"><i class="fa-solid fa-dharmachakra"></i></div>
+        <h1>The Chronology of <br><span>Bharatvarsha</span></h1>
+        <p>Explore the lineage of the greatest Emperors who ruled the subcontinent from the dawn of civilization to the modern era.</p>
+    </section>
+
+    <div class="yuga-nav">
+        <button class="yuga-btn satya active" onclick="showYuga('satya')">Satyuga</button>
+        <button class="yuga-btn treta" onclick="showYuga('treta')">Treta</button>
+        <button class="yuga-btn dwapara" onclick="showYuga('dwapara')">Dwapara</button>
+        <button class="yuga-btn kali" onclick="showYuga('kali')">Kali Yuga (History)</button>
+    </div>
+
+    <div class="timeline-container">
+        
+        <div id="satya" class="era-section active">
+            <div class="era-header">
+                <h2 class="era-title" style="color: var(--yuga-satya);">Satyuga: The Age of Truth</h2>
+                <p class="era-desc">The era of the first kings, where Dharma stood on four legs.</p>
+            </div>
+            
+            <div class="emperor-card">
+                <div class="emp-visual">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Manu_Matsya_Avatar.jpg/640px-Manu_Matsya_Avatar.jpg" alt="Manu">
+                </div>
+                <div class="emp-content">
+                    <h2 class="emp-name">Vaivasvata Manu</h2>
+                    <span class="emp-title">The First King of Humanity</span>
+                    <p class="emp-desc">According to Puranas, he is the progenitor of the current humanity (Manvantara). He saved the Vedas and the seeds of life during the great deluge (Pralaya) with the help of the Matsya Avatar.</p>
+                    <div class="data-grid">
+                        <div class="data-item"><strong>Capital:</strong> <span>Ayodhya (Early tradition)</span></div>
+                        <div class="data-item"><strong>Lineage:</strong> <span>Suryavansha (Solar Dynasty)</span></div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn-action" onclick="openLineage('ikshvaku')"><i class="fa-solid fa-sitemap"></i> View Lineage</button>
+                        <button class="btn-action"><i class="fa-solid fa-book"></i> Read Matsya Purana</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="treta" class="era-section">
+            <div class="era-header">
+                <h2 class="era-title" style="color: var(--yuga-treta);">Treta Yuga</h2>
+                <p class="era-desc">The era of massive sacrifices and the Ideal King.</p>
+            </div>
+
+            <div class="emperor-card">
+                <div class="emp-visual">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Mandhata.jpg" alt="Mandhata">
+                </div>
+                <div class="emp-content">
+                    <h2 class="emp-name">Chakravartin Mandhata</h2>
+                    <span class="emp-title">Emperor of the Seven Continents</span>
+                    <p class="emp-desc">An ancestor of Lord Rama. It is said the sun never set on his empire. He was a master of warfare and administration.</p>
+                    <div class="data-grid">
+                        <div class="data-item"><strong>Capital:</strong> <span>Ayodhya</span></div>
+                        <div class="data-item"><strong>Known For:</strong> <span>Protecting sages from Ravana (early years)</span></div>
+                    </div>
+                     <div class="action-row">
+                        <button class="btn-action" onclick="openLineage('ikshvaku')"><i class="fa-solid fa-sitemap"></i> View Ikshvaku Tree</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emperor-card">
+                <div class="emp-visual">
+                    <img src="https://images.unsplash.com/photo-1632660836656-a97242c3e754?q=80&w=600" alt="Rama">
+                </div>
+                <div class="emp-content">
+                    <h2 class="emp-name">Sri Rama</h2>
+                    <span class="emp-title">Maryada Purushottam (The Ideal Man)</span>
+                    <p class="emp-desc">The 7th Avatar of Vishnu. His reign (Ram Rajya) is considered the benchmark for perfect governance, justice, and prosperity.</p>
+                    <div class="data-grid">
+                        <div class="data-item"><strong>Capital:</strong> <span>Ayodhya</span></div>
+                        <div class="data-item"><strong>Philosophy:</strong> <span>Dharma above all</span></div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn-action" onclick="openLineage('ikshvaku')"><i class="fa-solid fa-sitemap"></i> View Lineage</button>
+                        <button class="btn-action"><i class="fa-solid fa-map"></i> View Ram Setu Map</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dwapara" class="era-section">
+            <div class="era-header">
+                <h2 class="era-title" style="color: var(--yuga-dwapara);">Dwapara Yuga</h2>
+                <p class="era-desc">The era of complex politics and the Mahabharata.</p>
+            </div>
+
+            <div class="emperor-card">
+                <div class="emp-visual">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Yudhishthira_swarga.jpg/640px-Yudhishthira_swarga.jpg" alt="Yudhishthira">
+                </div>
+                <div class="emp-content">
+                    <h2 class="emp-name">Samrat Yudhishthira</h2>
+                    <span class="emp-title">Dharmaraj (King of Righteousness)</span>
+                    <p class="emp-desc">The eldest Pandava. After the Kurukshetra war, he performed the Ashvamedha Yajna and ruled the entire subcontinent from Indraprastha/Hastinapura.</p>
+                    <div class="data-grid">
+                        <div class="data-item"><strong>Capital:</strong> <span>Indraprastha / Hastinapura</span></div>
+                        <div class="data-item"><strong>Dynasty:</strong> <span>Kuru (Lunar Dynasty)</span></div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn-action" onclick="openLineage('kuru')"><i class="fa-solid fa-sitemap"></i> View Kuru Tree</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="kali" class="era-section">
+            <div class="era-header">
+                <h2 class="era-title" style="color: var(--yuga-kali);">Kali Yuga (History)</h2>
+                <p class="era-desc">The recorded history of Magadha, Maurya, Gupta, and Maratha empires.</p>
+            </div>
+
+            <div class="emperor-card">
+                <div class="emp-visual">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Chandragupta_Maurya_Statue.jpg" alt="Maurya">
+                </div>
+                <div class="emp-content">
+                    <h2 class="emp-name">Chandragupta Maurya</h2>
+                    <span class="emp-title">Founder of Mauryan Empire (321 BCE)</span>
+                    <p class="emp-desc">With Chanakya's help, he united fractured kingdoms into the first pan-Indian empire, defeating the Greeks (Seleucus Nicator).</p>
+                    <div class="data-grid">
+                        <div class="data-item"><strong>Capital:</strong> <span>Pataliputra (Patna)</span></div>
+                        <div class="data-item"><strong>Extent:</strong> <span>Afghanistan to Bengal</span></div>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn-action" onclick="openLineage('maurya')"><i class="fa-solid fa-sitemap"></i> View Dynasty</button>
+                        <button class="btn-action"><i class="fa-solid fa-map-location-dot"></i> View Empire Map</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emperor-card">
+                <div class="emp-visual">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Samudragupta_coin.jpg" alt="Samudragupta">
+                </div>
+                <div class="emp-content">
+                    <h2 class="emp-name">Samudragupta</h2>
+                    <span class="emp-title">The Napoleon of India (335 CE)</span>
+                    <p class="emp-desc">A warrior-poet who never lost a battle. His reign marked the beginning of the Golden Age of India.</p>
+                    <div class="data-grid">
+                        <div class="data-item"><strong>Dynasty:</strong> <span>Gupta</span></div>
+                        <div class="data-item"><strong>Symbol:</strong> <span>Garuda</span></div>
+                    </div>
+                     <div class="action-row">
+                        <button class="btn-action" onclick="openLineage('gupta')"><i class="fa-solid fa-sitemap"></i> View Dynasty</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-overlay" id="treeModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title" id="treeTitle">Dynasty Tree</h2>
+            <div class="tree" id="treeContent">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Yuga Switching Logic
+        function showYuga(yugaId) {
+            document.querySelectorAll('.yuga-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.yuga-btn.${yugaId}`).classList.add('active');
+
+            // Hide all sections
+            document.querySelectorAll('.era-section').forEach(sec => sec.classList.remove('active'));
+            // Show selected
+            document.getElementById(yugaId).classList.add('active');
+        }
+
+        // 2. Modal & Lineage Logic
+        const modal = document.getElementById('treeModal');
+        const treeContent = document.getElementById('treeContent');
+        const treeTitle = document.getElementById('treeTitle');
+
+        const lineages = {
+            'ikshvaku': `<ul><li><div>Ikshvaku</div><ul><li><div>Raghu</div><ul><li><div>Aja</div><ul><li><div>Dasharatha</div><ul><li><div>Rama</div></li><li><div>Lakshmana</div></li></ul></li></ul></li></ul></li></ul></li></ul>`,
+            'kuru': `<ul><li><div>Shantanu</div><ul><li><div>Bhishma</div></li><li><div>Vichitravirya</div><ul><li><div>Dhritarashtra</div></li><li><div>Pandu</div><ul><li><div>Yudhishthira</div></li><li><div>Arjuna</div></li></ul></li></ul></li></ul></li></ul>`,
+            'maurya': `<ul><li><div>Chandragupta</div><ul><li><div>Bindusara</div><ul><li><div>Ashoka</div></li></ul></li></ul></li></ul>`
+        };
+
+        function openLineage(key) {
+            if(lineages[key]) {
+                treeContent.innerHTML = lineages[key];
+                treeTitle.innerText = key.toUpperCase() + " LINEAGE";
+                modal.classList.add('active');
+                // Trigger animations
+                const nodes = document.querySelectorAll('.tree div');
+                nodes.forEach((node, index) => {
+                    node.style.animationDelay = `${index * 0.1}s`;
+                });
+            } else {
+                alert("Lineage data coming soon!");
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        window.onclick = function(e) {
+            if (e.target == modal) closeModal();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+ :root {
+            --bg-dark: #0a050a;
+            --card-bg: rgba(30, 10, 30, 0.6);
+            --art-purple: #bf00ff;
+            --art-pink: #ff0055;
+            --art-gold: #ffd700;
+            --text-white: #f0f0f0;
+            --text-grey: #b0b0b0;
+            --glow: rgba(191, 0, 255, 0.3);
+            --border-light: rgba(255, 0, 85, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(circle at 50% 50%, var(--glow) 0%, transparent 60%),
+                linear-gradient(0deg, transparent 24%, rgba(255, 0, 85, .03) 25%, rgba(255, 0, 85, .03) 26%, transparent 27%, transparent 74%, rgba(255, 0, 85, .03) 75%, rgba(255, 0, 85, .03) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(255, 0, 85, .03) 25%, rgba(255, 0, 85, .03) 26%, transparent 27%, transparent 74%, rgba(255, 0, 85, .03) 75%, rgba(255, 0, 85, .03) 76%, transparent 77%, transparent);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+            overflow-x: hidden;
+        }
+
+        /* --- Nav --- */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10, 5, 10, 0.95); backdrop-filter: blur(15px);
+            position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-light);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700;
+            color: var(--art-pink); text-decoration: none; display: flex; align-items: center; gap: 10px;
+            text-shadow: 0 0 10px var(--art-purple);
+        }
+        .nav-links a {
+            color: var(--text-white); text-decoration: none; margin-left: 30px;
+            font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--art-gold); }
+
+        /* --- Hero --- */
+        .hero { text-align: center; padding: 100px 20px 60px; position: relative; animation: fadeIn 1s ease-out; }
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: 4rem; margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--art-pink), var(--art-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: slideUp 1s ease-out;
+        }
+        .hero p { color: var(--text-grey); max-width: 800px; margin: 0 auto; font-size: 1.2rem; line-height: 1.6; }
+        .hero-icon {
+            font-size: 5rem; color: var(--art-gold); margin-bottom: 20px;
+            animation: float 4s ease-in-out infinite; filter: drop-shadow(0 0 20px var(--art-gold));
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Philosophy --- */
+        .philosophy {
+            max-width: 1000px; margin: 40px auto 80px; text-align: center; padding: 40px;
+            border: 1px solid var(--border-light); border-radius: 20px;
+            background: linear-gradient(180deg, rgba(191, 0, 255, 0.05), transparent);
+        }
+        .sanskrit-quote { font-family: 'Tiro Sanskrit', serif; font-size: 2rem; color: var(--art-gold); margin-bottom: 15px; }
+        .philosophy h3 { font-family: 'Cinzel', serif; margin-bottom: 10px; color: #fff; font-size: 1.5rem; }
+
+        /* --- Section Headers --- */
+        .section-title {
+            text-align: center; font-family: 'Cinzel', serif; font-size: 2.8rem;
+            color: var(--art-pink); margin: 100px 0 20px; position: relative;
+        }
+        .section-title span { color: var(--text-white); }
+        .section-desc { text-align: center; color: var(--text-grey); margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* --- 1. MUSIC --- */
+        .music-grid {
+            max-width: 1300px; margin: 0 auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;
+        }
+        .music-card {
+            background: var(--card-bg); border-radius: 15px; border: 1px solid var(--border-light);
+            padding: 30px; transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .music-card:hover { transform: translateY(-5px); border-color: var(--art-gold); box-shadow: 0 0 30px rgba(191, 0, 255, 0.2); }
+        .music-icon { font-size: 2.5rem; color: var(--art-purple); margin-bottom: 20px; transition: 0.3s; }
+        .music-card:hover .music-icon { transform: scale(1.2); color: var(--art-pink); }
+        
+        .music-card h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #fff; margin-bottom: 10px; }
+        .music-card p { color: var(--text-grey); font-size: 0.95rem; line-height: 1.6; }
+        
+        .btn-listen {
+            display: inline-block; margin-top: 20px; padding: 8px 20px; border: 1px solid var(--art-purple);
+            color: var(--art-purple); border-radius: 20px; text-decoration: none; font-size: 0.8rem; transition: 0.3s;
+        }
+        .btn-listen:hover { background: var(--art-purple); color: #fff; }
+
+        /* Instruments */
+        .instrument-section { padding: 40px 20px; background: rgba(255, 255, 255, 0.02); margin-top: 40px; }
+        .instrument-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .inst-item { text-align: center; width: 150px; }
+        .inst-icon { font-size: 3rem; color: var(--art-gold); margin-bottom: 10px; transition: 0.3s; }
+        .inst-item:hover .inst-icon { transform: scale(1.2); color: var(--art-pink); }
+        .inst-name { font-weight: 600; color: #fff; }
+
+        /* --- 2. DANCE (Interactive Cards) --- */
+        .dance-grid {
+            max-width: 1400px; margin: 0 auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
+        }
+        .dance-card {
+            height: 400px; border-radius: 15px; overflow: hidden; position: relative;
+            border: 1px solid #333; transition: 0.5s; cursor: pointer;
+        }
+        .dance-card:hover { transform: scale(1.02); border-color: var(--art-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        .bg-bn { background: linear-gradient(135deg, #ff4b1f, #ff9068); }
+        .bg-kt { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
+        .bg-kk { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .bg-od { background: linear-gradient(135deg, #f12711, #f5af19); }
+        .bg-kp { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+        .bg-mn { background: linear-gradient(135deg, #c21500, #ffc500); }
+        .bg-mh { background: linear-gradient(135deg, #FFFDE4, #005AA7); }
+        .bg-st { background: linear-gradient(135deg, #FFFFFF, #6DD5FA, #2980B9); }
+
+        .dance-overlay {
+            background: linear-gradient(to top, #000 10%, rgba(0,0,0,0.4) 80%);
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 25px;
+            transition: 0.4s;
+        }
+        .dance-card:hover .dance-overlay { background: linear-gradient(to top, #000 40%, rgba(0,0,0,0.6)); }
+
+        .dance-title { font-family: 'Cinzel', serif; font-size: 1.6rem; color: #fff; margin-bottom: 5px; }
+        .dance-state { color: var(--art-gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        
+        /* Hidden Content Revealed on Hover */
+        .dance-info {
+            max-height: 0; overflow: hidden; transition: 0.5s ease-out; opacity: 0;
+        }
+        .dance-card:hover .dance-info { max-height: 200px; opacity: 1; margin-top: 10px; }
+        
+        .dance-desc { font-size: 0.9rem; color: #ddd; line-height: 1.5; margin-bottom: 15px; }
+        .btn-read {
+            font-size: 0.8rem; color: var(--art-pink); text-decoration: none; font-weight: 700; text-transform: uppercase;
+            border-bottom: 1px solid var(--art-pink); padding-bottom: 2px;
+        }
+        .btn-read:hover { color: #fff; border-color: #fff; }
+
+        /* --- Mudra --- */
+        .mudra-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 60px; }
+        .mudra-box {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-light);
+            padding: 20px; border-radius: 50%; width: 220px; height: 220px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; transition: 0.3s; cursor: pointer;
+        }
+        .mudra-box:hover { border-color: var(--art-purple); background: rgba(191, 0, 255, 0.1); transform: scale(1.1); }
+        .mudra-icon { font-size: 3rem; color: var(--art-purple); margin-bottom: 10px; }
+        .mudra-desc { font-size: 0.8rem; color: #aaa; opacity: 0; transition: 0.3s; height: 0; }
+        .mudra-box:hover .mudra-desc { opacity: 1; height: auto; margin-top: 5px; }
+
+        /* --- Art --- */
+        .art-grid {
+            max-width: 1300px; margin: 0 auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .art-card {
+            background: #120a15; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .art-card:hover { border-color: var(--art-pink); transform: translateY(-5px); }
+        .art-img-placeholder {
+            height: 200px; display: flex; align-items: center; justify-content: center;
+            font-size: 3rem; color: rgba(255,255,255,0.1); background: radial-gradient(circle, #2a152a, #000);
+        }
+        .art-info { padding: 25px; }
+        .art-info h3 { color: var(--art-pink); font-family: 'Cinzel', serif; margin-bottom: 10px; }
+        .art-info p { font-size: 0.9rem; color: var(--text-grey); line-height: 1.6; }
+        .btn-gallery {
+            display: block; width: 100%; margin-top: 15px; padding: 10px; background: #221;
+            color: #fff; border: none; cursor: pointer; transition: 0.3s;
+        }
+        .btn-gallery:hover { background: var(--art-pink); }
+
+        /* --- Navarasa --- */
+        .rasa-section { padding: 80px 20px; text-align: center; background: linear-gradient(to top, #050005, #150015); }
+        .rasa-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 1000px; margin: 40px auto 0; }
+        .rasa-pill {
+            padding: 10px 20px; border: 1px solid var(--art-purple); border-radius: 30px;
+            color: #fff; font-size: 0.9rem; transition: 0.3s; cursor: default;
+        }
+        .rasa-pill:hover { background: var(--art-purple); box-shadow: 0 0 15px var(--glow); transform: scale(1.1); }
+        .rasa-sanskrit { font-weight: 700; color: var(--art-gold); margin-right: 5px; }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid var(--border-light); color: #666; font-size: 0.8rem; margin-top: 80px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .dance-info { max-height: none; opacity: 1; margin-top: 10px; } /* Always show on mobile */
+            .btn-read { display: inline-block; }
+        }

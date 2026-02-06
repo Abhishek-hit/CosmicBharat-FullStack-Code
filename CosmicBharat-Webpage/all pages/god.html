@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gods & Philosophy - BharatRoots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #02040a;
+            --card-bg: #0f1219;
+            --god-gold: #ffd700;
+            --god-orange: #ff8c00;
+            --text-white: #f0f0f0;
+            --text-grey: #b0b0b0;
+            --glow: rgba(255, 215, 0, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 4, 10, 0.95);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700;
+            color: var(--god-gold); text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .nav-links a {
+            color: var(--text-white); text-decoration: none; margin-left: 30px;
+            font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--god-gold); }
+
+        /* --- Hero --- */
+        .hero {
+            text-align: center; padding: 100px 20px 60px; position: relative;
+        }
+        .om-symbol {
+            font-size: 6rem; color: var(--god-orange); margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px var(--god-orange)); animation: breathe 4s infinite ease-in-out;
+        }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: 4rem; margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, var(--god-gold), #fff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: var(--text-grey); max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; line-height: 1.6;
+        }
+
+        /* --- Section Titles --- */
+        .section-title {
+            text-align: center; margin: 80px 0 40px;
+            font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--god-gold);
+            position: relative;
+        }
+
+        /* --- God Grid --- */
+        .god-grid {
+            max-width: 1300px; margin: 0 auto; padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;
+        }
+
+        .god-card {
+            background: var(--card-bg); border-radius: 20px; overflow: hidden;
+            border: 1px solid var(--border-light); transition: 0.4s ease;
+            position: relative; display: flex; flex-direction: column;
+        }
+        .god-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.15);
+            border-color: var(--god-gold);
+        }
+
+        /* --- Card Images (New Feature) --- */
+        .card-visual {
+            height: 250px; 
+            background-size: cover; 
+            background-position: center;
+            position: relative;
+        }
+        /* Using placeholder nature/statue images to represent the vibe */
+        .img-brahma { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1622627588296-c1110192708d?q=80&w=800'); }
+        .img-vishnu { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1582562182027-b49cc24d56e0?q=80&w=800'); }
+        .img-shiva { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1593520137786-2d064868064f?q=80&w=800'); }
+        .img-saraswati { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1564464799967-8c197202d6b0?q=80&w=800'); }
+        .img-lakshmi { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1606293926075-69a00dbfde81?q=80&w=800'); }
+        .img-durga { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1633789203793-6e1c73353271?q=80&w=800'); }
+        .img-ganesh { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1567591414240-e3c9e669f54e?q=80&w=800'); }
+        .img-hanuman { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1615234337580-895c83686c41?q=80&w=800'); }
+        .img-krishna { background-image: linear-gradient(to top, #0f1219, transparent), url('https://images.unsplash.com/photo-1605218427368-360dc7535995?q=80&w=800'); }
+
+        .card-icon-overlay {
+            position: absolute; top: 20px; right: 20px;
+            font-size: 2rem; color: rgba(255, 255, 255, 0.8);
+            filter: drop-shadow(0 0 5px #000);
+        }
+
+        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .god-name { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--text-white); margin-bottom: 5px; }
+        .god-role { color: var(--god-gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 700; }
+        .god-desc { color: var(--text-grey); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+
+        .lesson-box {
+            background: rgba(255, 215, 0, 0.05); padding: 15px; border-radius: 10px;
+            border-left: 3px solid var(--god-gold); margin-bottom: 20px;
+        }
+        .lesson-title { color: var(--god-gold); font-weight: 600; display: block; margin-bottom: 5px; font-size: 0.85rem; }
+        .lesson-text { font-size: 0.9rem; color: #ddd; font-style: italic; }
+
+        /* --- New Button Style --- */
+        .read-btn {
+            margin-top: auto; /* Pushes button to bottom */
+            display: inline-block; text-align: center;
+            padding: 12px 25px; border: 1px solid var(--god-gold);
+            color: var(--god-gold); text-decoration: none; border-radius: 30px;
+            font-size: 0.9rem; font-weight: 600; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .read-btn:hover {
+            background: var(--god-gold); color: #000; box-shadow: 0 0 20px var(--glow);
+        }
+
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-light); color: #666; font-size: 0.8rem; margin-top: 60px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .god-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo"><i class="fa-solid fa-om"></i> BharatRoots</a>
+        <div class="nav-links">
+            <a href="explore_ultimate.html">Back to Explore</a>
+            <a href="#trimurti">Trimurti</a>
+            <a href="#tridevi">Tridevi</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <i class="fa-solid fa-dharmachakra om-symbol"></i>
+        <h1>The Pantheon of <span>Wisdom</span></h1>
+        <p>Gods in Indian culture are personifications of cosmic principles. They represent the diverse aspects of the Ultimate Reality (Brahman).</p>
+    </section>
+
+    <div class="section-title" id="trimurti">The Trimurti</div>
+    <div class="god-grid">
+        
+        <div class="god-card">
+            <div class="card-visual img-brahma">
+                <i class="fa-solid fa-scroll card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Brahma</div>
+                <div class="god-role">The Creator (Generator)</div>
+                <p class="god-desc">Represents the origin of the universe and knowledge (Vedas). Depicted with four heads, seeing in all directions.</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Creativity & Vision." Look in all directions before creating something new.</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+
+        <div class="god-card">
+            <div class="card-visual img-vishnu">
+                <i class="fa-solid fa-infinity card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Vishnu</div>
+                <div class="god-role">The Preserver (Operator)</div>
+                <p class="god-desc">Maintains the cosmic balance. Rests on the ocean of chaos (Sheshnaga), symbolizing peace amidst trouble.</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Balance & Calmness." Maintain your peace even when the world is chaotic.</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+
+        <div class="god-card">
+            <div class="card-visual img-shiva">
+                <i class="fa-solid fa-fire card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Shiva</div>
+                <div class="god-role">The Destroyer (Transformer)</div>
+                <p class="god-desc">The Lord of Meditation (Adiyogi). Destruction of the ego and illusion is necessary for new beginnings.</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Detachment & Focus." Destroy bad habits to let the new 'you' emerge.</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title" id="tridevi">The Tridevi</div>
+    <div class="god-grid">
+        
+        <div class="god-card">
+            <div class="card-visual img-saraswati">
+                <i class="fa-solid fa-music card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Saraswati</div>
+                <div class="god-role">Goddess of Knowledge</div>
+                <p class="god-desc">Represents wisdom, arts, and flow. Dressed in white (purity), holding a Veena (harmony) and a book.</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Wisdom over Wealth." True power comes from learning and refinement.</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+
+        <div class="god-card">
+            <div class="card-visual img-lakshmi">
+                <i class="fa-solid fa-coins card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Lakshmi</div>
+                <div class="god-role">Goddess of Wealth</div>
+                <p class="god-desc">Represents abundance, both material and spiritual. Sits on a lotus, blooming even in muddy water.</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Goal Orientation." Prosper and bloom regardless of your surroundings.</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+
+        <div class="god-card">
+            <div class="card-visual img-durga">
+                <i class="fa-solid fa-shield-cat card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Durga</div>
+                <div class="god-role">Goddess of Power (Shakti)</div>
+                <p class="god-desc">Rides a lion, symbolizing mastery over fear. Holds weapons to proactively fight injustice and evil.</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Courage & Action." Use inner strength to conquer difficulties.</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">The Divine Guides</div>
+    <div class="god-grid">
+        
+        <div class="god-card">
+            <div class="card-visual img-ganesh">
+                <i class="fa-solid fa-chess-rook card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Ganesha</div>
+                <div class="god-role">Remover of Obstacles</div>
+                <p class="god-desc">Lord of Beginnings. Large head for big thinking, large ears to listen more, small mouth to speak less.</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Intellect & Adaptability." Solve problems with wisdom (Buddhi).</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+
+        <div class="god-card">
+            <div class="card-visual img-hanuman">
+                <i class="fa-solid fa-dumbbell card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Hanuman</div>
+                <div class="god-role">Strength & Devotion</div>
+                <p class="god-desc">The ultimate devotee. Infinite strength (Bajrangbali) kept under control and used only for service (Seva).</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Selfless Service." Power is meaningless without a higher purpose.</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+
+        <div class="god-card">
+            <div class="card-visual img-krishna">
+                <i class="fa-solid fa-feather card-icon-overlay"></i>
+            </div>
+            <div class="card-content">
+                <div class="god-name">Krishna</div>
+                <div class="god-role">The Strategist (Yogeshwar)</div>
+                <p class="god-desc">Teacher of the Gita. Represents love, joy, and supreme intelligence. Teaches how to live without attachment.</p>
+                <div class="lesson-box">
+                    <span class="lesson-title">Lesson:</span>
+                    <span class="lesson-text">"Karma Yoga." Do your duty with focus, detached from the result.</span>
+                </div>
+                <a href="#" class="read-btn">Explore Mythos</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 BharatRoots Spiritual Archive.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Did You Know? | BharatRoots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --gold: #FFD700;
+            --gold-dim: #b8860b;
+            --glass: rgba(20, 20, 20, 0.7);
+            --text: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* --- 1. HERO SECTION (The Hook) --- */
+        .hero {
+            height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2011&auto=format&fit=crop') center/cover;
+            text-align: center;
+        }
+        .hero-overlay {
+            position: absolute; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 90%);
+        }
+
+        .hero-content { position: relative; z-index: 2; opacity: 0; animation: fadeUp 2s ease forwards; }
+        
+        .big-text {
+            font-family: 'Cinzel', serif; font-size: 6rem; font-weight: 700;
+            background: linear-gradient(to bottom, var(--gold), var(--gold-dim));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            line-height: 1; margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        .sub-text { font-size: 1.5rem; letter-spacing: 3px; text-transform: uppercase; color: #aaa; }
+
+        .scroll-down {
+            position: absolute; bottom: 40px; color: var(--gold);
+            font-size: 2rem; animation: bounce 2s infinite; z-index: 2;
+        }
+
+        @keyframes fadeUp { to { opacity: 1; } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+
+
+        /* --- 2. THE FACTS SECTION --- */
+        .facts-container {
+            max-width: 1200px; margin: 0 auto; padding: 100px 20px;
+        }
+
+        .fact-row {
+            display: flex; align-items: center; gap: 60px; margin-bottom: 150px;
+            opacity: 0; transform: translateY(50px); transition: 1s all ease;
+        }
+        .fact-row.visible { opacity: 1; transform: translateY(0); }
+
+        /* Zig-Zag Logic */
+        .fact-row:nth-child(even) { flex-direction: row-reverse; }
+
+        /* Image Box */
+        .fact-img-box {
+            flex: 1; position: relative; height: 400px; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,215,0,0.2);
+        }
+        .fact-img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: 0.5s transform;
+        }
+        .fact-img-box:hover .fact-img { transform: scale(1.1); }
+        
+        /* Text Box */
+        .fact-text-box { flex: 1; padding: 20px; }
+        
+        .fact-number {
+            font-family: 'Cinzel', serif; font-size: 5rem; color: rgba(255, 255, 255, 0.05);
+            font-weight: 700; position: absolute; top: -40px; left: 0; z-index: -1;
+        }
+        
+        .fact-title {
+            font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold);
+            margin-bottom: 20px; position: relative; display: inline-block;
+        }
+        .fact-title::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 60px; height: 3px; background: var(--gold);
+        }
+
+        .fact-desc {
+            font-size: 1.1rem; line-height: 1.8; color: #ccc; margin-bottom: 20px;
+        }
+        
+        .mystery-tag {
+            display: inline-block; padding: 5px 15px; border: 1px solid var(--gold-dim);
+            color: var(--gold); font-size: 0.8rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* --- 3. CTA FOOTER --- */
+        .end-section {
+            text-align: center; padding: 80px 20px; background: linear-gradient(to top, #111, var(--bg-dark));
+        }
+        .btn-explore {
+            padding: 15px 40px; background: transparent; border: 2px solid var(--gold);
+            color: var(--gold); font-family: 'Cinzel', serif; font-size: 1.2rem; cursor: pointer;
+            transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .btn-explore:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold-dim); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .big-text { font-size: 3.5rem; }
+            .fact-row { flex-direction: column !important; gap: 30px; margin-bottom: 100px; }
+            .fact-img-box { width: 100%; height: 300px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="big-text">DO YOU KNOW?</h1>
+            <p class="sub-text">Secrets lost in the sands of time</p>
+        </div>
+        <div class="scroll-down"><i class="fa-solid fa-chevron-down"></i></div>
+    </section>
+
+    <div class="facts-container">
+
+        <div class="fact-row">
+            <div class="fact-img-box">
+                
+                <img src="https://images.unsplash.com/photo-1644306354899-73335520937a?q=80&w=2070&auto=format&fit=crop" class="fact-img" alt="Kailasa Temple">
+            </div>
+            <div class="fact-text-box">
+                <div class="fact-number">01</div>
+                <h2 class="fact-title">The Monolithic Miracle</h2>
+                <span class="mystery-tag">Architecture • Impossible</span>
+                <p class="fact-desc">
+                    The <strong>Kailasa Temple</strong> in Ellora was not built up from the ground, but carved <strong>top-down</strong> from a single mountain rock. 
+                    <br><br>
+                    Over <strong>400,000 tons</strong> of rock were scooped out, yet there is no trace of the debris within 50 miles. Even with modern cranes and drills, replicating this masterpiece today would take decades, yet our ancestors did it with chisels in 18 years.
+                </p>
+            </div>
+        </div>
+
+        <div class="fact-row">
+            <div class="fact-img-box">
+                
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Iron_Pillar_Delhi.jpg" class="fact-img" alt="Iron Pillar">
+            </div>
+            <div class="fact-text-box">
+                <div class="fact-number">02</div>
+                <h2 class="fact-title">The Rustless Iron</h2>
+                <span class="mystery-tag">Metallurgy • Nano-tech</span>
+                <p class="fact-desc">
+                    Standing under the open sky for <strong>1,600 years</strong> through rain, sun, and pollution, the <strong>Iron Pillar of Delhi</strong> has not rusted.
+                    <br><br>
+                    Scientists discovered a protective layer of "Misawite" formed by high-phosphorus iron, a technique lost to time. Modern iron rusts in a few decades, but ancient India mastered corrosion resistance centuries before the West.
+                </p>
+            </div>
+        </div>
+
+        <div class="fact-row">
+            <div class="fact-img-box">
+                
+                <img src="https://images.unsplash.com/photo-1576670158605-9795f312788c?q=80&w=2034&auto=format&fit=crop" class="fact-img" alt="Sushruta Surgery">
+            </div>
+            <div class="fact-text-box">
+                <div class="fact-number">03</div>
+                <h2 class="fact-title">First Plastic Surgery</h2>
+                <span class="mystery-tag">Medicine • 600 BCE</span>
+                <p class="fact-desc">
+                    Long before modern medicine, <strong>Maharishi Sushruta</strong> was performing complex surgeries. 
+                    <br><br>
+                    He documented <strong>Rhinoplasty (Nose Job)</strong>, Cataract surgery, and the use of anesthesia in the <em>Sushruta Samhita</em>. His tools were so precise they could split a hair strand. The world calls him the "Father of Surgery" for a reason.
+                </p>
+            </div>
+        </div>
+
+        <div class="fact-row">
+            <div class="fact-img-box">
+                
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop" class="fact-img" alt="Atomic Theory">
+            </div>
+            <div class="fact-text-box">
+                <div class="fact-number">04</div>
+                <h2 class="fact-title">The Anu (Atom)</h2>
+                <span class="mystery-tag">Physics • 600 BCE</span>
+                <p class="fact-desc">
+                    2,500 years before John Dalton, an Indian sage named <strong>Kanada</strong> proposed the Atomic Theory.
+                    <br><br>
+                    He stated that all matter is made of indestructible particles called <strong>"Anu"</strong> (Atom). He even described their dimensions and how they combine to form matter, a concept eerily similar to modern Quantum Physics.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="end-section">
+        <p style="color:#aaa; margin-bottom:20px;">There is so much more to discover...</p>
+        <button class="btn-explore">Enter The Library</button>
+    </div>
+
+    <script>
+        // SCROLL ANIMATION LOGIC
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.fact-row').forEach(row => {
+            observer.observe(row);
+        });
+    </script>
+
+</body>
+</html>

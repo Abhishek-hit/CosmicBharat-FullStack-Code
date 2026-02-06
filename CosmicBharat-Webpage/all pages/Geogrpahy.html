@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Geography - BharatRoots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="geo.css">
+    
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo"><i class="fa-solid fa-map"></i> BharatRoots</a>
+        <div class="nav-links">
+            <a href="index.html" class="back-btn">Back Home</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="sanskrit-shloka">उत्तरं यत्समुद्रस्य हिमाद्रेश्चैव दक्षिणम् ।</div>
+        <h1>Bhu-Mandala <br><span>Sacred Geography</span></h1>
+        <p>Explore the land where history was written. Map the ancient names of rivers, cities, and forests to their modern locations.</p>
+    </section>
+
+   <div class="dictionary-section">
+        <h2 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 20px;">The Great Dictionary of Places</h2>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search Modern Name (e.g., Patna, Delhi, Indus)..." onkeyup="filterTable()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="geo-table-container">
+            <table class="geo-table" id="geoTable">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Ancient Name (Sanskrit)</th>
+                        <th>Modern Name / Location</th>
+                        <th>Significance</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h2 class="category-title">Nadi Stuti <span>The Sacred Rivers</span></h2>
+    <div class="river-grid">
+        
+        <div class="river-card">
+            <div class="river-img-box">
+                <img src="https://images.unsplash.com/photo-1593106458390-c3676a7913c8?q=80&w=600" alt="Indus">
+            </div>
+            <div class="river-content">
+                <h3 class="ancient-name">Sindhu</h3>
+                <span class="modern-name">Modern: Indus River</span>
+                <p class="river-desc">The cradle of the Indus Valley Civilization. The name 'India' and 'Hindu' are geographically derived from this river.</p>
+                <a href="#" class="btn-map">View on Map <i class="fa-solid fa-location-arrow"></i></a>
+            </div>
+        </div>
+
+        <div class="river-card">
+            <div class="river-img-box">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Sarasvati_river_map.jpg/640px-Sarasvati_river_map.jpg" alt="Saraswati">
+            </div>
+            <div class="river-content">
+                <h3 class="ancient-name">Saraswati</h3>
+                <span class="modern-name">Modern: Lost / Ghaggar</span>
+                <p class="river-desc">The mightiest river of the Rigveda. It dried up around 1900 BCE due to tectonic shifts, leading to the decline of Harappan cities.</p>
+                <a href="#" class="btn-map">Read History <i class="fa-solid fa-book-open"></i></a>
+            </div>
+        </div>
+
+        <div class="river-card">
+            <div class="river-img-box">
+                <img src="https://images.unsplash.com/photo-1625126596347-2c6224303c27?q=80&w=600" alt="Narmada">
+            </div>
+            <div class="river-content">
+                <h3 class="ancient-name">Rewa</h3>
+                <span class="modern-name">Modern: Narmada</span>
+                <p class="river-desc">One of the oldest rivers in India. Fossils found in the Narmada valley suggest human habitation for over 100,000 years.</p>
+                <a href="#" class="btn-map">View on Map <i class="fa-solid fa-location-arrow"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="category-title">Janapadas <span>Lost Kingdoms & Cities</span></h2>
+    <div class="city-grid">
+        
+        <div class="city-card">
+            <div class="flip-inner">
+                <div class="flip-front">
+                    <div class="city-sanskrit">Indraprastha</div>
+                    <div class="city-sub">Capital of Pandavas</div>
+                    <p style="margin-top: 20px; color: #aaa; font-size: 0.8rem;">(Hover to Reveal)</p>
+                </div>
+                <div class="flip-back">
+                    <div class="city-modern-title">New Delhi</div>
+                    <p>Located near Purana Qila. Excavations have revealed pottery from the Mahabharata era.</p>
+                    <button class="btn-flip-action">See Location</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="city-card">
+            <div class="flip-inner">
+                <div class="flip-front">
+                    <div class="city-sanskrit">Pataliputra</div>
+                    <div class="city-sub">Capital of Empires</div>
+                    <p style="margin-top: 20px; color: #aaa; font-size: 0.8rem;">(Hover to Reveal)</p>
+                </div>
+                <div class="flip-back">
+                    <div class="city-modern-title">Patna</div>
+                    <p>The capital of Mauryan and Gupta empires. Once the largest city in the ancient world.</p>
+                    <button class="btn-flip-action">See Location</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="city-card">
+            <div class="flip-inner">
+                <div class="flip-front">
+                    <div class="city-sanskrit">Avantika</div>
+                    <div class="city-sub">City of Time</div>
+                    <p style="margin-top: 20px; color: #aaa; font-size: 0.8rem;">(Hover to Reveal)</p>
+                </div>
+                <div class="flip-back">
+                    <div class="city-modern-title">Ujjain</div>
+                    <p>Seat of Emperor Vikramaditya and a center for ancient astronomy (Zero Meridian of India).</p>
+                    <button class="btn-flip-action">See Location</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="category-title">Aranya & Parvat <span>Forests & Mountains</span></h2>
+    <div class="nature-grid">
+        
+        <div class="nature-card">
+            <div class="nature-img">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600" alt="Himalaya">
+            </div>
+            <div class="nature-icon"><i class="fa-solid fa-mountain"></i></div>
+            <div class="nature-content">
+                <h3 class="nature-title">Himavan</h3>
+                <span class="nature-sub">The Himalayas</span>
+                <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 15px;">"Abode of Snow". The spiritual guardian of the North and source of Ganga, Yamuna, and Brahmaputra.</p>
+                <button class="btn-legend">Read Mythology</button>
+            </div>
+        </div>
+
+        <div class="nature-card">
+            <div class="nature-img">
+                <img src="https://images.unsplash.com/photo-1448375240586-dfd8f3793371?q=80&w=600" alt="Forest">
+            </div>
+            <div class="nature-icon"><i class="fa-solid fa-tree"></i></div>
+            <div class="nature-content">
+                <h3 class="nature-title">Dandakaranya</h3>
+                <span class="nature-sub">Chhattisgarh / Odisha</span>
+                <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 15px;">The "Forest of Punishment". Lord Rama spent a significant part of his 14-year exile here.</p>
+                <button class="btn-legend">View Exile Map</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fact-section">
+        <i class="fa-solid fa-scroll fact-icon"></i>
+        <p class="fact-text">"Did you know? The ancient city of <strong>Varanasi (Kashi)</strong> is contemporary with Babylon and Nineveh, but while they are ruins, Kashi is still thriving."</p>
+    </div>
+
+    <footer>
+        &copy; 2025 BharatRoots Geography Division.
+    </footer>
+
+    
+    <script>
+        // --- DATABASE FOR DICTIONARY ---
+        const geoData = [
+            { cat: "River", ancient: "Sindhu", modern: "Indus", desc: "Main river of Vedic India" },
+            { cat: "River", ancient: "Vitasta", modern: "Jhelum", desc: "Kashmir Valley" },
+            { cat: "River", ancient: "Asikni", modern: "Chenab", desc: "Punjab Region" },
+            { cat: "River", ancient: "Parushni/Iravati", modern: "Ravi", desc: "Battle of 10 Kings" },
+            { cat: "River", ancient: "Vipasha", modern: "Beas", desc: "Himachal/Punjab" },
+            { cat: "River", ancient: "Shutudri", modern: "Sutlej", desc: "Longest of the 5 rivers" },
+            { cat: "River", ancient: "Saraswati", modern: "Ghaggar-Hakra", desc: "Lost mythical river" },
+            { cat: "City", ancient: "Indraprastha", modern: "Delhi (Purana Qila)", desc: "Pandava Capital" },
+            { cat: "City", ancient: "Pataliputra", modern: "Patna", desc: "Mauryan Capital" },
+            { cat: "City", ancient: "Kashi/Varanasi", modern: "Varanasi", desc: "Eternal City" },
+            { cat: "City", ancient: "Avantika", modern: "Ujjain", desc: "Mahakal City" },
+            { cat: "City", ancient: "Kanyakubja", modern: "Kannauj", desc: "Capital of Harsha" },
+            { cat: "City", ancient: "Pragjyotishpura", modern: "Guwahati", desc: "City of Eastern Light" },
+            { cat: "City", ancient: "Vatapi", modern: "Badami", desc: "Chalukya Capital" },
+            { cat: "Place", ancient: "Panchavati", modern: "Nashik", desc: "Rama's exile location" },
+            { cat: "Place", ancient: "Kishkindha", modern: "Hampi", desc: "Vanara Kingdom" },
+        ];
+
+        const tableBody = document.getElementById('tableBody');
+
+        function loadTable(data) {
+            tableBody.innerHTML = '';
+            data.forEach(item => {
+                const row = `<tr>
+                    <td style="color: var(--gold); font-weight:bold;">${item.cat}</td>
+                    <td>${item.ancient}</td>
+                    <td>${item.modern}</td>
+                    <td>${item.desc}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function filterTable() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = geoData.filter(item => 
+                item.modern.toLowerCase().includes(input) || 
+                item.ancient.toLowerCase().includes(input) ||
+                item.desc.toLowerCase().includes(input)
+            );
+            loadTable(filtered);
+        }
+
+        // Initial Load
+        loadTable(geoData);
+
+    </script>
+
+</body>
+</html>

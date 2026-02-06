@@ -1,0 +1,577 @@
+:root {
+    --nav-bg: rgba(5, 2, 0, 0.9);
+    /* Dark Translucent */
+    --gold: #ffd700;
+    --saffron: #ff5e00;
+    --text-white: #ffffff;
+    --text-grey: #b0b0b0;
+    --border-glow: rgba(255, 215, 0, 0.3);
+    --gold-pure: #ffc800;
+    --gold-prime: #ffcc00;
+    --saffron-fire: #ff4800;
+    --cosmic-cyan: #00f2ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body  */
+body {
+    font-family: 'Outfit', sans-serif;
+    background: #e4e1e1;
+}
+
+/* --- NAVBAR CONTAINER --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-glow);
+
+    padding: 0 4%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s ease;
+
+}
+
+.navbar.scrolled {
+    height: 70px;
+    background: #000;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.1);
+}
+
+/* --- MENU ITEMS --- */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    height: 100%;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    padding: 10px 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-link i {
+    font-size: 0.7rem;
+    margin-left: 5px;
+    color: var(--text-grey);
+    transition: 0.3s;
+}
+
+/* Hover Effects */
+.nav-item:hover .nav-link {
+    color: var(--gold);
+}
+
+.nav-item:hover .nav-link i {
+    transform: rotate(180deg);
+    color: var(--gold);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gold);
+    transition: 0.3s;
+}
+
+.navbar.scrolled .nav-link::after {
+    bottom: -23px;
+}
+
+/* Adjust for smaller height */
+.nav-item:hover .nav-link::after {
+    width: 100%;
+}
+
+/* --- DROPDOWN MENU --- */
+.dropdown {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #0a0502;
+    border: 1px solid var(--border-glow);
+    border-top: 3px solid var(--gold);
+    width: 260px;
+    padding: 10px 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: -1;
+}
+
+.nav-item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Dropdown Links */
+.dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 25px;
+    color: var(--text-grey);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.dropdown a:hover {
+    background: rgba(255, 215, 0, 0.05);
+    color: #fff;
+    border-left: 3px solid var(--gold);
+    padding-left: 30px;
+}
+
+.dropdown a i {
+    width: 20px;
+    color: var(--gold);
+    text-align: center;
+}
+
+/* --- ACTION BUTTON --- */
+.nav-btn {
+    padding: 10px 25px;
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    font-size: 0.9rem;
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.nav-btn:hover {
+    background: var(--gold);
+    color: #000;
+    box-shadow: 0 0 20px var(--border-glow);
+}
+
+/* --- MOBILE MENU ICON --- */
+.hamburger {
+    display: none;
+    color: var(--gold);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1024px) {
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: #0f0805;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px;
+        transition: 0.4s;
+        border-left: 1px solid var(--border-glow);
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-item {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 5px;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 15px 0;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    /* Remove underline on mobile */
+
+    .dropdown {
+        position: static;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        background: rgba(0, 0, 0, 0.2);
+        border: none;
+        box-shadow: none;
+        display: none;
+        transform: none;
+        padding: 0;
+    }
+
+    .nav-item.mobile-open .dropdown {
+        display: flex;
+    }
+
+    .nav-item.mobile-open .nav-link i {
+        transform: rotate(180deg);
+    }
+}
+
+/* logo */
+.symbol-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.brand-icon {
+    font-size: 2rem;
+    color: var(--gold-pure);
+    animation: rotateInfinity 10s linear infinite;
+    filter: drop-shadow(0 0 10px var(--gold-pure));
+}
+
+@keyframes rotateInfinity {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* cosmic bharat */
+
+/* 2. The Typography (Name) */
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+
+}
+
+.main-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Dual Color Gradient Text */
+.text-cosmic {
+    background: linear-gradient(to bottom, #fff, var(--cosmic-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+.text-bharat {
+    background: linear-gradient(to bottom, var(--gold-prime), var(--saffron-fire));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+}
+
+/* The Tagline (Subtext) */
+.brand-tagline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    margin-top: 4px;
+    margin-left: 2px;
+}
+
+/* Hero section */
+/* --- 1. HERO SECTION (The Impressive Start) --- */
+.hero {
+    height: 100vh;
+    /* NEW: Brihadeeswarar Temple Background */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(2, 1, 1, 1)),
+        url('image.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    margin-top: 80px;
+   
+}
+
+.hero::after {
+    /* Golden overlay pattern */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/axiom-pattern.png');
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sanskrit-sloka {
+    font-family: 'Tiro Sanskrit', serif;
+    font-size: 2.2rem;
+    color: var(--saffron);
+    margin-top: -100px;
+    text-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+    opacity: 0;
+    animation: fadeInUp 1.5s forwards 0.5s;
+}
+
+.hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 6.5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--gold), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.1;
+    animation: fadeInUp 1.5s forwards 1s;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #ddd;
+    max-width: 750px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeInUp 1.5s forwards 1.5s;
+}
+
+
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
+
+/* hsjkfhskjfhsdjk */
+
+:root {
+            --f-void: #080402;
+            --f-stone: #120a08;
+            --f-gold: #d4af37;
+            --f-gold-light: #f2d06b;
+            --f-accent: #8a6a26;
+            --f-text: #cfcfcf;
+        }
+
+        /* --- 1. THE VEDIC BORDER (Marquee) --- */
+        .vedic-border {
+            background: var(--f-gold);
+            color: #000;
+            padding: 8px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 3px solid #fff;
+            border-bottom: 3px solid #fff;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            position: relative; z-index: 10;
+        }
+        
+        .border-content {
+            display: inline-block;
+            font-family: 'Tiro Sanskrit', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            animation: borderScroll 40s linear infinite;
+        }
+        .border-content span { margin: 0 30px; }
+        
+        @keyframes borderScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+
+        /* --- 2. MAIN FOOTER CONTAINER --- */
+        .foundation-footer {
+            background-color: var(--f-void);
+            color: var(--f-text);
+            position: relative;
+            padding-top: 80px;
+            background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
+            border-top: 5px solid var(--f-gold);
+        }
+
+        /* Background Mandala (Static & Royal) */
+        .bg-mandala {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 800px; height: 800px; opacity: 0.05; pointer-events: none;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png') no-repeat center;
+            background-size: contain; filter: invert(1) sepia(1) saturate(5) hue-rotate(-45deg);
+        }
+
+
+        /* --- 3. THE CENTERPIECE (Kalash) --- */
+        .center-crest {
+            position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+            width: 80px; height: 80px; background: var(--f-void);
+            border: 3px solid var(--f-gold); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            z-index: 11;
+        }
+        .center-crest i { font-size: 2.5rem; color: var(--f-gold); filter: drop-shadow(0 0 5px var(--f-gold)); }
+
+
+        /* --- 4. CONTENT GRID --- */
+        .footer-grid {
+            max-width: 1400px; margin: 0 auto; padding: 0 5% 60px;
+            display: grid; grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr; gap: 60px;
+            position: relative; z-index: 2;
+        }
+
+        /* Brand */
+        .f-brand h2 {
+            font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--f-gold); margin-bottom: 20px;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .f-brand p { font-family: 'Outfit', sans-serif; font-size: 1rem; line-height: 1.7; color: #aaa; }
+        .f-socials { margin-top: 30px; display: flex; gap: 15px; }
+        .s-btn {
+            width: 40px; height: 40px; border: 1px solid var(--f-accent); color: var(--f-gold);
+            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s;
+        }
+        .s-btn:hover { background: var(--f-gold); color: #000; border-color: var(--f-gold); }
+
+
+        /* Pillar Links */
+        .f-pillar h4 {
+            font-family: 'Cinzel', serif; color: #fff; font-size: 1.2rem; margin-bottom: 30px;
+            border-left: 3px solid var(--f-gold); padding-left: 15px;
+        }
+        
+        .f-list { list-style: none; padding: 0; }
+        .f-list li { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; transition: 0.3s; }
+        .f-list li:last-child { border-bottom: none; }
+        
+        .f-list a {
+            text-decoration: none; color: var(--f-text); font-size: 0.95rem; transition: 0.3s;
+            display: flex; align-items: center; gap: 10px; font-family: 'Outfit', sans-serif;
+        }
+        .f-list a:hover { color: var(--f-gold); padding-left: 5px; }
+        .f-list a::before { content: '◈'; font-size: 0.7rem; color: var(--f-accent); }
+
+
+        /* Newsletter (Box Style) */
+        .f-newsletter {
+            background: rgba(255, 255, 255, 0.03); padding: 30px; border: 1px solid var(--f-accent);
+            text-align: center; position: relative;
+        }
+        .f-newsletter::after { /* Corner Accents */
+            content: ''; position: absolute; inset: -1px; border: 2px solid var(--f-gold);
+            clip-path: polygon(0 0, 20px 0, 0 20px, 0 100%, 20px 100%, 0 80px, 100% 0, 80px 0, 100% 20px, 100% 100%, 80px 100%, 100% 80px);
+            opacity: 0.5;
+        }
+        
+        .f-newsletter h4 { font-family: 'Cinzel', serif; color: var(--f-gold); margin-bottom: 10px; font-size: 1.3rem; }
+        .f-newsletter p { font-size: 0.9rem; margin-bottom: 20px; color: #ccc; }
+        
+        .nl-field {
+            width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff;
+            margin-bottom: 10px; outline: none; font-family: 'Outfit', sans-serif; transition: 0.3s;
+        }
+        .nl-field:focus { border-color: var(--f-gold); }
+        
+        .nl-submit {
+            width: 100%; padding: 12px; background: var(--f-gold); color: #000; border: none;
+            font-weight: 700; cursor: pointer; font-family: 'Cinzel', serif; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nl-submit:hover { background: #fff; box-shadow: 0 0 15px var(--f-gold); }
+
+
+        /* --- 5. BOTTOM BAR --- */
+        .base-bar {
+            background: #000; padding: 25px 5%; border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.85rem; color: #666;
+        }
+        .base-links a { color: #666; text-decoration: none; margin-left: 20px; transition: 0.3s; }
+        .base-links a:hover { color: var(--f-gold); }
+
+        @media (max-width: 900px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .base-bar { flex-direction: column; gap: 15px; text-align: center; }
+        }

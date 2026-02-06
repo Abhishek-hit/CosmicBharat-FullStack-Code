@@ -1,0 +1,197 @@
+  :root {
+            --bg-earth: #1a120b;
+            --card-parchment: rgba(42, 30, 21, 0.8);
+            --river-blue: #00b4d8;
+            --forest-green: #2d6a4f;
+            --mountain-grey: #8d99ae;
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --text-main: #e0e0e0;
+            --text-muted: #b0a090;
+            --border: rgba(212, 175, 55, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-earth);
+            color: var(--text-main);
+            background-image: url('https://www.transparenttextures.com/patterns/cartographer.png');
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(26, 18, 11, 0.95); border-bottom: 1px solid var(--gold);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700;
+            color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .back-btn {
+            color: white; text-decoration: none; border: 1px solid var(--gold);
+            padding: 8px 20px; border-radius: 30px; transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--gold); color: #000; }
+
+        /* --- Hero --- */
+        .hero {
+            text-align: center; padding: 100px 20px 60px; position: relative;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 70%);
+        }
+        .sanskrit-shloka {
+            font-family: 'Tiro Sanskrit', serif; font-size: 2rem; color: var(--gold); margin-bottom: 15px;
+            text-shadow: 0 0 20px var(--gold-glow);
+        }
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: 4.5rem; margin-bottom: 15px; color: #fff;
+        }
+        .hero p {
+            color: var(--text-muted); max-width: 800px; margin: 0 auto 40px; font-size: 1.3rem; line-height: 1.6;
+        }
+        
+        /* --- The Great Dictionary (Search) --- */
+        .dictionary-section {
+            max-width: 1000px; margin: 0 auto 80px; padding: 40px;
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 20px; text-align: center;
+        }
+        .search-box {
+            position: relative; max-width: 600px; margin: 0 auto;
+        }
+        .search-box input {
+            width: 100%; padding: 15px 25px; border-radius: 50px; border: 1px solid var(--gold);
+            background: rgba(0,0,0,0.5); color: #fff; font-size: 1.1rem; outline: none;
+        }
+        .search-box i {
+            position: absolute; right: 25px; top: 50%; transform: translateY(-50%); color: var(--gold);
+        }
+
+        /* --- Table Styling --- */
+        .geo-table-container {
+            margin-top: 30px; max-height: 400px; overflow-y: auto;
+            border: 1px solid var(--border); border-radius: 10px;
+            scrollbar-width: thin; scrollbar-color: var(--gold) #111;
+        }
+        .geo-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .geo-table th {
+            background: rgba(212, 175, 55, 0.1); color: var(--gold); padding: 15px;
+            position: sticky; top: 0; font-family: 'Cinzel', serif;
+        }
+        .geo-table td { padding: 15px; border-bottom: 1px solid var(--border); color: #ccc; }
+        .geo-table tr:hover { background: rgba(255, 255, 255, 0.05); }
+        
+
+        /* --- Section Titles --- */
+        .category-title {
+            text-align: center; font-family: 'Cinzel', serif; font-size: 3rem;
+            color: var(--gold); margin: 100px 0 50px; position: relative; text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .category-title span { color: #fff; font-size: 1.5rem; display: block; margin-top: 5px; font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+
+        /* --- 1. RIVERS (Card Style) --- */
+        .river-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding: 0 5%;
+        }
+        .river-card {
+            background: linear-gradient(135deg, #0a1a20, #05080a); border: 1px solid var(--river-blue);
+            border-radius: 20px; overflow: hidden; transition: 0.3s; position: relative;
+        }
+        .river-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(0, 180, 216, 0.2); }
+        
+        .river-img-box {
+            height: 200px; background: #000; position: relative;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .river-img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
+        .river-card:hover .river-img-box img { opacity: 1; transform: scale(1.1); }
+        
+        .river-content { padding: 25px; }
+        .ancient-name { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--river-blue); margin-bottom: 5px; }
+        .modern-name { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        .river-desc { color: #ddd; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+        
+        .btn-map {
+            display: inline-block; padding: 10px 20px; border: 1px solid var(--river-blue); color: var(--river-blue);
+            border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s;
+        }
+        .btn-map:hover { background: var(--river-blue); color: #000; }
+
+        /* --- 2. CITIES (Flip Cards) --- */
+        .city-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 0 5%;
+        }
+        .city-card {
+            perspective: 1000px; height: 300px;
+        }
+        .flip-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s; transform-style: preserve-3d;
+        }
+        .city-card:hover .flip-inner { transform: rotateY(180deg); }
+        
+        .flip-front, .flip-back {
+            position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;
+        }
+        .flip-front {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.transparenttextures.com/patterns/dark-wood.png');
+            border: 2px solid var(--gold);
+        }
+        .flip-back {
+            background: var(--gold); color: #000; transform: rotateY(180deg);
+        }
+        
+        .city-sanskrit { font-size: 2.5rem; color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 10px; }
+        .city-sub { color: #ddd; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .city-modern-title { font-size: 2rem; font-weight: 800; margin-bottom: 10px; font-family: 'Outfit', sans-serif; }
+        .btn-flip-action {
+            background: #000; color: var(--gold); padding: 10px 25px; border: none; border-radius: 20px;
+            font-weight: bold; cursor: pointer; margin-top: 15px;
+        }
+
+        /* --- 3. FORESTS & MOUNTAINS (Nature) --- */
+        .nature-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 0 5%;
+        }
+        .nature-card {
+            width: 350px; background: rgba(45, 106, 79, 0.15); border: 1px solid var(--forest-green);
+            border-radius: 20px; overflow: hidden; position: relative; transition: 0.3s;
+        }
+        .nature-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(45, 106, 79, 0.3); }
+        
+        .nature-img { height: 180px; background: #000; overflow: hidden; position: relative; }
+        .nature-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        
+        .nature-content { padding: 25px; }
+        .nature-icon { position: absolute; top: 150px; right: 20px; width: 60px; height: 60px; background: var(--forest-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; border: 4px solid var(--bg-earth); }
+        
+        .nature-title { font-family: 'Cinzel', serif; font-size: 1.8rem; color: #fff; margin-bottom: 5px; }
+        .nature-sub { color: #52b788; font-weight: 600; margin-bottom: 15px; display: block; font-size: 0.9rem; }
+        .btn-legend {
+            background: transparent; border: 1px solid var(--forest-green); color: var(--forest-green);
+            padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: 0.3s;
+        }
+        .btn-legend:hover { background: var(--forest-green); color: #fff; }
+
+        /* --- Fact Slider --- */
+        .fact-section {
+            margin: 100px auto; max-width: 900px; text-align: center; padding: 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            border: 1px solid var(--gold); border-radius: 20px; position: relative;
+        }
+        .fact-icon { font-size: 3rem; color: var(--gold); margin-bottom: 20px; }
+        .fact-text { font-size: 1.2rem; color: #fff; line-height: 1.6; font-style: italic; }
+
+        /* Footer */
+        footer { text-align: center; padding: 50px; border-top: 1px solid var(--border); color: var(--text-muted); margin-top: 100px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+        }

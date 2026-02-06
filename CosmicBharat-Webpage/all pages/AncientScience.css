@@ -1,0 +1,296 @@
+ :root {
+            --bg-dark: #010a13;
+            --card-bg: rgba(13, 25, 40, 0.7);
+            --gold: #FFD700;
+            --sci-blue: #00f2ff;
+            --sci-glow: rgba(0, 242, 255, 0.2);
+            --text-white: #ffffff;
+            --text-grey: #a0a6b0;
+            --border-light: rgba(0, 242, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            background-image:
+                radial-gradient(circle at 20% 30%, var(--sci-glow) 0%, transparent 30%),
+                linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+            overflow-x: hidden;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--sci-glow) 0%, transparent 70%);
+            opacity: 0.4;
+            z-index: -1;
+            animation: pulse 10s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { scale: 1; }
+            50% { scale: 1.2; }
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--sci-blue);
+            text-shadow: 0 0 20px var(--sci-glow);
+        }
+
+        .hero p {
+            color: var(--text-grey);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* --- Section Headers --- */
+        .domain-header {
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .domain-line {
+            height: 2px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, var(--sci-blue), transparent);
+        }
+
+        .domain-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--text-white);
+        }
+
+        .domain-title i {
+            color: var(--sci-blue);
+            margin-right: 10px;
+        }
+
+        /* --- The Domain Grid --- */
+        .domain-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- Sci-Card Design --- */
+        .sci-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: 0.4s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensure full height for equal buttons */
+        }
+
+        .sci-card:hover {
+            border-color: var(--sci-blue);
+            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .sci-card-header {
+            padding: 25px;
+            background: rgba(0, 242, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .sci-icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(1, 10, 19, 0.8);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--sci-blue);
+            font-size: 1.8rem;
+            color: var(--sci-blue);
+            flex-shrink: 0;
+        }
+
+        .sci-card-header h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+        }
+
+        .sci-card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Pushes content to fill space */
+        }
+
+        .sci-card-body p {
+            color: var(--text-grey);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .evidence-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--sci-blue);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        /* --- NEW: Read More Button Styling --- */
+        .read-more-btn {
+            background: transparent;
+            border: 1px solid var(--sci-blue);
+            color: var(--sci-blue);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: auto; /* Pushes button to bottom */
+            display: inline-block;
+        }
+
+        .read-more-btn:hover {
+            background: var(--sci-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px var(--sci-glow);
+        }
+
+        /* --- Spotlight Section --- */
+        .spotlight-section {
+            margin-top: 100px;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(1, 10, 19, 0.9), rgba(1, 10, 19, 0.9)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Iron_Pillar_Delhi.jpg/800px-Iron_Pillar_Delhi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .spotlight-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .spotlight-text { flex: 1; }
+        .spotlight-text h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .spotlight-text span { color: var(--gold); }
+        .spotlight-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .spotlight-visual {
+            flex: 1;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 60%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            border: 1px solid var(--gold);
+        }
+
+        .pillar-icon {
+            font-size: 150px;
+            color: var(--gold);
+            filter: drop-shadow(0 0 20px var(--gold));
+        }
+
+        /* --- Source Hub --- */
+        .sources-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .sources-grid {
+            max-width: 1000px;
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .source-btn {
+            padding: 15px 30px;
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--sci-blue);
+            color: var(--sci-blue);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .source-btn:hover {
+            background: var(--sci-blue);
+            color: #000;
+            box-shadow: 0 0 20px var(--sci-glow);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .spotlight-content { flexDirection: column; }
+            .spotlight-visual { width: 100%; height: 300px; }
+        }

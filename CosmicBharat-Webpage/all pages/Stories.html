@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legends & Stories - BharatRoots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Fauna+One&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #101010;
+            --gold: #FFD700;
+            --warrior-red: #D90429;
+            --text-white: #f0f0f0;
+            --text-grey: #a0a0a0;
+            --glow: rgba(255, 215, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 800; color: var(--gold);
+            text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .nav-links a {
+            color: var(--text-white); text-decoration: none; margin-left: 30px; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-dark)), url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px; position: relative;
+        }
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: 5rem; color: var(--text-white);
+            text-shadow: 0 0 30px rgba(217, 4, 41, 0.5); margin-bottom: 10px;
+        }
+        .hero h1 span { color: var(--warrior-red); }
+        .hero p { font-family: 'Fauna One', serif; font-size: 1.5rem; color: var(--gold); letter-spacing: 2px; }
+        
+        /* --- Grid Layout --- */
+        .gallery-container {
+            padding: 50px 5%;
+            max-width: 1400px; margin: 0 auto;
+        }
+        .section-head { text-align: center; margin-bottom: 50px; font-family: 'Cinzel', serif; color: var(--gold); font-size: 2rem; }
+        
+        .warrior-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+
+        /* --- Warrior Card (Netflix Style) --- */
+        .warrior-card {
+            position: relative; height: 450px; border-radius: 15px; overflow: hidden; cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background-size: cover; background-position: center; border: 1px solid #222;
+        }
+        
+        /* Using Gradients as Placeholders for Images */
+        .card-abhimanyu { background-image: linear-gradient(to bottom, transparent, #000), url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Abhimanyu_chakravyuha.jpg/640px-Abhimanyu_chakravyuha.jpg'); background-size: cover; }
+        .card-shivaji { background: linear-gradient(to bottom, transparent, #000), radial-gradient(circle, #3a1c1c, #000); }
+        .card-chandra { background: linear-gradient(to bottom, transparent, #000), radial-gradient(circle, #1c2a3a, #000); }
+        .card-pratap { background: linear-gradient(to bottom, transparent, #000), radial-gradient(circle, #3a2c1c, #000); }
+
+        .warrior-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+            border-color: var(--gold);
+        }
+
+        .card-content {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,1), transparent);
+        }
+        .card-title {
+            font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold); margin-bottom: 5px;
+        }
+        .card-subtitle {
+            font-size: 0.9rem; color: #ccc; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .read-btn {
+            padding: 10px 20px; background: var(--warrior-red); color: #fff; border: none;
+            font-family: 'Poppins', sans-serif; font-weight: 600; border-radius: 5px; cursor: pointer;
+            transition: 0.3s;
+        }
+        .read-btn:hover { background: #b00220; }
+
+        /* --- Story Overlay (Modal) --- */
+        .story-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
+            z-index: 2000; display: none; opacity: 0; transition: opacity 0.4s ease;
+            overflow-y: auto;
+        }
+        .story-modal.active { display: block; opacity: 1; }
+
+        .modal-content {
+            max-width: 900px; margin: 50px auto; padding: 40px; position: relative;
+            border-left: 4px solid var(--gold); background: linear-gradient(to right, rgba(255,215,0,0.05), transparent);
+        }
+        .close-btn {
+            position: absolute; top: 20px; right: 20px; font-size: 2rem; color: var(--text-grey); cursor: pointer; transition: 0.3s;
+        }
+        .close-btn:hover { color: var(--warrior-red); }
+
+        .modal-title { font-family: 'Cinzel', serif; font-size: 3.5rem; color: var(--gold); margin-bottom: 10px; }
+        .modal-era { color: var(--warrior-red); font-family: 'Fauna One', serif; font-size: 1.2rem; margin-bottom: 30px; display: block; }
+        
+        .modal-body p {
+            font-size: 1.1rem; line-height: 1.9; margin-bottom: 20px; color: #e0e0e0;
+        }
+        .highlight { color: var(--gold); font-weight: 600; }
+        
+        .quote-box {
+            margin: 40px 0; padding: 30px; text-align: center; border: 1px solid var(--gold); border-radius: 10px;
+        }
+        .quote-text { font-family: 'Cinzel', serif; font-size: 1.5rem; font-style: italic; color: #fff; }
+
+        /* --- Weapons Section --- */
+        .weapon-section { padding: 80px 5%; background: #0a0a0a; text-align: center; border-top: 1px solid #222; }
+        .weapon-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
+        .weapon-card {
+            background: #111; padding: 30px; border-radius: 15px; width: 300px; border: 1px solid #333; transition: 0.3s;
+        }
+        .weapon-card:hover { border-color: var(--warrior-red); transform: translateY(-5px); }
+        .weapon-icon { font-size: 3rem; color: var(--warrior-red); margin-bottom: 15px; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .modal-content { padding: 20px; margin: 20px; }
+            .modal-title { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo"><i class="fa-solid fa-shield-cat"></i> BharatRoots</a>
+        <div class="nav-links">
+            <a href="explore_ultimate.html">Back to Explore</a>
+            <a href="#">Gallery</a>
+            <a href="#">Timeline</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <p>Veer Bhogya Vasundhara</p>
+        <h1>Legends of <span>Valor</span></h1>
+        <div style="margin-top: 20px; width: 100px; height: 2px; background: var(--gold);"></div>
+    </section>
+
+    <div class="gallery-container">
+        <h2 class="section-head">Select a Legend to Read Their Story</h2>
+        
+        <div class="warrior-grid">
+            
+            <div class="warrior-card card-abhimanyu" onclick="openStory('abhimanyu')">
+                <div class="card-content">
+                    <div class="card-title">Abhimanyu</div>
+                    <div class="card-subtitle">The Youngest Warrior of Mahabharata</div>
+                    <button class="read-btn">Read Story</button>
+                </div>
+            </div>
+
+            <div class="warrior-card card-shivaji" onclick="openStory('shivaji')">
+                <div class="card-content">
+                    <div class="card-title">Chhatrapati Shivaji</div>
+                    <div class="card-subtitle">Father of Indian Navy</div>
+                    <button class="read-btn">Read Story</button>
+                </div>
+            </div>
+
+            <div class="warrior-card card-chandra" onclick="openStory('chandra')">
+                <div class="card-content">
+                    <div class="card-title">Chandragupta</div>
+                    <div class="card-subtitle">The First Unifier of Bharat</div>
+                    <button class="read-btn">Read Story</button>
+                </div>
+            </div>
+
+            <div class="warrior-card card-pratap" onclick="openStory('pratap')">
+                <div class="card-content">
+                    <div class="card-title">Maharana Pratap</div>
+                    <div class="card-subtitle">The Lion of Mewar</div>
+                    <button class="read-btn">Read Story</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <section class="weapon-section">
+        <h2 class="section-head" style="margin-bottom: 20px;">Weapons of Antiquity</h2>
+        <p style="color: #888;">The advanced armory that defended the civilization.</p>
+        <div class="weapon-grid">
+            <div class="weapon-card">
+                <i class="fa-solid fa-circle-notch weapon-icon"></i>
+                <h3>Chakram</h3>
+                <p>A throwing disc with a razor-sharp outer edge, famously used by Sikh warriors (Nihangs).</p>
+            </div>
+            <div class="weapon-card">
+                <i class="fa-solid fa-khanda weapon-icon"></i>
+                <h3>Khanda</h3>
+                <p>A double-edged straight sword representing wisdom cutting through ignorance.</p>
+            </div>
+            <div class="weapon-card">
+                <i class="fa-solid fa-ring weapon-icon"></i>
+                <h3>Urumi</h3>
+                <p>The flexible sword from Kerala. Worn like a belt, it acts like a steel whip in combat.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="story-modal" id="storyModal">
+        <i class="fa-solid fa-xmark close-btn" onclick="closeStory()"></i>
+        <div class="modal-content" id="modalContent">
+            </div>
+    </div>
+
+    <footer>
+        <div style="text-align: center; padding: 40px; color: #666; font-size: 0.8rem;">
+            &copy; 2025 BharatRoots | Remembering the Brave.
+        </div>
+    </footer>
+
+    <script>
+        // Story Data Object
+        const stories = {
+            abhimanyu: {
+                title: "Abhimanyu",
+                era: "Mahabharata Era (c. 3138 BCE)",
+                quote: "Courage is not the absence of fear, but the triumph over it.",
+                body: `
+                    <p>Abhimanyu, the son of Arjuna and Subhadra, is the epitome of youthful valor in Indian history. While still in his mother's womb, he learned the art of entering the <span class="highlight">Chakravyuha</span> (a deadly multi-tier defensive formation) by listening to Krishna narrating it to Subhadra. However, Subhadra fell asleep before Krishna could explain how to exit it.</p>
+                    <p>On the 13th day of the Kurukshetra war, the Kaurava commander Dronacharya arranged the Chakravyuha. With Arjuna distracted elsewhere, only young Abhimanyu knew how to breach it.</p>
+                    <p>He entered fearlessly, shattering ring after ring of enemy soldiers. He fought single-handedly against the greatest warriors of the time—Drona, Karna, Duryodhana, and Ashwatthama. When his bow was cut, he fought with a sword. When his sword broke, he fought with a chariot wheel.</p>
+                    <p>Though he was eventually killed by deceit (breaking the rules of war), his sacrifice allowed the Pandavas to survive the day. He remains a symbol of ultimate bravery against impossible odds.</p>
+                `
+            },
+            shivaji: {
+                title: "Chhatrapati Shivaji Maharaj",
+                era: "1630 – 1680 CE",
+                quote: "Swarajya is my birthright.",
+                body: `
+                    <p>Shivaji Maharaj was not just a king but a visionary military strategist. At a time when India was dominated by the Mughal Empire and the Adil Shahi Sultanate, Shivaji carved out the Maratha Empire with a handful of loyal soldiers (Mavalan).</p>
+                    <p>He pioneered <span class="highlight">Ganimi Kava (Guerilla Warfare)</span>, using the difficult terrain of the Sahyadri mountains to ambush larger enemy armies. Unlike other kings who focused on land armies, Shivaji realized the importance of protecting the coastline.</p>
+                    <p>He is known as the <strong>Father of the Indian Navy</strong>. He built sea forts like Sindhudurg and Vijaydurg to counter foreign invaders like the Portuguese and British. His administration was progressive—he promoted the use of Marathi over Persian in court and ensured fair taxation for farmers.</p>
+                `
+            },
+            chandra: {
+                title: "Chandragupta Maurya",
+                era: "321 – 297 BCE",
+                quote: "With the guidance of a guru, even a shepherd can become an Emperor.",
+                body: `
+                    <p>Chandragupta was the founder of the Mauryan Empire, the first empire to unify most of the Indian subcontinent. Born in humble circumstances, he was discovered by the master strategist <span class="highlight">Chanakya (Kautilya)</span>.</p>
+                    <p>Under Chanakya's mentorship, Chandragupta raised an army and defeated the corrupt Nanda dynasty of Magadha. But his greatest military achievement was stopping the Greek expansion. He defeated Seleucus Nicator (Alexander the Great's general), securing India's borders.</p>
+                    <p>His reign saw a highly efficient administration system, a booming economy, and the spread of Jainism in his later years. He proved that a united Bharat was stronger than fragmented kingdoms.</p>
+                `
+            },
+            pratap: {
+                title: "Maharana Pratap",
+                era: "1540 – 1597 CE",
+                quote: "My head bows only to my God, not to any mortal emperor.",
+                body: `
+                    <p>Maharana Pratap of Mewar is the symbol of Rajput resistance. While almost all other Rajput kings had surrendered to the mighty Mughal Emperor Akbar, Pratap refused to bow.</p>
+                    <p>The <span class="highlight">Battle of Haldighati (1576)</span> is legendary. Despite being vastly outnumbered, Pratap and his loyal horse <strong>Chetak</strong> fought ferociously. Though he lost the battle, he did not lose the war. He retreated to the forests, lived on grass rotis, and gathered the tribal Bhil army.</p>
+                    <p>Through sheer perseverance and guerilla tactics, he eventually recaptured most of his lost territories. He died a free man, proving that self-respect is more valuable than a throne.</p>
+                `
+            }
+        };
+
+        function openStory(key) {
+            const modal = document.getElementById('storyModal');
+            const content = document.getElementById('modalContent');
+            const data = stories[key];
+
+            // Inject content dynamically
+            content.innerHTML = `
+                <div class="modal-title">${data.title}</div>
+                <span class="modal-era">${data.era}</span>
+                <div class="quote-box">
+                    <div class="quote-text">"${data.quote}"</div>
+                </div>
+                <div class="modal-body">
+                    ${data.body}
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeStory() {
+            const modal = document.getElementById('storyModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal if clicking outside content
+        window.onclick = function(event) {
+            const modal = document.getElementById('storyModal');
+            if (event.target == modal) {
+                closeStory();
+            }
+        }
+    </script>
+
+</body>
+</html>

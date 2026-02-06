@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Science - BharatRoots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="AncientScience.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   
+</head>
+
+<body>
+
+    <section class="hero">
+        <h1>Ancient <span>Science</span> & Technology</h1>
+        <p>Decoding the blueprint of Bharatiya innovation. Where observation, logic, and intuition created the
+            foundations of modern knowledge.</p>
+    </section>
+
+    <div class="domain-header" id="math">
+        <h2 class="domain-title"><i class="fa-solid fa-calculator"></i> Mathematical Sciences</h2>
+        <div class="domain-line"></div>
+    </div>
+    
+    <div class="domain-grid" id="math-grid"></div>
+
+    <div class="domain-header" id="astro">
+        <h2 class="domain-title"><i class="fa-solid fa-star"></i> Astronomy & Cosmology</h2>
+        <div class="domain-line"></div>
+    </div>
+
+    <div class="domain-grid" id="astro-grid"></div>
+
+    <section class="spotlight-section">
+        <div class="spotlight-content">
+            <div class="spotlight-text">
+                <h2>Engineering Spotlight: <br> The <span>Rustless</span> Wonder</h2>
+                <p>The Iron Pillar of Delhi, standing since the Gupta period (approx 400 CE), continues to baffle modern
+                    scientists. Despite being exposed to the elements for 1600 years, it shows negligible rust.</p>
+                <p>This demonstrates an advanced knowledge of metallurgy, specifically the process of phosphorus-rich
+                    iron forging that creates a protective passive film.</p>
+                <div class="evidence-tag" style="background: rgba(255, 215, 0, 0.1); color: var(--gold); width:auto;">
+                    <i class="fa-solid fa-flask"></i> Advanced Chemical Engineering
+                </div>
+            </div>
+            <div class="spotlight-visual">
+                <i class="fa-solid fa-gavel pillar-icon" style="transform: rotate(-90deg);"></i>
+            </div>
+        </div>
+    </section>
+
+    <div class="domain-header" id="medicine">
+        <h2 class="domain-title"><i class="fa-solid fa-heart-pulse"></i> Medical & Life Sciences</h2>
+        <div class="domain-line"></div>
+    </div>
+
+    <div class="domain-grid" id="med-grid"></div>
+
+
+    <section class="sources-section">
+        <h2 class="domain-title" style="justify-content: center;">Primary Source Hub</h2>
+        <p style="color: var(--text-grey); margin-top: 10px;">Ancient texts where these scientific principles are documented.</p>
+        <div class="sources-grid">
+            <a href="#" class="source-btn"><i class="fa-solid fa-scroll"></i> Aryabhatiya</a>
+            <a href="#" class="source-btn"><i class="fa-solid fa-book-medical"></i> Sushruta Samhita</a>
+            <a href="#" class="source-btn"><i class="fa-solid fa-star-half-stroke"></i> Surya Siddhanta</a>
+            <a href="#" class="source-btn"><i class="fa-solid fa-calculator"></i> Lilavati (Bhaskara II)</a>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; border-top: 1px solid var(--border-light); color: #555; font-size: 0.8rem;">
+        &copy; 2025 BharatRoots Science Initiative.
+    </footer>
+    
+
+    <script>
+        // 1. THIS IS THE DUMMY DATA (Represents what your Spring Boot API would return)
+     
+        const mathContainer = document.getElementById('math-grid');
+        const astroContainer = document.getElementById('astro-grid');
+        const medContainer = document.getElementById('med-grid');
+
+        const API_URL="http://localhost:8081/Api/alltopic";
+        
+     async function loadData(){
+        try{
+            const Response=await fetch(API_URL);
+            const result=await Response.json();
+            const apiResponse=result.data;
+        // Get containers
+          
+               // Clear existing content (optional safety)
+            mathContainer.innerHTML = '';
+            astroContainer.innerHTML = '';
+            medContainer.innerHTML = '';
+
+            apiResponse.forEach(item=>{
+                  // Determine Icon Type (Font Awesome vs Text)
+             let iconHtml = ' ';
+                if(item.isTextIcon) {
+                    iconHtml = item.iconClass; // For x^2 or Pi
+                } else {
+                    iconHtml = `<i class="${item.iconClass}"></i>`; // For FontAwesome
+                }
+
+                const cardHTML = `
+                    <div class="sci-card">
+                        <div class="sci-card-header">
+                            <div class="sci-icon-box">${iconHtml}</div>
+                            <h3>${item.title}</h3>
+                        </div>
+                        <div class="sci-card-body">
+                            <p>${item.shortDescription}</p>
+                            <span class="evidence-tag"><i class="fa-solid fa-book"></i> Source: ${item.source}</span>
+                            
+                            <button class="read-more-btn" onclick="handleReadMore(${item.id})">Read More</button>
+                        </div>
+                    </div>
+                `;
+                 // Append to correct container
+               if (item.category === 'Mathematics') {
+                    mathContainer.innerHTML += cardHTML;
+                } else if (item.category === 'Astronomy') {
+                    astroContainer.innerHTML += cardHTML;
+                } else if (item.category === 'Medicine') {
+                    medContainer.innerHTML += cardHTML;
+                }
+
+            });
+            
+        } catch(error){
+            alert("data not gound or api error")
+        }
+     };
+     document.addEventListener('DOMContentLoaded', loadData);
+
+    // Placeholder for button
+   
+ 
+
+    </script>
+</body>
+</html>

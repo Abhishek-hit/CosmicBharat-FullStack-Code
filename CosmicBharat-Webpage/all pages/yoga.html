@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga & Consciousness - BharatRoots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #050a06;
+            --card-bg: rgba(16, 36, 20, 0.6);
+            --zen-green: #4caf50;
+            --zen-gold: #ffd700;
+            --chakra-root: #ff3b3b;
+            --text-white: #ffffff;
+            --text-grey: #b0c4b1;
+            --border-glow: rgba(76, 175, 80, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            /* Lotus pattern background */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(76, 175, 80, 0.1) 0%, transparent 60%),
+                url('https://www.transparenttextures.com/patterns/shattered-island.png');
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 10, 6, 0.95); border-bottom: 1px solid var(--border-glow);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700;
+            color: var(--zen-green); text-decoration: none; display: flex; align-items: center; gap: 10px;
+            text-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+        }
+        .nav-links a {
+            color: var(--text-white); text-decoration: none; margin-left: 30px;
+            font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--zen-gold); }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center; padding: 120px 20px 80px; position: relative;
+        }
+        .hero-graphic {
+            font-size: 6rem; color: var(--zen-green); margin-bottom: 20px;
+            filter: drop-shadow(0 0 30px var(--zen-green)); animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif; font-size: 4.5rem; margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--zen-green), #fff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: var(--text-grey); max-width: 800px; margin: 0 auto 40px; font-size: 1.3rem; line-height: 1.6;
+        }
+
+        /* --- The Science of OM --- */
+        .om-section {
+            max-width: 1000px; margin: 0 auto 100px; padding: 50px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
+            border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 20px; text-align: center;
+            position: relative;
+        }
+        .om-bg {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 15rem; color: rgba(255, 215, 0, 0.03); pointer-events: none;
+        }
+        .om-content h2 { font-family: 'Cinzel', serif; color: var(--zen-gold); font-size: 2.5rem; margin-bottom: 15px; }
+        .om-content p { font-size: 1.1rem; color: #ddd; line-height: 1.7; }
+        .freq-tag {
+            display: inline-block; margin-top: 20px; padding: 8px 20px; border: 1px solid var(--zen-gold);
+            color: var(--zen-gold); border-radius: 30px; font-weight: 600;
+        }
+
+        /* --- Chakra System (Spine Layout) --- */
+        .chakra-section { padding: 60px 20px; position: relative; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-family: 'Cinzel', serif; font-size: 3rem; color: #fff; }
+        .section-header span { color: var(--zen-green); }
+
+        .spine-container {
+            max-width: 800px; margin: 0 auto; position: relative;
+            display: flex; flex-direction: column-reverse; /* Root at bottom */
+            gap: 40px;
+        }
+        /* The Spine Line */
+        .spine-container::before {
+            content: ''; position: absolute; top: 20px; bottom: 20px; left: 50%; width: 2px;
+            background: linear-gradient(to top, #ff0000, #ffd700, #8f00ff);
+            transform: translateX(-50%); z-index: 0;
+        }
+
+        .chakra-item {
+            display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
+        }
+        
+        .c-card {
+            width: 45%; padding: 25px; background: var(--card-bg); border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+            transition: 0.3s; cursor: pointer;
+        }
+        .c-card:hover { transform: scale(1.05); border-color: #fff; }
+        
+        .c-icon {
+            width: 60px; height: 60px; border-radius: 50%; background: #000;
+            border: 2px solid #fff; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; box-shadow: 0 0 20px currentColor; margin: 0 30px;
+            flex-shrink: 0;
+        }
+
+        /* Alternating layout */
+        .chakra-item:nth-child(odd) { flex-direction: row; }
+        .chakra-item:nth-child(even) { flex-direction: row-reverse; }
+        .chakra-item:nth-child(odd) .c-card { text-align: right; }
+        .chakra-item:nth-child(even) .c-card { text-align: left; }
+
+        .c-title { font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 5px; }
+        .c-desc { font-size: 0.9rem; color: var(--text-grey); }
+
+        /* --- Surya Namaskar Grid --- */
+        .surya-section {
+            background: linear-gradient(to bottom, #050a06, #1a1400);
+            padding: 100px 5%;
+        }
+        .surya-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; max-width: 1300px; margin: 40px auto 0;
+        }
+        .pose-card {
+            background: rgba(255, 255, 255, 0.03); border-radius: 15px; padding: 20px;
+            text-align: center; border: 1px solid rgba(255, 215, 0, 0.1); transition: 0.3s;
+        }
+        .pose-card:hover { background: rgba(255, 215, 0, 0.1); border-color: var(--zen-gold); }
+        .pose-number {
+            font-size: 2rem; font-weight: 800; color: rgba(255,255,255,0.05); margin-bottom: -10px; display: block;
+        }
+        .pose-name { color: var(--zen-gold); font-weight: 600; margin-bottom: 5px; font-family: 'Tiro Sanskrit', serif; }
+        .pose-eng { font-size: 0.8rem; color: #aaa; }
+
+        /* --- Ayurveda & Tridosha --- */
+        .ayurveda-section { padding: 100px 5%; }
+        .dosha-container {
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 50px;
+        }
+        .dosha-card {
+            width: 300px; background: var(--card-bg); border-radius: 20px; padding: 40px 30px;
+            text-align: center; border-top: 4px solid; transition: 0.4s;
+        }
+        .dosha-card:hover { transform: translateY(-10px); }
+        
+        .vata { border-color: #00d2ff; box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1); }
+        .pitta { border-color: #ff5e00; box-shadow: 0 10px 30px rgba(255, 94, 0, 0.1); }
+        .kapha { border-color: #4caf50; box-shadow: 0 10px 30px rgba(76, 175, 80, 0.1); }
+
+        .dosha-icon { font-size: 3rem; margin-bottom: 20px; }
+        .vata .dosha-icon { color: #00d2ff; }
+        .pitta .dosha-icon { color: #ff5e00; }
+        .kapha .dosha-icon { color: #4caf50; }
+
+        .dosha-card h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; margin-bottom: 10px; color: #fff; }
+        .dosha-card p { font-size: 0.9rem; color: var(--text-grey); line-height: 1.6; }
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-glow); color: #666; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .spine-container::before { left: 20px; }
+            .chakra-item { flex-direction: row !important; justify-content: flex-start; }
+            .c-card { width: 75%; text-align: left !important; }
+            .c-icon { margin: 0 20px 0 0; width: 40px; height: 40px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo"><i class="fa-solid fa-leaf"></i> BharatRoots</a>
+        <div class="nav-links">
+            <a href="explore_ultimate.html">Back to Explore</a>
+            <a href="#chakras">Energy</a>
+            <a href="#ayurveda">Ayurveda</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <i class="fa-solid fa-spa hero-graphic"></i>
+        <h1>Inner <span>Engineering</span></h1>
+        <p>Yoga is the technology of upgrading the human system. It is the union of the individual consciousness with the cosmic consciousness.</p>
+    </section>
+
+    <div class="om-section">
+        <div class="om-bg">ॐ</div>
+        <div class="om-content">
+            <h2>The Science of OM</h2>
+            <p>When chanted correctly, 'Om' vibrates at a frequency of <strong>432Hz</strong>, which is the natural frequency of the universe. This vibration stimulates the Vagus Nerve, reducing stress (Cortisol) and inducing a state of deep relaxation and alertness.</p>
+            <div class="freq-tag"><i class="fa-solid fa-wave-square"></i> 432 Hz Frequency</div>
+        </div>
+    </div>
+
+    <section class="chakra-section" id="chakras">
+        <div class="section-header">
+            <h2>The 7 Energy Centers</h2>
+            <p>Mapping the human software (Prana)</p>
+        </div>
+
+        <div class="spine-container">
+            <div class="chakra-item">
+                <div class="c-icon" style="color: #8f00ff; box-shadow: 0 0 20px #8f00ff;">7</div>
+                <div class="c-card">
+                    <div class="c-title" style="color: #8f00ff;">Sahasrara (Crown)</div>
+                    <div class="c-desc">Pure Consciousness. Connection to the divine source.</div>
+                </div>
+            </div>
+            <div class="chakra-item">
+                <div class="c-icon" style="color: #4b0082; box-shadow: 0 0 20px #4b0082;">6</div>
+                <div class="c-card">
+                    <div class="c-title" style="color: #4b0082;">Ajna (Third Eye)</div>
+                    <div class="c-desc">Intuition, wisdom, and foresight. Pineal gland activation.</div>
+                </div>
+            </div>
+            <div class="chakra-item">
+                <div class="c-icon" style="color: #0000ff; box-shadow: 0 0 20px #0000ff;">5</div>
+                <div class="c-card">
+                    <div class="c-title" style="color: #0000ff;">Vishuddha (Throat)</div>
+                    <div class="c-desc">Communication, truth, and self-expression.</div>
+                </div>
+            </div>
+            <div class="chakra-item">
+                <div class="c-icon" style="color: #00ff00; box-shadow: 0 0 20px #00ff00;">4</div>
+                <div class="c-card">
+                    <div class="c-title" style="color: #00ff00;">Anahata (Heart)</div>
+                    <div class="c-desc">Love, compassion, and emotional balance.</div>
+                </div>
+            </div>
+            <div class="chakra-item">
+                <div class="c-icon" style="color: #ffff00; box-shadow: 0 0 20px #ffff00;">3</div>
+                <div class="c-card">
+                    <div class="c-title" style="color: #ffff00;">Manipura (Solar)</div>
+                    <div class="c-desc">Willpower, self-esteem, and digestion (Agni).</div>
+                </div>
+            </div>
+            <div class="chakra-item">
+                <div class="c-icon" style="color: #ff7f00; box-shadow: 0 0 20px #ff7f00;">2</div>
+                <div class="c-card">
+                    <div class="c-title" style="color: #ff7f00;">Svadhishthana</div>
+                    <div class="c-desc">Creativity, pleasure, and emotional flow.</div>
+                </div>
+            </div>
+            <div class="chakra-item">
+                <div class="c-icon" style="color: #ff0000; box-shadow: 0 0 20px #ff0000;">1</div>
+                <div class="c-card">
+                    <div class="c-title" style="color: #ff0000;">Muladhara (Root)</div>
+                    <div class="c-desc">Stability, security, and basic survival needs.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="surya-section">
+        <div class="section-header">
+            <h2>Surya Namaskar</h2>
+            <p style="color: var(--zen-gold);">The Ultimate Solar Cycle for Body & Mind</p>
+        </div>
+        <div class="surya-grid">
+            <div class="pose-card"><span class="pose-number">01</span><div class="pose-name">Pranamasana</div><div class="pose-eng">Prayer Pose</div></div>
+            <div class="pose-card"><span class="pose-number">02</span><div class="pose-name">Hastauttanasana</div><div class="pose-eng">Raised Arms</div></div>
+            <div class="pose-card"><span class="pose-number">03</span><div class="pose-name">Padahastasana</div><div class="pose-eng">Hand to Foot</div></div>
+            <div class="pose-card"><span class="pose-number">04</span><div class="pose-name">Ashwa Sanchalanasana</div><div class="pose-eng">Equestrian</div></div>
+            <div class="pose-card"><span class="pose-number">05</span><div class="pose-name">Dandasana</div><div class="pose-eng">Stick Pose</div></div>
+            <div class="pose-card"><span class="pose-number">06</span><div class="pose-name">Ashtanga Namaskar</div><div class="pose-eng">Salute with 8 parts</div></div>
+            <div class="pose-card"><span class="pose-number">07</span><div class="pose-name">Bhujangasana</div><div class="pose-eng">Cobra Pose</div></div>
+            <div class="pose-card"><span class="pose-number">08</span><div class="pose-name">Parvatasana</div><div class="pose-eng">Mountain Pose</div></div>
+            <div class="pose-card"><span class="pose-number">09</span><div class="pose-name">Ashwa Sanchalanasana</div><div class="pose-eng">Equestrian</div></div>
+            <div class="pose-card"><span class="pose-number">10</span><div class="pose-name">Padahastasana</div><div class="pose-eng">Hand to Foot</div></div>
+            <div class="pose-card"><span class="pose-number">11</span><div class="pose-name">Hastauttanasana</div><div class="pose-eng">Raised Arms</div></div>
+            <div class="pose-card"><span class="pose-number">12</span><div class="pose-name">Pranamasana</div><div class="pose-eng">Prayer Pose</div></div>
+        </div>
+    </section>
+
+    <section class="ayurveda-section" id="ayurveda">
+        <div class="section-header">
+            <h2>Ayurvedic Body Types (Tridosha)</h2>
+            <p style="color: #aaa;">We are all made of 5 elements. Their unique combination defines you.</p>
+        </div>
+        <div class="dosha-container">
+            <div class="dosha-card vata">
+                <i class="fa-solid fa-wind dosha-icon"></i>
+                <h3>Vata (Air + Ether)</h3>
+                <p>Creative, energetic, but prone to anxiety. Like the wind, they are always moving. Needs warmth and routine.</p>
+            </div>
+            <div class="dosha-card pitta">
+                <i class="fa-solid fa-fire dosha-icon"></i>
+                <h3>Pitta (Fire + Water)</h3>
+                <p>Intelligent, sharp, but prone to anger. Like fire, they transform things. Needs cooling foods and calmness.</p>
+            </div>
+            <div class="dosha-card kapha">
+                <i class="fa-solid fa-mountain dosha-icon"></i>
+                <h3>Kapha (Earth + Water)</h3>
+                <p>Calm, loyal, strong, but prone to lethargy. Like the earth, they are stable. Needs stimulation and exercise.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 BharatRoots Wellness Division.
+    </footer>
+
+</body>
+</html>
