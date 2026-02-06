@@ -24,7 +24,7 @@
  }
 
  /* --- Navigation --- */
- nav {
+ /* nav {
      padding: 20px 5%;
      display: flex;
      justify-content: space-between;
@@ -76,7 +76,7 @@
 
  .nav-links a:hover::after {
      width: 100%;
- }
+ } */
 
  /* --- Hero --- */
  .hero {
