@@ -110,7 +110,48 @@
             color: rgba(255, 215, 0, 0.05);
         }
         
-        @media (max-width: 768px) {
-            .daily-wisdom { grid-template-columns: 1fr; padding: 20px; }
-            .shloka { font-size: 1.5rem; }
-        }
+       /* --- Mobile & Responsive Adjustments --- */
+
+@media (max-width: 1024px) {
+    /* Tablet  */
+    .daily-wisdom {
+        width: 90%; /* side margin */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Devices */
+    .daily-wisdom {
+        width: 95%; 
+        margin-top: 25px;
+        
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+
+    .wisdom-card {
+        padding: 20px; 
+        border-radius: 12px;
+    }
+
+    .wisdom-header {
+        font-size: 1.1rem; /* हेडिंग थोड़ी छोटी करें */
+        letter-spacing: 1px;
+    }
+
+    .shloka {
+        font-size: 1.4rem; /* श्लोक का फॉन्ट साइज़ मोबाइल के लिए */
+        line-height: 1.3;
+    }
+
+    .wisdom-desc {
+        font-size: 0.95rem; /* डिस्क्रिप्शन पढ़ने योग्य रखें */
+    }
+
+    .card-icon {
+        font-size: 3.5rem; /* बैकग्राउंड आइकन को छोटा करें ताकि टेक्स्ट न कटे */
+        top: 5px;
+        right: 10px;
+        opacity: 0.04; /* मोबाइल पर थोड़ा हल्का करें */
+    }
+}

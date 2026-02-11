@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sadhak Dashboard - BharatRoots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;500&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-void: #050201;
+            --gold: #ffd700;
+            --gold-dim: #b8860b;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 215, 0, 0.2);
+            --text-main: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-void);
+            color: var(--text-main);
+            background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
+            min-height: 100vh;
+        }
+
+        /* --- Header --- */
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 2, 1, 0.95); border-bottom: 1px solid var(--gold-dim);
+        }
+        .logo {
+            font-family: 'Cinzel', serif; font-size: 24px; color: var(--gold);
+            text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .user-badge {
+            display: flex; align-items: center; gap: 10px; padding: 5px 15px;
+            border: 1px solid var(--gold); border-radius: 30px; color: var(--gold);
+        }
+
+        /* --- DASHBOARD LAYOUT --- */
+        .dash-container {
+            max-width: 1200px; margin: 40px auto; padding: 0 20px;
+            display: grid; grid-template-columns: 250px 1fr; gap: 40px;
+        }
+
+        /* Sidebar (Tabs) */
+        .sidebar {
+            background: var(--glass); border: 1px solid var(--border); border-radius: 15px;
+            padding: 20px; height: fit-content; backdrop-filter: blur(10px);
+        }
+        .user-info { text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        .avatar { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--gold); margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--gold); background: #000; }
+        
+        .menu-btn {
+            width: 100%; padding: 12px 15px; margin-bottom: 10px; background: transparent;
+            border: 1px solid transparent; color: #aaa; text-align: left; font-size: 1rem;
+            cursor: pointer; border-radius: 8px; transition: 0.3s; display: flex; gap: 10px; align-items: center;
+        }
+        .menu-btn:hover, .menu-btn.active {
+            background: rgba(255, 215, 0, 0.1); color: var(--gold); border-color: var(--border);
+        }
+        .menu-btn i { width: 25px; }
+
+        /* Main Content Area */
+        .content-area {
+            background: var(--glass); border: 1px solid var(--border); border-radius: 20px;
+            padding: 40px; min-height: 500px; position: relative; overflow: hidden;
+        }
+
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-head {
+            font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold); margin-bottom: 30px;
+            border-bottom: 1px solid var(--border); padding-bottom: 15px;
+        }
+
+        /* --- 1. MERA SANGRAH (Bookmarks) --- */
+        .sangrah-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;
+        }
+        .bookmark-card {
+            background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 10px;
+            overflow: hidden; transition: 0.3s; position: relative;
+        }
+        .bookmark-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .b-img { height: 120px; background: linear-gradient(45deg, #1a0a00, #3d1e00); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: rgba(255,255,255,0.1); }
+        .b-info { padding: 15px; }
+        .b-title { font-family: 'Cinzel', serif; font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+        .b-date { font-size: 0.8rem; color: #777; }
+        .btn-remove { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.5); border: none; color: #ff4444; cursor: pointer; padding: 5px; border-radius: 50%; }
+
+        /* --- 2. GRANTHALAYA (Downloads) --- */
+        .download-list { display: flex; flex-direction: column; gap: 15px; }
+        .download-item {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px;
+            border: 1px solid var(--border); transition: 0.3s;
+        }
+        .download-item:hover { background: rgba(255, 215, 0, 0.05); border-color: var(--gold); }
+        
+        .d-icon { font-size: 2rem; color: var(--gold-dim); margin-right: 20px; }
+        .d-info h4 { font-size: 1.1rem; color: #fff; }
+        .d-info p { font-size: 0.85rem; color: #888; }
+        
+        .btn-down {
+            padding: 8px 20px; border: 1px solid var(--gold); background: transparent;
+            color: var(--gold); border-radius: 20px; cursor: pointer; transition: 0.3s;
+            text-decoration: none; font-size: 0.9rem;
+        }
+        .btn-down:hover { background: var(--gold); color: #000; }
+
+        /* --- 3. DHARMA SABHA (Discussion) --- */
+        .chat-box {
+            background: rgba(0,0,0,0.3); border-radius: 10px; padding: 20px;
+            height: 300px; overflow-y: auto; margin-bottom: 20px; border: 1px solid var(--border);
+        }
+        .comment {
+            display: flex; gap: 15px; margin-bottom: 20px;
+        }
+        .c-avatar { width: 40px; height: 40px; background: #333; border-radius: 50%; flex-shrink: 0; }
+        .c-body { background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 0 15px 15px 15px; border: 1px solid var(--border); }
+        .c-name { color: var(--gold); font-size: 0.9rem; font-weight: bold; margin-bottom: 3px; }
+        .c-text { font-size: 0.95rem; color: #ddd; }
+
+        .post-box { display: flex; gap: 10px; }
+        .post-input {
+            flex: 1; padding: 12px; background: #000; border: 1px solid var(--border);
+            color: #fff; border-radius: 5px; outline: none; font-family: 'Outfit';
+        }
+        .post-btn {
+            padding: 0 25px; background: var(--gold); color: #000; border: none;
+            border-radius: 5px; font-weight: bold; cursor: pointer;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .dash-container { grid-template-columns: 1fr; }
+            .sidebar { display: flex; overflow-x: auto; gap: 10px; padding: 10px; }
+            .user-info { display: none; }
+            .menu-btn { white-space: nowrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo"><i class="fa-solid fa-om"></i> BharatRoots</a>
+        <div class="user-badge">
+            <i class="fa-solid fa-user-circle"></i> Namaste, Rahul
+        </div>
+    </nav>
+
+    <div class="dash-container">
+        
+        <aside class="sidebar">
+            <div class="user-info">
+                <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                <h3 style="color: #fff; margin-bottom: 5px;">Rahul Kumar</h3>
+                <span style="color: #aaa; font-size: 0.85rem;">Rank: Jigyasu (Beginner)</span>
+            </div>
+            
+            <button class="menu-btn active" onclick="openTab('sangrah')">
+                <i class="fa-solid fa-bookmark"></i> Mera Sangrah
+            </button>
+            <button class="menu-btn" onclick="openTab('granthalaya')">
+                <i class="fa-solid fa-book-open"></i> Granthalaya
+            </button>
+            <button class="menu-btn" onclick="openTab('sabha')">
+                <i class="fa-solid fa-comments"></i> Dharma Sabha
+            </button>
+            <button class="menu-btn" style="color: #ff4444; border-color: rgba(255,68,68,0.3);">
+                <i class="fa-solid fa-power-off"></i> Logout
+            </button>
+        </aside>
+
+        <main class="content-area">
+            
+            <div id="sangrah" class="tab-content active">
+                <h2 class="section-head">Mera Sangrah (Saved Wisdom)</h2>
+                <div class="sangrah-grid">
+                    <div class="bookmark-card">
+                        <button class="btn-remove"><i class="fa-solid fa-xmark"></i></button>
+                        <div class="b-img"><i class="fa-solid fa-atom"></i></div>
+                        <div class="b-info">
+                            <h4 class="b-title">Vedic Mathematics</h4>
+                            <span class="b-date">Saved on: 12 Dec</span>
+                        </div>
+                    </div>
+                    <div class="bookmark-card">
+                        <button class="btn-remove"><i class="fa-solid fa-xmark"></i></button>
+                        <div class="b-img"><i class="fa-solid fa-gopuram"></i></div>
+                        <div class="b-info">
+                            <h4 class="b-title">Konark Temple Logic</h4>
+                            <span class="b-date">Saved on: 10 Dec</span>
+                        </div>
+                    </div>
+                    <div class="bookmark-card">
+                        <button class="btn-remove"><i class="fa-solid fa-xmark"></i></button>
+                        <div class="b-img"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div class="b-info">
+                            <h4 class="b-title">Ayurveda Doshas</h4>
+                            <span class="b-date">Saved on: 08 Dec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="granthalaya" class="tab-content">
+                <h2 class="section-head">Granthalaya (Premium Library)</h2>
+                <div class="download-list">
+                    <div class="download-item">
+                        <div style="display:flex; align-items:center;">
+                            <i class="fa-solid fa-file-pdf d-icon"></i>
+                            <div class="d-info">
+                                <h4>Chanakya Niti (Full PDF)</h4>
+                                <p>Ancient strategy for modern life. Hindi & English.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-down"><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+
+                    <div class="download-item">
+                        <div style="display:flex; align-items:center;">
+                            <i class="fa-solid fa-image d-icon"></i>
+                            <div class="d-info">
+                                <h4>Shiva Cosmic Wallpaper (4K)</h4>
+                                <p>High-resolution art for mobile and desktop.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-down"><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+
+                    <div class="download-item">
+                        <div style="display:flex; align-items:center;">
+                            <i class="fa-solid fa-scroll d-icon"></i>
+                            <div class="d-info">
+                                <h4>Rigveda Hymns (Audio)</h4>
+                                <p>Authentic chanting for meditation.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-down"><i class="fa-solid fa-play"></i> Listen</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sabha" class="tab-content">
+                <h2 class="section-head">Dharma Sabha (Community)</h2>
+                <div class="chat-box">
+                    <div class="comment">
+                        <div class="c-avatar" style="background:#444;"></div>
+                        <div class="c-body">
+                            <div class="c-name">Vikram Singh</div>
+                            <div class="c-text">Does anyone know why we don't sleep with our head towards the North?</div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="c-avatar" style="background:#552;"></div>
+                        <div class="c-body">
+                            <div class="c-name">Aditi Rao</div>
+                            <div class="c-text">It's related to the Earth's magnetic field interacting with our body's iron content.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-box">
+                    <input type="text" class="post-input" placeholder="Share your Vichar (Thoughts)...">
+                    <button class="post-btn">POST</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            // Show select tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Update buttons
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

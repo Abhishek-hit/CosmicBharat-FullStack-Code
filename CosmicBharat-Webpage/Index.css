@@ -370,7 +370,7 @@ body {
     padding: 0 20px;
     position: relative;
     margin-top: 80px;
-   
+
 }
 
 .hero::after {
@@ -432,146 +432,303 @@ body {
 /* hsjkfhskjfhsdjk */
 
 :root {
-            --f-void: #080402;
-            --f-stone: #120a08;
-            --f-gold: #d4af37;
-            --f-gold-light: #f2d06b;
-            --f-accent: #8a6a26;
-            --f-text: #cfcfcf;
-        }
+    --f-void: #080402;
+    --f-stone: #120a08;
+    --f-gold: #d4af37;
+    --f-gold-light: #f2d06b;
+    --f-accent: #8a6a26;
+    --f-text: #cfcfcf;
+}
 
-        /* --- 1. THE VEDIC BORDER (Marquee) --- */
-        .vedic-border {
-            background: var(--f-gold);
-            color: #000;
-            padding: 8px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-top: 3px solid #fff;
-            border-bottom: 3px solid #fff;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            position: relative; z-index: 10;
-        }
-        
-        .border-content {
-            display: inline-block;
-            font-family: 'Tiro Sanskrit', serif;
-            font-weight: 700;
-            font-size: 1rem;
-            animation: borderScroll 40s linear infinite;
-        }
-        .border-content span { margin: 0 30px; }
-        
-        @keyframes borderScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+/* --- 1. THE VEDIC BORDER (Marquee) --- */
+.vedic-border {
+    background: var(--f-gold);
+    color: #000;
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    position: relative;
+    z-index: 10;
+}
 
+.border-content {
+    display: inline-block;
+    font-family: 'Tiro Sanskrit', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    animation: borderScroll 40s linear infinite;
+}
 
-        /* --- 2. MAIN FOOTER CONTAINER --- */
-        .foundation-footer {
-            background-color: var(--f-void);
-            color: var(--f-text);
-            position: relative;
-            padding-top: 80px;
-            background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
-            border-top: 5px solid var(--f-gold);
-        }
+.border-content span {
+    margin: 0 30px;
+}
 
-        /* Background Mandala (Static & Royal) */
-        .bg-mandala {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 800px; height: 800px; opacity: 0.05; pointer-events: none;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png') no-repeat center;
-            background-size: contain; filter: invert(1) sepia(1) saturate(5) hue-rotate(-45deg);
-        }
+@keyframes borderScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
 
 
-        /* --- 3. THE CENTERPIECE (Kalash) --- */
-        .center-crest {
-            position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
-            width: 80px; height: 80px; background: var(--f-void);
-            border: 3px solid var(--f-gold); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-            z-index: 11;
-        }
-        .center-crest i { font-size: 2.5rem; color: var(--f-gold); filter: drop-shadow(0 0 5px var(--f-gold)); }
+/* --- 2. MAIN FOOTER CONTAINER --- */
+.foundation-footer {
+    background-color: var(--f-void);
+    color: var(--f-text);
+    position: relative;
+    padding-top: 80px;
+    background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
+    border-top: 5px solid var(--f-gold);
+}
+
+/* Background Mandala (Static & Royal) */
+.bg-mandala {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    opacity: 0.05;
+    pointer-events: none;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png') no-repeat center;
+    background-size: contain;
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(-45deg);
+}
 
 
-        /* --- 4. CONTENT GRID --- */
-        .footer-grid {
-            max-width: 1400px; margin: 0 auto; padding: 0 5% 60px;
-            display: grid; grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr; gap: 60px;
-            position: relative; z-index: 2;
-        }
+/* --- 3. THE CENTERPIECE (Kalash) --- */
+.center-crest {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: var(--f-void);
+    border: 3px solid var(--f-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    z-index: 11;
+}
 
-        /* Brand */
-        .f-brand h2 {
-            font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--f-gold); margin-bottom: 20px;
-            text-transform: uppercase; letter-spacing: 2px;
-        }
-        .f-brand p { font-family: 'Outfit', sans-serif; font-size: 1rem; line-height: 1.7; color: #aaa; }
-        .f-socials { margin-top: 30px; display: flex; gap: 15px; }
-        .s-btn {
-            width: 40px; height: 40px; border: 1px solid var(--f-accent); color: var(--f-gold);
-            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s;
-        }
-        .s-btn:hover { background: var(--f-gold); color: #000; border-color: var(--f-gold); }
-
-
-        /* Pillar Links */
-        .f-pillar h4 {
-            font-family: 'Cinzel', serif; color: #fff; font-size: 1.2rem; margin-bottom: 30px;
-            border-left: 3px solid var(--f-gold); padding-left: 15px;
-        }
-        
-        .f-list { list-style: none; padding: 0; }
-        .f-list li { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; transition: 0.3s; }
-        .f-list li:last-child { border-bottom: none; }
-        
-        .f-list a {
-            text-decoration: none; color: var(--f-text); font-size: 0.95rem; transition: 0.3s;
-            display: flex; align-items: center; gap: 10px; font-family: 'Outfit', sans-serif;
-        }
-        .f-list a:hover { color: var(--f-gold); padding-left: 5px; }
-        .f-list a::before { content: '◈'; font-size: 0.7rem; color: var(--f-accent); }
+.center-crest i {
+    font-size: 2.5rem;
+    color: var(--f-gold);
+    filter: drop-shadow(0 0 5px var(--f-gold));
+}
 
 
-        /* Newsletter (Box Style) */
-        .f-newsletter {
-            background: rgba(255, 255, 255, 0.03); padding: 30px; border: 1px solid var(--f-accent);
-            text-align: center; position: relative;
-        }
-        .f-newsletter::after { /* Corner Accents */
-            content: ''; position: absolute; inset: -1px; border: 2px solid var(--f-gold);
-            clip-path: polygon(0 0, 20px 0, 0 20px, 0 100%, 20px 100%, 0 80px, 100% 0, 80px 0, 100% 20px, 100% 100%, 80px 100%, 100% 80px);
-            opacity: 0.5;
-        }
-        
-        .f-newsletter h4 { font-family: 'Cinzel', serif; color: var(--f-gold); margin-bottom: 10px; font-size: 1.3rem; }
-        .f-newsletter p { font-size: 0.9rem; margin-bottom: 20px; color: #ccc; }
-        
-        .nl-field {
-            width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff;
-            margin-bottom: 10px; outline: none; font-family: 'Outfit', sans-serif; transition: 0.3s;
-        }
-        .nl-field:focus { border-color: var(--f-gold); }
-        
-        .nl-submit {
-            width: 100%; padding: 12px; background: var(--f-gold); color: #000; border: none;
-            font-weight: 700; cursor: pointer; font-family: 'Cinzel', serif; letter-spacing: 1px; transition: 0.3s;
-        }
-        .nl-submit:hover { background: #fff; box-shadow: 0 0 15px var(--f-gold); }
+/* --- 4. CONTENT GRID --- */
+.footer-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5% 60px;
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Brand */
+.f-brand h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: var(--f-gold);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.f-brand p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #aaa;
+}
+
+.f-socials {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.s-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--f-accent);
+    color: var(--f-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.s-btn:hover {
+    background: var(--f-gold);
+    color: #000;
+    border-color: var(--f-gold);
+}
 
 
-        /* --- 5. BOTTOM BAR --- */
-        .base-bar {
-            background: #000; padding: 25px 5%; border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.85rem; color: #666;
-        }
-        .base-links a { color: #666; text-decoration: none; margin-left: 20px; transition: 0.3s; }
-        .base-links a:hover { color: var(--f-gold); }
+/* Pillar Links */
+.f-pillar h4 {
+    font-family: 'Cinzel', serif;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    border-left: 3px solid var(--f-gold);
+    padding-left: 15px;
+}
 
-        @media (max-width: 900px) {
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .base-bar { flex-direction: column; gap: 15px; text-align: center; }
-        }
+.f-list {
+    list-style: none;
+    padding: 0;
+}
+
+.f-list li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+
+.f-list li:last-child {
+    border-bottom: none;
+}
+
+.f-list a {
+    text-decoration: none;
+    color: var(--f-text);
+    font-size: 0.95rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.f-list a:hover {
+    color: var(--f-gold);
+    padding-left: 5px;
+}
+
+.f-list a::before {
+    content: '◈';
+    font-size: 0.7rem;
+    color: var(--f-accent);
+}
+
+
+/* Newsletter (Box Style) */
+.f-newsletter {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border: 1px solid var(--f-accent);
+    text-align: center;
+    position: relative;
+}
+
+.f-newsletter::after {
+    /* Corner Accents */
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border: 2px solid var(--f-gold);
+    clip-path: polygon(0 0, 20px 0, 0 20px, 0 100%, 20px 100%, 0 80px, 100% 0, 80px 0, 100% 20px, 100% 100%, 80px 100%, 100% 80px);
+    opacity: 0.5;
+}
+
+.f-newsletter h4 {
+    font-family: 'Cinzel', serif;
+    color: var(--f-gold);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.f-newsletter p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.nl-field {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+    margin-bottom: 10px;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+    transition: 0.3s;
+}
+
+.nl-field:focus {
+    border-color: var(--f-gold);
+}
+
+.nl-submit {
+    width: 100%;
+    padding: 12px;
+    background: var(--f-gold);
+    color: #000;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nl-submit:hover {
+    background: #fff;
+    box-shadow: 0 0 15px var(--f-gold);
+}
+
+
+/* --- 5. BOTTOM BAR --- */
+.base-bar {
+    background: #000;
+    padding: 25px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.base-links a {
+    color: #666;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.base-links a:hover {
+    color: var(--f-gold);
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .base-bar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
