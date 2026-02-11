@@ -111,47 +111,37 @@
         }
         
        /* --- Mobile & Responsive Adjustments --- */
-
-@media (max-width: 1024px) {
-    /* Tablet  */
-    .daily-wisdom {
-        width: 90%; /* side margin */
-    }
-}
-
 @media (max-width: 768px) {
-    /* Mobile Devices */
+    
+    /* श्लोक को सेट करें */
+    .sanskrit-sloka {
+        font-size: 1.5rem;
+        margin-top: 0;       /* नेगेटिव मार्जिन हटाएं */
+        margin-bottom: 10px;
+    }
+
+    /* बड़ी हेडिंग को छोटा करें */
+    .hero h1 {
+        font-size: 3rem;     /* 6.5rem से छोटा किया */
+        line-height: 1.1;
+    }
+
+    /* पैराग्राफ को पढ़ने लायक बनाएं */
+    .hero p {
+        font-size: 1rem;
+        padding: 0 15px;     /* साइड में जगह */
+        line-height: 1.5;
+    }
+
+    /* कार्ड्स को एक के नीचे एक (Stack) करें */
     .daily-wisdom {
-        width: 95%; 
-        margin-top: 25px;
-        
-        grid-template-columns: 1fr; 
-        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
 
     .wisdom-card {
-        padding: 20px; 
-        border-radius: 12px;
-    }
-
-    .wisdom-header {
-        font-size: 1.1rem; /* हेडिंग थोड़ी छोटी करें */
-        letter-spacing: 1px;
-    }
-
-    .shloka {
-        font-size: 1.4rem; /* श्लोक का फॉन्ट साइज़ मोबाइल के लिए */
-        line-height: 1.3;
-    }
-
-    .wisdom-desc {
-        font-size: 0.95rem; /* डिस्क्रिप्शन पढ़ने योग्य रखें */
-    }
-
-    .card-icon {
-        font-size: 3.5rem; /* बैकग्राउंड आइकन को छोटा करें ताकि टेक्स्ट न कटे */
-        top: 5px;
-        right: 10px;
-        opacity: 0.04; /* मोबाइल पर थोड़ा हल्का करें */
+        width: 90%;          /* मोबाइल स्क्रीन का 90% हिस्सा ले */
+        max-width: 100%;
     }
 }

@@ -355,7 +355,7 @@ body {
 /* Hero section */
 /* --- 1. HERO SECTION (The Impressive Start) --- */
 .hero {
-    height: 100vh;
+    /* height: 100vh; */
     /* NEW: Brihadeeswarar Temple Background */
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(2, 1, 1, 1)),
         url('image.png');
@@ -370,6 +370,10 @@ body {
     padding: 0 20px;
     position: relative;
     margin-top: 80px;
+    height: auto;           /* Fixed height हटाएं */
+    min-height: 100vh;      /* कम से कम पूरी स्क्रीन ले, पर कंटेंट ज्यादा हो तो बढ़ जाए */
+    padding-top: 50px;     /* ऊपर से जगह ताकि नेविगेशन बार कंटेंट को न ढके */
+    padding-bottom: 50px;
 
 }
 
@@ -429,7 +433,11 @@ body {
 }
 
 
-/* hsjkfhskjfhsdjk */
+/* responsive hero */
+
+
+
+/* footer */
 
 :root {
     --f-void: #080402;
