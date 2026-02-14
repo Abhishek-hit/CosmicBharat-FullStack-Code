@@ -1,6 +1,5 @@
 :root {
     --nav-bg: rgba(5, 2, 0, 0.9);
-    /* Dark Translucent */
     --gold: #ffd700;
     --saffron: #ff5e00;
     --text-white: #ffffff;
@@ -10,6 +9,14 @@
     --gold-prime: #ffcc00;
     --saffron-fire: #ff4800;
     --cosmic-cyan: #00f2ff;
+
+    /* Footer Vars */
+    --f-void: #080402;
+    --f-stone: #120a08;
+    --f-gold: #d4af37;
+    --f-gold-light: #f2d06b;
+    --f-accent: #8a6a26;
+    --f-text: #cfcfcf;
 }
 
 * {
@@ -18,13 +25,14 @@
     box-sizing: border-box;
 }
 
-/* Body  */
 body {
     font-family: 'Outfit', sans-serif;
     background: #e4e1e1;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
-/* --- NAVBAR CONTAINER --- */
+/* --- NAVBAR CONTAINER (Fluid) --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -34,13 +42,14 @@ body {
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border-glow);
 
-    padding: 0 4%;
-    height: 80px;
+    /* Responsive Padding & Height */
+    padding: 0 clamp(20px, 5%, 50px);
+    height: clamp(70px, 10vh, 90px);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: 0.3s ease;
-
 }
 
 .navbar.scrolled {
@@ -49,11 +58,97 @@ body {
     box-shadow: 0 5px 20px rgba(255, 215, 0, 0.1);
 }
 
-/* --- MENU ITEMS --- */
+/* --- LOGO SECTION (Fluid) --- */
+.symbol-wrapper {
+    position: relative;
+    width: clamp(40px, 5vw, 50px);
+    /* Logo size scales */
+    height: clamp(40px, 5vw, 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.brand-icon {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    /* Icon scales */
+    color: var(--gold-pure);
+    animation: rotateInfinity 10s linear infinite;
+    filter: drop-shadow(0 0 10px var(--gold-pure));
+}
+
+@keyframes rotateInfinity {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+}
+
+.main-title {
+    font-family: 'Cinzel Decorative', serif;
+    /* Main Title scales automatically */
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Gradients */
+.text-cosmic {
+    background: linear-gradient(to bottom, #fff, var(--cosmic-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+.text-bharat {
+    background: linear-gradient(to bottom, var(--gold-prime), var(--saffron-fire));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+}
+
+.brand-tagline {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    margin-top: 4px;
+    margin-left: 2px;
+}
+
+/* --- NAVIGATION LINKS --- */
+/* Note: Nav Menu structure needs one breakpoint for the "State Change" (Horizontal to Vertical) */
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: clamp(15px, 2vw, 30px);
+    /* Gap adjusts */
     height: 100%;
     align-items: center;
 }
@@ -68,7 +163,8 @@ body {
 .nav-link {
     color: var(--text-white);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    /* Fluid Text */
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -110,15 +206,13 @@ body {
     bottom: -23px;
 }
 
-/* Adjust for smaller height */
-.nav-item:hover .nav-link::after {
-    width: 100%;
-}
 
-/* --- DROPDOWN MENU --- */
+
+/* --- DROPDOWN --- */
 .dropdown {
     position: absolute;
-    top: 80px;
+    top: clamp(70px, 10vh, 90px);
+    /* Position based on navbar height */
     left: 50%;
     transform: translateX(-50%) translateY(20px);
     background: #0a0502;
@@ -142,7 +236,6 @@ body {
     transform: translateX(-10%) translateY(0);
 }
 
-/* Dropdown Links */
 .dropdown a {
     display: flex;
     align-items: center;
@@ -170,15 +263,16 @@ body {
 
 /* --- ACTION BUTTON --- */
 .nav-btn {
-    padding: 10px 25px;
+    padding: 10px clamp(15px, 2vw, 25px);
     border: 1px solid var(--gold);
     border-radius: 30px;
     color: var(--gold);
     text-decoration: none;
     font-weight: 600;
     transition: 0.3s;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
     background: rgba(255, 215, 0, 0.05);
+    white-space: nowrap;
 }
 
 .nav-btn:hover {
@@ -187,7 +281,6 @@ body {
     box-shadow: 0 0 20px var(--border-glow);
 }
 
-/* --- MOBILE MENU ICON --- */
 .hamburger {
     display: none;
     color: var(--gold);
@@ -195,13 +288,14 @@ body {
     cursor: pointer;
 }
 
-/* --- RESPONSIVE DESIGN --- */
+/* --- MOBILE NAV (Kept one query for State Change) --- */
 @media (max-width: 1024px) {
     .nav-menu {
         position: fixed;
-        top: 80px;
+        top: clamp(70px, 10vh, 90px);
         right: -100%;
-        width: 300px;
+        width: min(300px, 80vw);
+        /* Responsive Width */
         height: 100vh;
         background: #0f0805;
         flex-direction: column;
@@ -241,8 +335,6 @@ body {
         display: none;
     }
 
-    /* Remove underline on mobile */
-
     .dropdown {
         position: static;
         width: 100%;
@@ -265,120 +357,32 @@ body {
     }
 }
 
-/* logo */
-.symbol-wrapper {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-}
-
-.brand-icon {
-    font-size: 2rem;
-    color: var(--gold-pure);
-    animation: rotateInfinity 10s linear infinite;
-    filter: drop-shadow(0 0 10px var(--gold-pure));
-}
-
-@keyframes rotateInfinity {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* cosmic bharat */
-
-/* 2. The Typography (Name) */
-.brand-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-
-}
-
-.brand-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1;
-
-}
-
-.main-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 2rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Dual Color Gradient Text */
-.text-cosmic {
-    background: linear-gradient(to bottom, #fff, var(--cosmic-cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
-}
-
-.text-bharat {
-    background: linear-gradient(to bottom, var(--gold-prime), var(--saffron-fire));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
-}
-
-/* The Tagline (Subtext) */
-.brand-tagline {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.6rem;
-    letter-spacing: 4px;
-    color: rgba(255, 255, 255, 0.6);
-    text-transform: uppercase;
-    margin-top: 4px;
-    margin-left: 2px;
-}
-
-/* Hero section */
-/* --- 1. HERO SECTION (The Impressive Start) --- */
+/* --- HERO SECTION (Fully Fluid) --- */
 .hero {
-    /* height: 100vh; */
-    /* NEW: Brihadeeswarar Temple Background */
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(2, 1, 1, 1)),
-        url('image.png');
+    /* Use Min-height instead of fixed height */
+    min-height: 100vh;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(2, 1, 1, 1)), url('image.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
-    position: relative;
-    margin-top: 80px;
-    height: auto;           /* Fixed height हटाएं */
-    min-height: 100vh;      /* कम से कम पूरी स्क्रीन ले, पर कंटेंट ज्यादा हो तो बढ़ जाए */
-    padding-top: 50px;     /* ऊपर से जगह ताकि नेविगेशन बार कंटेंट को न ढके */
-    padding-bottom: 50px;
 
+    /* Responsive Padding */
+    padding: clamp(100px, 15vh, 150px) clamp(20px, 5%, 40px) 50px;
+
+    position: relative;
+    overflow: hidden;
+    /* Prevent spill */
 }
 
 .hero::after {
-    /* Golden overlay pattern */
     content: '';
     position: absolute;
     inset: 0;
@@ -389,9 +393,11 @@ body {
 
 .sanskrit-sloka {
     font-family: 'Tiro Sanskrit', serif;
-    font-size: 2.2rem;
+    /* CLAMP: Mobile (1.5rem) -> PC (2.5rem) */
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: var(--saffron);
-    margin-top: -100px;
+    /* margin-top ab fixed pixel nahi, balki relative hai */
+    margin-bottom: 10px;
     text-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
     opacity: 0;
     animation: fadeInUp 1.5s forwards 0.5s;
@@ -399,8 +405,9 @@ body {
 
 .hero h1 {
     font-family: 'Cinzel', serif;
-    font-size: 6.5rem;
-    line-height: 1;
+    /* CLAMP: Mobile (2.5rem) -> PC (6.5rem) */
+    font-size: clamp(2.5rem, 8vw + 1rem, 6.5rem);
+    line-height: 1.1;
     margin-bottom: 20px;
     background: linear-gradient(to right, #fff, var(--gold), #fff);
     -webkit-background-clip: text;
@@ -410,15 +417,16 @@ body {
 }
 
 .hero p {
-    font-size: 1.5rem;
+    /* CLAMP: Mobile (1rem) -> PC (1.5rem) */
+    font-size: clamp(1rem, 2vw, 1.5rem);
     color: #ddd;
-    max-width: 750px;
+    /* Width fluid hai */
+    width: min(750px, 90%);
     letter-spacing: 1px;
     opacity: 0;
     animation: fadeInUp 1.5s forwards 1.5s;
+    line-height: 1.6;
 }
-
-
 
 @keyframes fadeInUp {
     to {
@@ -433,22 +441,9 @@ body {
 }
 
 
-/* responsive hero */
+/* --- FOOTER SECTION (Modern Grid) --- */
 
-
-
-/* footer */
-
-:root {
-    --f-void: #080402;
-    --f-stone: #120a08;
-    --f-gold: #d4af37;
-    --f-gold-light: #f2d06b;
-    --f-accent: #8a6a26;
-    --f-text: #cfcfcf;
-}
-
-/* --- 1. THE VEDIC BORDER (Marquee) --- */
+/* 1. Vedic Border */
 .vedic-border {
     background: var(--f-gold);
     color: #000;
@@ -466,7 +461,7 @@ body {
     display: inline-block;
     font-family: 'Tiro Sanskrit', serif;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     animation: borderScroll 40s linear infinite;
 }
 
@@ -484,8 +479,7 @@ body {
     }
 }
 
-
-/* --- 2. MAIN FOOTER CONTAINER --- */
+/* 2. Main Footer */
 .foundation-footer {
     background-color: var(--f-void);
     color: var(--f-text);
@@ -493,25 +487,29 @@ body {
     padding-top: 80px;
     background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
     border-top: 5px solid var(--f-gold);
+    overflow: hidden;
+    /* Mandala bahar na nikle */
 }
 
-/* Background Mandala (Static & Royal) */
+/* Background Mandala */
 .bg-mandala {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
+    /* Fluid width: Max 800px or 90% of screen */
+    width: min(800px, 90vw);
     opacity: 0.05;
     pointer-events: none;
     background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png') no-repeat center;
     background-size: contain;
+    aspect-ratio: 1/1;
     filter: invert(1) sepia(1) saturate(5) hue-rotate(-45deg);
 }
 
-
-/* --- 3. THE CENTERPIECE (Kalash) --- */
+/* Center Crest */
 .center-crest {
+    margin-top: 1.2%;
     position: absolute;
     top: -40px;
     left: 50%;
@@ -534,23 +532,26 @@ body {
     filter: drop-shadow(0 0 5px var(--f-gold));
 }
 
-
-/* --- 4. CONTENT GRID --- */
+/* 3. FLUID FOOTER GRID */
 .footer-grid {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 5% 60px;
+
     display: grid;
-    grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr;
-    gap: 60px;
+    /* MAGIC LINE: Auto-Fit Columns */
+    /* Kam se kam 250px space do, agar jagah bache to faila do */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: clamp(30px, 5vw, 60px);
     position: relative;
     z-index: 2;
 }
 
-/* Brand */
+/* Footer Content Scaling */
 .f-brand h2 {
     font-family: 'Cinzel', serif;
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     color: var(--f-gold);
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -587,7 +588,6 @@ body {
     color: #000;
     border-color: var(--f-gold);
 }
-
 
 /* Pillar Links */
 .f-pillar h4 {
@@ -637,18 +637,18 @@ body {
     color: var(--f-accent);
 }
 
-
-/* Newsletter (Box Style) */
+/* Newsletter */
 .f-newsletter {
     background: rgba(255, 255, 255, 0.03);
     padding: 30px;
     border: 1px solid var(--f-accent);
     text-align: center;
     position: relative;
+    /* Ensure it doesn't break grid on small screens */
+    width: 100%;
 }
 
 .f-newsletter::after {
-    /* Corner Accents */
     content: '';
     position: absolute;
     inset: -1px;
@@ -704,8 +704,7 @@ body {
     box-shadow: 0 0 15px var(--f-gold);
 }
 
-
-/* --- 5. BOTTOM BAR --- */
+/* Bottom Bar (Flex Wrap) */
 .base-bar {
     background: #000;
     padding: 25px 5%;
@@ -715,6 +714,9 @@ body {
     align-items: center;
     font-size: 0.85rem;
     color: #666;
+    flex-wrap: wrap;
+    /* Auto wrap on mobile */
+    gap: 20px;
 }
 
 .base-links a {
@@ -728,15 +730,14 @@ body {
     color: var(--f-gold);
 }
 
-@media (max-width: 900px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
+/* Mobile Alignment for Bottom Bar */
+@media (max-width: 600px) {
     .base-bar {
         flex-direction: column;
-        gap: 15px;
         text-align: center;
+    }
+
+    .base-links a {
+        margin: 0 10px;
     }
 }

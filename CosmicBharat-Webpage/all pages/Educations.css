@@ -1,339 +1,344 @@
- :root {
-     --bg-dark: #05080a;
-     --card-bg: rgba(10, 20, 30, 0.7);
-     --vidya-gold: #ffd700;
-     --vidya-blue: #00a8ff;
-     /* Wisdom Blue */
-     --text-white: #f0f0f0;
-     --text-grey: #b0b8c0;
-     --border-glow: rgba(0, 168, 255, 0.2);
- }
+:root {
+    --bg-dark: #05080a;
+    --card-bg: rgba(10, 20, 30, 0.7);
+    --vidya-gold: #ffd700;
+    --vidya-blue: #00a8ff;
+    --text-white: #f0f0f0;
+    --text-grey: #b0b8c0;
+    --border-glow: rgba(0, 168, 255, 0.2);
+}
 
- /* * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
- } */
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(0, 168, 255, 0.1) 0%, transparent 60%),
+        url('https://www.transparenttextures.com/patterns/dark-leather.png');
+    overflow-x: hidden;
+}
 
- body {
-     font-family: 'Outfit', sans-serif;
-     background-color: var(--bg-dark);
-     color: var(--text-white);
-     /* Ink/Scroll texture background */
-     background-image:
-         radial-gradient(circle at 50% 0%, rgba(0, 168, 255, 0.1) 0%, transparent 60%),
-         url('https://www.transparenttextures.com/patterns/dark-leather.png');
-     overflow-x: hidden;
- }
+/* --- Hero Section (Fluid) --- */
+.hero {
+    text-align: center;
+    /* Padding scales with screen */
+    padding: clamp(60px, 10vh, 100px) 20px 40px;
+    position: relative;
+}
 
- /* --- Navigation --- */
+.sanskrit-sloka {
+    font-family: 'Tiro Sanskrit', serif;
+    /* Fluid Font Size */
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--vidya-gold);
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
 
+.hero h1 {
+    font-family: 'Cinzel', serif;
+    /* IMPORTANT: Scales from 2.5rem (Mobile) to 4.5rem (PC) */
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--vidya-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}
 
- /* --- Hero Section --- */
- .hero {
-     text-align: center;
-     padding: 30px 20px 20px;
-     position: relative;
- }
+.hero p {
+    color: var(--text-grey);
+    /* Width logic: Max 800px, otherwise 90% of screen */
+    width: min(800px, 90%);
+    margin: 0 auto 40px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+}
 
- .sanskrit-sloka {
-     font-family: 'Tiro Sanskrit', serif;
-     font-size: 2rem;
-     color: var(--vidya-gold);
-     margin-bottom: 10px;
-     text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
- }
+/* --- Philosophy Cards (Fluid Grid) --- */
+.philosophy-grid {
+    display: grid;
+    /* MAGIC: Auto-fit columns, min-width 280px */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
 
- .hero h1 {
-     font-family: 'Cinzel', serif;
-     font-size: 4rem;
-     margin-bottom: 20px;
-     background: linear-gradient(to right, #fff, var(--vidya-blue));
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
- }
+.philo-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glow);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    /* Width hata diya kyunki Grid control karega */
+    transition: 0.3s;
+}
 
- .hero p {
-     color: var(--text-grey);
-     max-width: 800px;
-     margin: 0 auto 40px;
-     font-size: 1.2rem;
-     line-height: 1.6;
- }
+.philo-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--vidya-gold);
+}
 
- /* --- Philosophy Cards --- */
- .philosophy-grid {
-     display: flex;
-     justify-content: center;
-     gap: 30px;
-     flex-wrap: wrap;
-     max-width: 1200px;
-     margin: 0 auto 80px;
-     padding: 0 20px;
- }
+.philo-icon {
+    font-size: 2.5rem;
+    color: var(--vidya-blue);
+    margin-bottom: 20px;
+}
 
- .philo-card {
-     background: rgba(255, 255, 255, 0.03);
-     border: 1px solid var(--border-glow);
-     padding: 30px;
-     border-radius: 15px;
-     text-align: center;
-     width: 300px;
-     transition: 0.3s;
- }
+.philo-card h3 {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 1.3rem;
+}
 
- .philo-card:hover {
-     transform: translateY(-5px);
-     border-color: var(--vidya-gold);
- }
+.philo-card p {
+    font-size: 0.95rem;
+    color: var(--text-grey);
+    line-height: 1.5;
+}
 
- .philo-icon {
-     font-size: 2.5rem;
-     color: var(--vidya-blue);
-     margin-bottom: 20px;
- }
+/* --- The 18 Vidyas Section (Fluid Grid) --- */
+.vidya-section {
+    padding: 80px 5%;
+    background: linear-gradient(to bottom, #05080a, #0b151f);
+    border-top: 1px solid var(--border-glow);
+}
 
- .philo-card h3 {
-     font-family: 'Cinzel', serif;
-     margin-bottom: 10px;
-     color: #fff;
- }
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
 
- .philo-card p {
-     font-size: 0.9rem;
-     color: var(--text-grey);
- }
+.section-header h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--vidya-blue);
+    margin-bottom: 10px;
+    font-family: 'Cinzel', serif;
+}
 
- /* --- The 18 Vidyas Section --- */
- /* --- 18 Vidyas Section (Improved UI) --- */
- .vidya-section {
-     padding: 80px 5%;
-     background: linear-gradient(to bottom, #05080a, #0b151f);
-     border-top: 1px solid var(--border-glow);
- }
+.vidya-grid {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: grid;
+    /* Fluid Columns */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 20px;
+}
 
- .section-header {
-     text-align: center;
-     margin-bottom: 60px;
- }
+.vidya-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
 
- .section-header h2 {
-     font-size: 3rem;
-     color: var(--vidya-blue);
-     margin-bottom: 10px;
- }
+.vidya-card:hover {
+    border-color: var(--vidya-blue);
+    box-shadow: 0 10px 30px rgba(0, 168, 255, 0.1);
+}
 
- .vidya-grid {
-     max-width: 1600px;
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-     gap: 20px;
- }
+.cat-header {
+    background: linear-gradient(90deg, rgba(0, 168, 255, 0.1), transparent);
+    padding: 20px;
+    border-bottom: 1px solid var(--border-glow);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
- .vidya-card {
-     background: var(--card-bg);
-     border-radius: 20px;
-     overflow: hidden;
-     border: 1px solid rgba(255, 255, 255, 0.1);
-     backdrop-filter: blur(10px);
-     transition: 0.3s;
- }
+.cat-header i {
+    color: var(--vidya-gold);
+    font-size: 1.8rem;
+}
 
- .vidya-card:hover {
-     border-color: var(--vidya-blue);
-     box-shadow: 0 10px 30px rgba(0, 168, 255, 0.1);
- }
+.cat-header h3 {
+    color: #fff;
+    font-size: 1.4rem;
+}
 
- .cat-header {
-     background: linear-gradient(90deg, rgba(0, 168, 255, 0.1), transparent);
-     padding: 20px;
-     border-bottom: 1px solid var(--border-glow);
-     display: flex;
-     align-items: center;
-     gap: 15px;
- }
+.subject-list {
+    list-style: none;
+    padding: 20px;
+}
 
- .cat-header i {
-     color: var(--vidya-gold);
-     font-size: 1.8rem;
- }
+.subject-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.2s;
+    cursor: pointer;
+    /* Added pointer */
+}
 
- .cat-header h3 {
-     color: #fff;
-     font-size: 1.4rem;
- }
+.subject-item:hover {
+    padding-left: 10px;
+    border-bottom-color: var(--vidya-gold);
+}
 
- .subject-list {
-     list-style: none;
-     padding: 20px;
- }
+.subject-item:last-child {
+    border: none;
+}
 
- .subject-item {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: 12px 0;
-     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-     transition: 0.2s;
- }
+.sub-name {
+    font-weight: 600;
+    color: #eee;
+    font-size: 1.1rem;
+}
 
- .subject-item:hover {
-     padding-left: 10px;
-     border-bottom-color: var(--vidya-gold);
- }
+.sub-desc {
+    font-size: 0.85rem;
+    color: var(--text-grey);
+    display: block;
+    margin-top: 4px;
+}
 
- .subject-item:last-child {
-     border: none;
- }
+.read-icon {
+    color: var(--vidya-blue);
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: 0.2s;
+}
 
- .sub-name {
-     font-weight: 600;
-     color: #eee;
-     font-size: 1.1rem;
- }
+.subject-item:hover .read-icon {
+    opacity: 1;
+}
 
- .sub-desc {
-     font-size: 0.85rem;
-     color: var(--text-grey);
-     display: block;
-     margin-top: 4px;
- }
+/* --- Dincharya (Routine) Timeline - FLUID FIX --- */
+.routine-section {
+    /* Padding fixed: removed huge 300px padding */
+    padding: 80px 20px;
+    position: relative;
+}
 
- .read-icon {
-     color: var(--vidya-blue);
-     font-size: 0.9rem;
-     opacity: 0;
-     transition: 0.2s;
- }
+.timeline {
+    /* Width fluid: PC pe 900px, Mobile pe 100% */
+    width: min(900px, 100%);
+    margin: 50px auto;
+    position: relative;
+    border-left: 3px solid var(--vidya-gold);
+    padding-left: clamp(20px, 5vw, 40px);
+}
 
- .subject-item:hover .read-icon {
-     opacity: 1;
- }
+.time-card {
+    position: relative;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-glow);
+    transition: 0.3s;
+}
 
- /* --- Dincharya (Routine) Timeline --- */
- .routine-section {
-     padding: 80px 300px;
- }
+.time-card:hover {
+    background: rgba(255, 215, 0, 0.05);
+}
 
- .timeline {
-     max-width: 900px;
-     margin: 50px auto;
-     position: relative;
-     border-left: 3px solid var(--vidya-gold);
-     padding-left: 30px;
- }
+.time-card::before {
+    content: '';
+    position: absolute;
+    /* Dot positioning fixed relative to padding */
+    left: calc(clamp(20px, 5vw, 40px) * -1 - 9px);
+    top: 20px;
+    width: 15px;
+    height: 15px;
+    background: var(--bg-dark);
+    border: 3px solid var(--vidya-gold);
+    border-radius: 50%;
+}
 
- .time-card {
-     position: relative;
-     margin-bottom: 40px;
-     background: rgba(255, 255, 255, 0.03);
-     padding: 20px;
-     border-radius: 10px;
-     border: 1px solid var(--border-glow);
-     transition: 0.3s;
- }
+.time-slot {
+    color: var(--vidya-gold);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 0.9rem;
+}
 
- .time-card:hover {
-     background: rgba(255, 215, 0, 0.05);
- }
+.activity-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
 
- .time-card::before {
-     content: '';
-     position: absolute;
-     left: -39px;
-     top: 20px;
-     width: 15px;
-     height: 15px;
-     background: var(--bg-dark);
-     border: 3px solid var(--vidya-gold);
-     border-radius: 50%;
- }
+.activity-desc {
+    font-size: 0.9rem;
+    color: var(--text-grey);
+}
 
- .time-slot {
-     color: var(--vidya-gold);
-     font-family: 'Cinzel', serif;
-     font-weight: 700;
-     margin-bottom: 5px;
-     display: block;
- }
+/* --- Universities (Fluid) --- */
+.uni-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: #080c10;
+    border-top: 1px solid var(--border-glow);
+}
 
- .activity-title {
-     font-size: 1.2rem;
-     color: #fff;
-     margin-bottom: 5px;
-     font-weight: 600;
- }
+.uni-grid {
+    display: grid;
+    /* Fluid Grid again */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
 
- .activity-desc {
-     font-size: 0.9rem;
-     color: var(--text-grey);
- }
+.uni-card {
+    /* Fixed width hata diya */
+    background: linear-gradient(145deg, #1a0f0f, #0f151a);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-glow);
+    position: relative;
+    margin: 0 auto;
+    /* Center alignment */
+    width: 100%;
+}
 
- /* --- Universities --- */
- .uni-section {
-     text-align: center;
-     padding: 80px 20px;
-     background: #080c10;
-     border-top: 1px solid var(--border-glow);
- }
+.uni-img {
+    height: 200px;
+    background: linear-gradient(45deg, #331, #113);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.1);
+}
 
- .uni-grid {
-     display: flex;
-     justify-content: center;
-     gap: 40px;
-     flex-wrap: wrap;
-     margin-top: 40px;
- }
+.uni-content {
+    padding: 30px;
+}
 
- .uni-card {
-     width: 400px;
-     background: linear-gradient(145deg, #1a0f0f, #0f151a);
-     border-radius: 20px;
-     overflow: hidden;
-     border: 1px solid var(--border-glow);
-     position: relative;
- }
+.uni-content h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--vidya-gold);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
 
- .uni-img {
-     height: 200px;
-     background: linear-gradient(45deg, #331, #113);
-     /* Placeholder */
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     font-size: 4rem;
-     color: rgba(255, 255, 255, 0.1);
- }
+.uni-content p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
 
- .uni-content {
-     padding: 30px;
- }
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid var(--border-glow);
+    color: #666;
+    font-size: 0.8rem;
+}
 
- .uni-content h3 {
-     font-family: 'Cinzel', serif;
-     color: var(--vidya-gold);
-     font-size: 1.8rem;
-     margin-bottom: 10px;
- }
-
- .uni-content p {
-     color: #ccc;
-     font-size: 0.95rem;
-     line-height: 1.6;
- }
-
- footer {
-     text-align: center;
-     padding: 40px;
-     border-top: 1px solid var(--border-glow);
-     color: #666;
-     font-size: 0.8rem;
- }
-
- /* model */
- /* --- MODAL POPUP STYLES (Long Text Support) --- */
-
-/* 1. Background Overlay */
+/* --- MODAL POPUP STYLES --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -355,35 +360,30 @@
     opacity: 1;
 }
 
-/* 2. Main Popup Box */
 .modal-content {
     background: linear-gradient(145deg, #111921, #05080a);
     border: 2px solid var(--vidya-gold);
     width: 90%;
-    max-width: 600px; /* Thoda chauda kiya taaki padhne me easy ho */
-    
-    /* IMPORTANT: Height Control */
-    max-height: 85vh; /* Screen ka 85% height hi lega */
-    display: flex;    /* Flex column taaki header aur body alag rahe */
-    flex-direction: column; 
-    
+    max-width: 600px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.15);
     transform: scale(0.7);
     transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    padding: 0; /* Padding hatayi taaki scrollbar edge tak jaye */
-    overflow: hidden; /* Corners round rakhne ke liye */
+    padding: 0;
+    overflow: hidden;
 }
 
 .modal-overlay.active .modal-content {
     transform: scale(1);
 }
 
-/* 3. Header Section (Ye Scroll nahi karega) */
 .modal-header {
     padding: 30px 30px 10px 30px;
-    flex-shrink: 0; /* Isko shrink hone se rokega */
-    background: inherit; /* Same background match */
+    flex-shrink: 0;
+    background: inherit;
     position: relative;
     z-index: 10;
 }
@@ -391,9 +391,9 @@
 #modal-title {
     color: var(--vidya-gold);
     font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
     margin: 0;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .divider {
@@ -403,19 +403,17 @@
     width: 60%;
 }
 
-/* 4. Body Section (Ye SCROLL karega agar text zyada hua) */
 .modal-body-scroll {
-    padding: 10px 30px 40px 30px; /* Bottom padding zyada di taaki text end me chipke nahi */
-    overflow-y: auto; /* Sirf vertical scrollbar ayega zarurat padne par */
+    padding: 10px 30px 40px 30px;
+    overflow-y: auto;
     color: #e0e0e0;
     font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
     line-height: 1.8;
     font-weight: 300;
-    text-align: justify; /* Text ko clean dikhane ke liye */
+    text-align: justify;
 }
 
-/* 5. Custom Scrollbar (Theme ke hisab se) */
 .modal-body-scroll::-webkit-scrollbar {
     width: 8px;
 }
@@ -425,7 +423,7 @@
 }
 
 .modal-body-scroll::-webkit-scrollbar-thumb {
-    background: var(--vidya-gold); /* Gold Scrollbar */
+    background: var(--vidya-gold);
     border-radius: 4px;
 }
 
@@ -433,7 +431,6 @@
     background: #e6c200;
 }
 
-/* 6. Close Button */
 .close-btn {
     position: absolute;
     top: 15px;
@@ -451,17 +448,6 @@
     transform: rotate(90deg);
 }
 
-/* 7. Cursor for triggers */
 .modal-trigger {
     cursor: pointer;
 }
- @media (max-width: 768px) {
-     .hero h1 {
-         font-size: 3rem;
-     }
-
-     .vidya-grid {
-         grid-template-columns: 1fr;
-     }
- }
- 

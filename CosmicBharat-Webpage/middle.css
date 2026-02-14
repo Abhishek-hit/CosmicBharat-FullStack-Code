@@ -1,347 +1,306 @@
- :root {
-     --void: #050202;
-     /* --gold: #eecda3; */
-     --gold-rich: #FFD700;
-     --saffron-dust: rgba(255, 140, 0, 0.5);
-     --temple-glow: rgba(255, 180, 0, 0.3);
-     --cyan: #00f7ff;
-     --nebula-pink: #ff00cc;
- }
+:root {
+    --void: #050202;
+    --gold-rich: #FFD700;
+    --saffron-dust: rgba(255, 140, 0, 0.5);
+    --temple-glow: rgba(255, 180, 0, 0.3);
+    --cyan: #00f7ff;
+    --nebula-pink: #ff00cc;
+}
+
+/* --- GLOBAL RESET TO PREVENT SCROLL ISSUES --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Fog animation horizontal scroll rokne ke liye */
+}
+
+/* --- ATMOSPHERE --- */
+.atmosphere {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 120%, #2a0f05, #000);
+}
+
+.fog {
+    position: absolute;
+    width: 300%;
+    height: 100%;
+    background: url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png') repeat-x;
+    background-size: contain;
+    animation: fogMove 60s linear infinite;
+    opacity: 0.3;
+    bottom: 0;
+    pointer-events: none; /* Mouse clicks pass through fog */
+}
+
+@keyframes fogMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 
 
+/* --- MAIN CONTAINER (Fluid Grid) --- */
+.soul-section {
+    position: relative;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: clamp(40px, 8vh, 80px) 5%; /* Padding adjusts with screen height */
+    
+    display: grid;
+    /* MAGIC LINE: Bina Media Query ke Responsive Grid */
+    /* Agar screen 600px se badi hai to 2 columns, nahi to 1 column */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 550px), 1fr));
+    
+    gap: clamp(40px, 5vw, 80px); /* Gap adjusts with screen width */
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+}
 
- /* --- ATMOSPHERE --- */
- .atmosphere {
-     position: fixed;
-     inset: 0;
-     z-index: -1;
-     background: radial-gradient(circle at 50% 120%, #2a0f05, #000);
- }
+/* --- LEFT SIDE: NARRATIVE --- */
+.narrative {
+    position: relative;
+    z-index: 2;
+    text-align: left; /* Default alignment */
+}
 
- .fog {
-     position: absolute;
-     width: 300%;
-     height: 100%;
-     background: url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png') repeat-x;
-     background-size: contain;
-     animation: fogMove 60s linear infinite;
-     opacity: 0.3;
-     bottom: 0;
- }
+/* Ornament Animation */
+.ornament {
+    font-size: clamp(1.5rem, 3vw, 2rem); /* Fluid Size */
+    color: var(--gold-rich);
+    margin-bottom: 10px;
+    opacity: 0.8;
+    animation: pulse 3s infinite;
+    display: block;
+}
 
- @keyframes fogMove {
-     0% {
-         transform: translateX(0);
-     }
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
 
-     100% {
-         transform: translateX(-50%);
-     }
- }
+/* Fluid Headline */
+.headline {
+    font-family: 'Cinzel Decorative', serif;
+    /* CLAMP: Mobile pe 2.5rem, PC pe 5rem, beech me auto-adjust */
+    font-size: clamp(2.5rem, 6vw + 1rem, 5rem);
+    line-height: 1.1;
+    background: linear-gradient(to right, #fff, var(--gold-rich));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 20px rgba(238, 205, 163, 0.3));
+}
 
+.story-text {
+    /* CLAMP: Text size 1rem se 1.3rem ke beech rahega */
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 50px;
+    text-align: justify;
+}
 
- /* --- MAIN CONTAINER --- */
- .soul-section {
-     position: relative;
-     width: 100%;
-     max-width: 1500px;
-     padding: 80px 5%;
-     display: grid;
-     grid-template-columns: 1.2fr 1fr;
-     gap: 60px;
-     align-items: center;
-     border-top: 1px solid rgba(255, 255, 255, 0.1);
-     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-     background: rgba(0, 0, 0, 0.4);
-     backdrop-filter: blur(5px);
-     overflow: hidden;
- }
+.highlight {
+    color: var(--gold-rich);
+    font-weight: bold;
+    font-style: italic;
+}
 
- /* --- LEFT SIDE (Same as before) --- */
- .narrative {
-     position: relative;
-     z-index: 2;
- }
+/* --- TRINITY GRID (Bubbles) --- */
+.trinity-grid {
+    display: flex;
+    flex-wrap: wrap; /* Jagah kam hone par niche gir jayenge */
+    gap: clamp(20px, 4vw, 40px);
+    justify-content: center; /* Center align on mobile */
+}
 
- .ornament {
-     font-size: 2rem;
-     color: var(--gold);
-     margin-bottom: 10px;
-     opacity: 0.8;
-     animation: pulse 3s infinite;
- }
+.tri-card {
+    text-align: center;
+    position: relative;
+    /* Card width fluid rakhna */
+    width: min(150px, 28vw); 
+}
 
- @keyframes pulse {
+.tri-circle {
+    /* Width height responsive */
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Hamesha Gol rahega */
+    
+    border-radius: 50%;
+    border: 1px solid var(--gold-rich);
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.2rem, 3vw, 2rem); /* Text andar ka bhi resize hoga */
+    color: var(--gold-rich);
+    box-shadow: 0 0 30px var(--saffron-dust);
+    transition: 0.5s;
+    position: relative;
+}
 
-     0%,
-     100% {
-         opacity: 0.5;
-         transform: scale(1);
-     }
+.tri-circle::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--gold-rich);
+    border-bottom-color: var(--gold-rich);
+    animation: spin 10s linear infinite;
+    opacity: 0.5;
+}
 
-     50% {
-         opacity: 1;
-         transform: scale(1.1);
-     }
- }
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
 
- .headline {
-     font-family: 'Cinzel Decorative', serif;
-     font-size: 4.5rem;
-     line-height: 1.1;
-     background: linear-gradient(to right, #fff, var(--gold));
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     margin-bottom: 30px;
-     filter: drop-shadow(0 0 20px rgba(238, 205, 163, 0.3));
- }
+.tri-card:hover .tri-circle {
+    transform: scale(1.1);
+    background: rgba(238, 205, 163, 0.1);
+    box-shadow: 0 0 50px var(--saffron-dust);
+    color: #fff;
+}
 
- .story-text {
-     font-size: 1.3rem;
-     line-height: 1.8;
-     color: #ccc;
-     margin-bottom: 50px;
-     text-align: justify;
- }
-
- .highlight {
-     color: var(--gold);
-     font-weight: bold;
-     font-style: italic;
- }
-
- .trinity-grid {
-     display: flex;
-     gap: 40px;
- }
-
- .tri-card {
-     text-align: center;
-     position: relative;
-     width: 150px;
- }
-
- .tri-circle {
-     width: 100px;
-     height: 100px;
-     border-radius: 50%;
-     border: 1px solid var(--gold);
-     margin: 0 auto 15px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     font-family: 'Cinzel Decorative', serif;
-     font-size: 2rem;
-     color: var(--gold);
-     box-shadow: 0 0 30px var(--saffron-dust);
-     transition: 0.5s;
-     position: relative;
- }
-
- .tri-circle::before {
-     content: '';
-     position: absolute;
-     inset: -5px;
-     border-radius: 50%;
-     border: 2px solid transparent;
-     border-top-color: var(--gold);
-     border-bottom-color: var(--gold);
-     animation: spin 10s linear infinite;
-     opacity: 0.5;
- }
-
- @keyframes spin {
-     100% {
-         transform: rotate(360deg);
-     }
- }
-
- .tri-card:hover .tri-circle {
-     transform: scale(1.1);
-     background: rgba(238, 205, 163, 0.1);
-     box-shadow: 0 0 50px var(--saffron-dust);
-     color: #fff;
- }
-
- .tri-label {
-     font-size: 0.9rem;
-     color: #aaa;
-     text-transform: uppercase;
-     letter-spacing: 2px;
- }
+.tri-label {
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
 
- /* --- RIGHT SIDE: THE NEW WISDOM WINDOW --- */
- .visual-realm {
-     height: 600px;
-     position: relative;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     perspective: 1000px;
- }
+/* --- RIGHT SIDE: THE COSMIC ENGINE --- */
+.visual-realm {
+    /* Height ko content ke hisab se adjust hone do, minimum 400px */
+    min-height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    padding: 20px;
+}
 
- .cosmic-engine {
-     position: relative;
-     width: 400px;
-     height: 400px;
-     transform-style: preserve-3d;
-     animation: floatEngine 6s ease-in-out infinite;
- }
+.cosmic-engine {
+    position: relative;
+    /* IMPORTANT FOR RESPONSIVENESS: */
+    /* Maximum 400px, lekin mobile par screen ka 90% width lega */
+    width: min(400px, 80vw);
+    aspect-ratio: 1 / 1; /* Square shape maintain karega resize hone par */
+    
+    transform-style: preserve-3d;
+    animation: floatEngine 6s ease-in-out infinite;
+}
 
- @keyframes floatEngine {
+@keyframes floatEngine {
+    0%, 100% { transform: translateY(0) rotateX(10deg); }
+    50% { transform: translateY(-20px) rotateX(-10deg); }
+}
 
-     0%,
-     100% {
-         transform: translateY(0) rotateX(10deg);
-     }
+/* 1. The Rotating Rings */
+.ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-shadow: 0 0 20px currentColor;
+}
 
-     50% {
-         transform: translateY(-20px) rotateX(-10deg);
-     }
- }
+.r1 {
+    border-top-color: var(--gold-rich);
+    border-bottom-color: var(--gold-rich);
+    animation: spin3D 10s linear infinite;
+    color: var(--gold-rich);
+    width: 100%;
+    height: 100%;
+}
 
- /* 1. The Rotating Rings */
- .ring {
-     position: absolute;
-     inset: 0;
-     border-radius: 50%;
-     border: 2px solid transparent;
-     box-shadow: 0 0 20px currentColor;
- }
+.r2 {
+    border-left-color: var(--cyan);
+    border-right-color: var(--cyan);
+    animation: spin3D 7s linear infinite reverse;
+    color: var(--cyan);
+    width: 80%;
+    height: 80%;
+    /* Centering trick inside absolute parent */
+    top: 10%; 
+    left: 10%;
+}
 
- .r1 {
-     border-top-color: var(--gold);
-     border-bottom-color: var(--gold);
-     animation: spin3D 10s linear infinite;
-     color: var(--gold);
-     width: 100%;
-     height: 100%;
- }
+.r3 {
+    border: 1px dashed var(--nebula-pink);
+    animation: spin3D 15s linear infinite;
+    color: var(--nebula-pink);
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    opacity: 0.5;
+}
 
- .r2 {
-     border-left-color: var(--cyan);
-     border-right-color: var(--cyan);
-     animation: spin3D 7s linear infinite reverse;
-     color: var(--cyan);
-     width: 80%;
-     height: 80%;
-     top: 10%;
-     left: 10%;
- }
+@keyframes spin3D {
+    0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+    100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
+}
 
- .r3 {
-     border: 1px dashed var(--nebula-pink);
-     animation: spin3D 15s linear infinite;
-     color: var(--nebula-pink);
-     width: 120%;
-     height: 120%;
-     top: -10%;
-     left: -10%;
-     opacity: 0.5;
- }
+/* 2. The Core (Center) */
+.engine-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%; /* Relative to parent engine */
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
 
- @keyframes spin3D {
-     0% {
-         transform: rotateX(0) rotateY(0) rotateZ(0);
-     }
+/* Floating Elements inside Core */
+.floating-symbol {
+    position: absolute;
+    /* Symbol size scales with engine size */
+    font-size: clamp(3rem, 15vw, 5rem); 
+    color: #fff;
+    filter: drop-shadow(0 0 20px var(--gold-rich)) drop-shadow(0 0 40px var(--cyan));
+    animation: pulseSymbol 3s infinite alternate;
+}
 
-     100% {
-         transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg);
-     }
- }
+@keyframes pulseSymbol {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
 
- /* 2. The Core (Center) */
- .engine-core {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     width: 150px;
-     height: 150px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     z-index: 2;
- }
+.sanskrit-mantra {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: clamp(1rem, 5vw, 1.8rem); /* Fluid Font */
+    color: var(--gold-rich);
+    position: absolute;
+    white-space: nowrap;
+    text-shadow: 0 0 10px var(--gold-rich), 0 0 20px var(--cyan);
+}
 
- /* Floating Elements inside Core */
- .floating-symbol {
-     position: absolute;
-     font-size: 5rem;
-     color: #fff;
-     filter: drop-shadow(0 0 20px var(--gold)) drop-shadow(0 0 40px var(--cyan));
-     animation: pulseSymbol 3s infinite alternate;
- }
+.m1 {
+    top: -40%; /* Percentage logic taaki resize pe hile nahi */
+    animation: floatText 4s ease-in-out infinite alternate;
+}
 
- @keyframes pulseSymbol {
-     0% {
-         transform: scale(1);
-         opacity: 0.8;
-     }
+.m2 {
+    bottom: -40%;
+    animation: floatText 4s ease-in-out infinite alternate-reverse;
+}
 
-     100% {
-         transform: scale(1.2);
-         opacity: 1;
-     }
- }
-
- .sanskrit-mantra {
-     font-family: 'Tiro Devanagari Hindi', serif;
-     font-size: 1.8rem;
-     color: var(--gold);
-     position: absolute;
-     white-space: nowrap;
-     text-shadow: 0 0 10px var(--gold), 0 0 20px var(--cyan);
- }
-
- .m1 {
-     top: -60px;
-     animation: floatText 4s ease-in-out infinite alternate;
- }
-
- .m2 {
-     bottom: -60px;
-     animation: floatText 4s ease-in-out infinite alternate-reverse;
- }
-
- @keyframes floatText {
-     0% {
-         transform: translateY(0);
-         opacity: 0.5;
-     }
-
-     100% {
-         transform: translateY(-10px);
-         opacity: 1;
-     }
- }
-
-
- /* --- RESPONSIVE --- */
- @media (max-width: 900px) {
-     .soul-section {
-         grid-template-columns: 1fr;
-         text-align: center;
-         padding: 60px 20px;
-     }
-
-     .headline {
-         font-size: 3.5rem;
-     }
-
-     .trinity-grid {
-         justify-content: center;
-     }
-
-     .visual-realm {
-         height: 500px;
-         margin-top: 40px;
-     }
-
-     .temple-frame {
-         width: 100%;
-         max-width: 400px;
-         height: 450px;
-     }
- }
+@keyframes floatText {
+    0% { transform: translateY(0); opacity: 0.5; }
+    100% { transform: translateY(-10px); opacity: 1; }
+}
