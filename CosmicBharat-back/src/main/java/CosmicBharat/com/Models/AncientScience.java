@@ -4,7 +4,6 @@ package CosmicBharat.com.Models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -24,6 +23,6 @@ public class AncientScience {
     private String sourceScripture;
     private String iconClass;
     private String isTextIcon;
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt = LocalDateTime.now ( );
 
 }

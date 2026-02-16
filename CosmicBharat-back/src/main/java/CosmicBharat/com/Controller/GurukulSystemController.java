@@ -14,19 +14,21 @@ import java.util.List;
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
 public class GurukulSystemController {
-    @Autowired private GurukulSystemService gurukulSystemService;
+    @Autowired
+    private GurukulSystemService gurukulSystemService;
 
     @PostMapping("/topics")
-    public ResponseEntity<ApiResponse> addData(@RequestBody List<GurukulSystem> info){
+    public ResponseEntity<ApiResponse> addData(@RequestBody List<GurukulSystem> info) {
         return gurukulSystemService.CreateInformation (info);
     }
 
     @GetMapping("/{title}")
-    public ResponseEntity<ApiResponse> getBytitle(@PathVariable String title){
+    public ResponseEntity<ApiResponse> getBytitle(@PathVariable String title) {
         return gurukulSystemService.getbytitle (title);
     }
+
     @GetMapping("/alltopics")
-    public ResponseEntity<ApiResponse> getAll(){
-        return gurukulSystemService.getalltopic ();
+    public ResponseEntity<ApiResponse> getAll() {
+        return gurukulSystemService.getalltopic ( );
     }
 }

@@ -17,15 +17,17 @@ public class AncientScienceController {
     private AncientSicenceService ancientSicenceService;
 
     @PostMapping("topics")
-    public ResponseEntity<ApiResponse> addTopic(@RequestBody List<AncientScience >topic){
+    public ResponseEntity<ApiResponse> addTopic(@RequestBody List<AncientScience> topic) {
         return ancientSicenceService.addTopic (topic);
     }
+
     @GetMapping("/alltopic")
-    public  ResponseEntity<ApiResponse> getallTopic(){
-        return ancientSicenceService.getalltopic ();
+    public ResponseEntity<ApiResponse> getallTopic() {
+        return ancientSicenceService.getalltopic ( );
     }
+
     @GetMapping("/{category}")
-    public  ResponseEntity<ApiResponse> getbycategory(@PathVariable String category){
+    public ResponseEntity<ApiResponse> getbycategory(@PathVariable String category) {
         return ancientSicenceService.getTopicsByCategory (category);
     }
 

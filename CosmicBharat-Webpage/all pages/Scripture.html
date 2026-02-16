@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sacred Scriptures - BharatRoots</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="scripture.css
     ">
-    
+
 </head>
+
 <body>
 
     <!-- <nav>
@@ -25,7 +29,8 @@
     <section class="hero">
         <div class="hero-symbol"><i class="fa-solid fa-om"></i></div>
         <h1>The Eternal <span>Library</span></h1>
-        <p>Explore the Shruti (Revealed) and Smriti (Remembered). From the cosmic sounds of the Vedas to the practical wisdom of the Shastras.</p>
+        <p>Explore the Shruti (Revealed) and Smriti (Remembered). From the cosmic sounds of the Vedas to the practical
+            wisdom of the Shastras.</p>
     </section>
 
     <div class="section-header reveal-on-scroll" id="vedas">
@@ -67,106 +72,275 @@
         <span>Itihasa (History)</span>
         <h2>The Great Epics</h2>
     </div>
-    <div class="epics-container">
-        <div class="epic-card">
-            <i class="fa-solid fa-bow-arrow epic-bg-icon"></i>
-            <div class="epic-content">
-                <div class="epic-title">The Ramayana</div>
-                <div class="epic-subtitle">The Ideal of Dharma</div>
-                <p style="color: #ccc; line-height: 1.6;">
-                    Written by <strong>Sage Valmiki</strong>. It chronicles the life of Lord Rama, exploring human values and duty.
-                </p>
-                <a href="#" class="epic-btn">Read Story</a>
-            </div>
-        </div>
-        <div class="epic-card">
-            <i class="fa-solid fa-chess-knight epic-bg-icon"></i>
-            <div class="epic-content">
-                <div class="epic-title">The Mahabharata</div>
-                <div class="epic-subtitle">The Reality of Karma</div>
-                <p style="color: #ccc; line-height: 1.6;">
-                    Written by <strong>Sage Vyasa</strong>. The longest epic poem ever written. A saga of politics, war, and morality.
-                </p>
-                <a href="#" class="epic-btn">Read Story</a>
-            </div>
-        </div>
+
+    <div class="epics-container" id="epics-dynamic-container">
     </div>
 
     <section class="gita-section">
         <div class="gita-quote">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन</div>
-        <h2 style="font-family: 'Cinzel', serif; font-size: 2.5rem; color: #fff; margin-bottom: 10px;">Srimad Bhagavad Gita</h2>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 2.5rem; color: #fff; margin-bottom: 10px;">Srimad Bhagavad
+            Gita</h2>
         <p style="color: var(--antique-gold); margin-bottom: 20px;">The Divine Song</p>
         <p class="gita-desc">
-            A 700-verse dialogue between Prince Arjuna and Lord Krishna. It is not just a religious text but a practical guide to life management and mental peace.
+            A 700-verse dialogue between Prince Arjuna and Lord Krishna. It is not just a religious text but a practical
+            guide to life management and mental peace.
         </p>
         <div class="yoga-tags">
             <span class="y-tag">Karma Yoga</span>
             <span class="y-tag">Bhakti Yoga</span>
             <span class="y-tag">Jnana Yoga</span>
         </div>
-        <a href="#" class="epic-btn" style="background: transparent; border-color: var(--antique-gold); color: var(--antique-gold);">Start Reading</a>
+        <a href="#" class="epic-btn" id="gitaBtn"
+            style="background: transparent; border-color: var(--antique-gold); color: var(--antique-gold);">Start
+            Reading</a>
     </section>
 
     <div class="section-header reveal-on-scroll" id="shastras">
         <span>Shastras & Puranas</span>
         <h2>Science & Philosophy</h2>
     </div>
-    <div class="text-grid">
-        <div class="text-card">
-            <i class="fa-solid fa-arrow-right text-link"></i>
-            <h4>Arthashastra</h4>
-            <span>Chanakya</span>
-            <p>Treatise on statecraft, economics, and military strategy.</p>
-        </div>
-        <div class="text-card">
-            <i class="fa-solid fa-arrow-right text-link"></i>
-            <h4>Natya Shastra</h4>
-            <span>Bharata Muni</span>
-            <p>The foundational text of performing arts and dance.</p>
-        </div>
-        <div class="text-card">
-            <i class="fa-solid fa-arrow-right text-link"></i>
-            <h4>Yoga Sutras</h4>
-            <span>Patanjali</span>
-            <p>The definitive guide to Yoga philosophy and mind control.</p>
-        </div>
-        <div class="text-card">
-            <i class="fa-solid fa-arrow-right text-link"></i>
-            <h4>Charaka Samhita</h4>
-            <span>Charaka</span>
-            <p>Principal text of Ayurveda and internal medicine.</p>
-        </div>
-        <div class="text-card">
-            <i class="fa-solid fa-arrow-right text-link"></i>
-            <h4>Upanishads</h4>
-            <span>Vedanta</span>
-            <p>Explores the nature of Reality (Brahman) and Self (Atman).</p>
-        </div>
-        <div class="text-card">
-            <i class="fa-solid fa-arrow-right text-link"></i>
-            <h4>Puranas</h4>
-            <span>Vyasa</span>
-            <p>18 major texts covering cosmology and genealogies.</p>
-        </div>
+
+    <div class="text-grid" id="shastras-container">
     </div>
 
     <footer>
         &copy; 2025 BharatRoots Library.
     </footer>
+    <!-- pop up structure -->
+    <div id="vedaModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle">Veda Title</h2>
+            <hr>
+            <p id="modalDescription">Summary loading...</p>
+        </div>
+    </div>
 
     <script>
-        // Simple Intersection Observer for Fade-In Animation
-        const observerOptions = { threshold: 0.2 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+        document.addEventListener('DOMContentLoaded', () => {
 
-        document.querySelectorAll('.section-header').forEach(el => observer.observe(el));
+            // ==========================================
+            // 1. DATA SOURCES (Database/API Mimic)
+            // ==========================================
+
+            const vedaData = {
+                "Rig Veda": { "title": "Rig Veda: The Book of Hymns", "content": "It is the world's oldest living scripture (1500–1200 BCE). It consists of 10 'Mandalas' and 1,028 hymns. It explores the relationship between humans and the divine forces of nature.", "focus": "Philosophy, Cosmology, and Early Deities." },
+                "Sama Veda": { "title": "Sama Veda: The Book of Songs", "content": "Known as the 'Veda of Melodies', it is a collection of chants and tunes. It is the architectural blueprint of Indian Classical Music (Raagas and Taal).", "focus": "Melody, Devotion, and the Science of Sound (Nada Yoga)." },
+                "Yajur Veda": { "title": "Yajur Veda: The Book of Rituals", "content": "A technical manual for priests. It describes the precise steps for performing 'Yajnas' (sacrifices) and rituals. Divided into Shukla and Krishna recensions.", "focus": "Ritualistic precision, Karma Kanda, and Ceremonial Ethics." },
+                "Atharva Veda": { "title": "Atharva Veda: The Book of Daily Life", "content": "Deals with the practical side of life. It contains knowledge of medicine (Ayurveda), mathematical concepts, and charms for protection.", "focus": "Ayurveda, Statecraft, Mathematics, and Healing." }
+            };
+
+            const epicsData = [
+                {
+                    "identifier": "The Ramayana", "cardTitle": "The Ramayana", "subtitle": "The Ideal of Dharma", "icon": "fa-solid fa-bow-arrow",
+                    "title": "Ramayana: The Journey of Virtue", "author": "Maharishi Valmiki", "image": "https://images.unsplash.com/photo-1628135899264-b873c1c87747?q=80&w=600",
+                    "description": "Written by Sage Valmiki. It chronicles the life of Lord Rama, exploring human values and duty.",
+                    "modalDesc": "The Ramayana is the soul of Indian culture. It narrates the life of Lord Rama, the seventh avatar of Vishnu.",
+                    "highlights": ["Rama accepts 14 years of exile.", "Sita's abduction triggers the war.", "Victory of Good over Evil."],
+                    "focus": "Dharma (Duty), Sacrifice, and Devotion.",
+                    "fullStory": ["The story begins in the Kingdom of Ayodhya, where King Dasharatha plans to crown his eldest son, Rama. However, Queen Kaikeyi demands Rama's exile for 14 years.", "Rama, the epitome of Dharma, accepts this cheerfully. He is accompanied by his devoted wife, Sita, and loyal brother, Lakshmana.", "The turning point arrives when the demon king Ravana abducts Sita. Rama forms an alliance with Hanuman and the Vanara Sena.", "After a fierce battle, Rama defeats Ravana, symbolizing the victory of light over darkness. They return to Ayodhya, celebrated as Diwali."]
+                },
+                {
+                    "identifier": "The Mahabharata", "cardTitle": "The Mahabharata", "subtitle": "The Reality of Karma", "icon": "fa-solid fa-chess-knight",
+                    "title": "Mahabharata: The Great War", "author": "Maharishi Vyasa", "image": "https://images.unsplash.com/photo-1599827092525-4c079203c942?q=80&w=600",
+                    "description": "The longest epic poem ever written. A saga of politics, war, and morality.",
+                    "modalDesc": "It is a complex saga of the Kuru dynasty, focusing on the conflict between the Pandavas and Kauravas.",
+                    "highlights": ["A struggle for the throne.", "Krishna teaches the Bhagavad Gita.", "Destruction showing cost of war."],
+                    "focus": "Karma, Strategy, and Human Complexity.",
+                    "fullStory": ["The saga revolves around the throne of Hastinapura. The conflict arises between the five virtuous Pandavas and the hundred ambitious Kauravas.", "Jealousy leads to a rigged game of dice where the Pandavas lose everything and are exiled for 13 years.", "Upon return, war becomes inevitable. Both sides gather at Kurukshetra. Before the war, Krishna recites the Bhagavad Gita to Arjuna.", "The war lasts 18 days, resulting in the death of millions. The Pandavas win, but the heavy cost teaches the world about the futility of greed."]
+                }
+            ];
+
+            const gitaData = {
+                title: "Srimad Bhagavad Gita", subtitle: "The Divine Song of God", author: "Veda Vyasa", image: "https://images.unsplash.com/photo-1605218457333-d49cb0c61858?q=80&w=600",
+                description: "The Gita is set in a narrative framework of a dialogue between Pandava prince Arjuna and his guide and charioteer Lord Krishna. Facing the duty as a warrior to fight the Dharma Yudhha (righteous war), Arjuna is counselled by Krishna to fulfill his Kshatriya (warrior) duty.",
+                highlights: ["Karma Yoga: The Yoga of Action.", "Bhakti Yoga: The Yoga of Devotion.", "Jnana Yoga: The Yoga of Knowledge.", "The Soul (Atman) is eternal and never dies."],
+                focus: "Nishkama Karma (Action without desire for fruits).",
+                fullStory: ["The setting is the battlefield of Kurukshetra. Just as the war is about to begin, Arjuna asks Krishna to drive his chariot between the two armies. Seeing his own grandfather Bhishma and teacher Drona on the other side, Arjuna is paralyzed by grief and refuses to fight.", "Lord Krishna then smiles and begins his divine teaching. He explains that the physical body is temporary, but the Soul (Atman) is eternal. Death is merely like changing clothes.", "Krishna teaches Arjuna about 'Karma Yoga' — doing one's duty without attachment to the results. He explains that running away from battle is not spirituality, but cowardice.", "Finally, Krishna reveals his 'Vishwaroopa' (Cosmic Form), showing that He is the Time that destroys everything. Arjuna realizes his duty, picks up his Gandiva bow, and prepares to fight for Dharma."]
+            };
+
+            const shastrasData = [
+                { "title": "Arthashastra", "author": "Chanakya (Kautilya)", "image": "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=600", "desc": "Treatise on statecraft, economics, and military strategy.", "detailedDesc": "An ancient Indian treatise on statecraft, economic policy, and military strategy. It explores how a King should rule and protect his kingdom.", "keyPoints": ["Seven limbs of the state (Saptanga Theory).", "Importance of spies and intelligence.", "Economic management and taxation."] },
+                { "title": "Natya Shastra", "author": "Bharata Muni", "image": "https://images.unsplash.com/photo-1518544866385-e644b93b8f1c?q=80&w=600", "desc": "The foundational text of performing arts and dance.", "detailedDesc": "The foundational text of Indian performing arts. It covers dramatic theory, stagecraft, music, dance, and gestures.", "keyPoints": ["The theory of Rasa (Aesthetics/Emotions).", "Mudras (Hand gestures) and body movements.", "Connection between music, dance, and spirituality."] },
+                { "title": "Yoga Sutras", "author": "Maharishi Patanjali", "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=600", "desc": "The definitive guide to Yoga philosophy and mind control.", "detailedDesc": "The definitive guide to Yoga theory and practice. It outlines the path to mental control and spiritual liberation.", "keyPoints": ["Ashtanga Yoga (The 8-fold path).", "Control of the mind (Chitta Vritti Nirodha).", "Meditation (Dhyana) and Samadhi."] },
+                { "title": "Charaka Samhita", "author": "Maharishi Charaka", "image": "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?q=80&w=600", "desc": "Principal text of Ayurveda and internal medicine.", "detailedDesc": "One of the principal contributors to Ayurveda. It focuses on internal medicine, diagnostics, and leading a healthy lifestyle.", "keyPoints": ["Concept of Tridosha (Vata, Pitta, Kapha).", "Importance of diet and digestion (Agni).", "Prevention of disease over cure."] },
+                { "title": "Upanishads", "author": "Various Rishis (Vedanta)", "image": "https://images.unsplash.com/photo-1545625482-1df5086d9a04?q=80&w=600", "desc": "Explores the nature of Reality (Brahman) and Self (Atman).", "detailedDesc": "The philosophical end of the Vedas. They shift focus from rituals to spiritual knowledge, exploring the nature of Reality.", "keyPoints": ["Tat Tvam Asi (You are That).", "The unity of Atman (Self) and Brahman (Universe).", "Moksha (Liberation) through knowledge."] },
+                { "title": "Puranas", "author": "Maharishi Vyasa", "image": "https://images.unsplash.com/photo-1581881067989-6e38e68e4c76?q=80&w=600", "desc": "18 major texts covering cosmology and genealogies.", "detailedDesc": "A vast genre of Indian literature about a wide range of topics, particularly myths, legends, and traditional lore.", "keyPoints": ["Stories of Shiva, Vishnu, and Devi.", "Creation and destruction of the Universe.", "Genealogies of Kings and Sages."] },
+            ];
+
+            // ==========================================
+            // 2. SHARED MODAL & UTILS
+            // ==========================================
+
+            const modal = document.getElementById('vedaModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDescription');
+            const modalImg = document.getElementById('modalImg');
+            const closeBtn = document.querySelector('.close-btn');
+
+            // Close Modal Functions
+            const closeModal = () => modal.style.display = 'none';
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+            // Helper: Generate List HTML
+            const createListHTML = (items) => items.map(i => `<li style="margin-bottom: 8px;">${i}</li>`).join('');
+
+            // Helper: Generate Paragraph HTML
+            const createStoryHTML = (items) => items.map(p => `<p style="margin-bottom: 12px; text-align: justify; line-height: 1.6; color: #444;">${p}</p>`).join('');
+
+            // ==========================================
+            // 3. SECTION LOGIC Handlers
+            // ==========================================
+
+            // --- A. VEDAS (Static HTML Cards) ---
+            const initVedas = () => {
+                document.querySelectorAll('.card-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const card = e.target.closest('.veda-card');
+                        const vedaName = card.querySelector('h3').innerText.trim();
+                        const data = vedaData[vedaName];
+
+                        if (data) {
+                            modalTitle.innerHTML = `<strong>${data.title}</strong>`;
+                            if (modalImg) modalImg.style.display = 'none'; // Hide image for Vedas
+
+                            modalDesc.innerHTML = `
+                        <p>${data.content}</p>
+                        <div style="margin-top:15px; padding:10px; background:#f4f4f4; border-left:4px solid #8e44ad; font-style:italic;">
+                            <strong>Key Focus:</strong> ${data.focus}
+                        </div>
+                    `;
+                            modal.style.display = 'flex';
+                        }
+                    });
+                });
+            };
+
+            // --- B. EPICS (Dynamic Cards) ---
+            const initEpics = () => {
+                const container = document.getElementById('epics-dynamic-container');
+                if (!container) return;
+                container.innerHTML = ''; // Clean container
+
+                epicsData.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'epic-card';
+                    card.innerHTML = `
+                <i class="${item.icon} epic-bg-icon"></i>
+                <div class="epic-content">
+                    <div class="epic-title">${item.cardTitle}</div>
+                    <div class="epic-subtitle">${item.subtitle}</div>
+                    <p style="color: #ccc; line-height: 1.6;">${item.description}</p>
+                    <a href="#" class="epic-btn">Read Story</a>
+                </div>
+            `;
+                    container.appendChild(card);
+
+                    // Add Click Event
+                    card.querySelector('.epic-btn').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        modalTitle.innerText = item.title;
+                        if (modalImg) { modalImg.src = item.image; modalImg.style.display = 'block'; modalImg.style.height = "220px"; }
+
+                        modalDesc.innerHTML = `
+                    <p style="text-align:center; color: #555;"><strong>Author:</strong> ${item.author}</p>
+                    <p style="margin-top:10px; text-align:center;">${item.modalDesc}</p>
+                    <h4 style="margin-top:20px; color: #2c3e50;">Key Highlights:</h4>
+                    <ul style="display: inline-block; text-align: left; padding-left: 20px; color: #444;">${createListHTML(item.highlights)}</ul>
+                    <div style="margin: 20px 0; padding: 12px; background: #fff8e1; border-left: 4px solid #ffb300; border-radius: 4px; text-align: center;">
+                        <strong>The Essence:</strong> <span style="font-style: italic; color: #555;">${item.focus}</span>
+                    </div>
+                    <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
+                    <h3 style="color: #d35400; margin-bottom: 15px; text-align: center; font-family: serif;">Complete Story</h3>
+                    <div class="story-container" style="text-align: left; padding: 0 5px;">${createStoryHTML(item.fullStory)}</div>
+                `;
+                        modal.style.display = 'flex';
+                    });
+                });
+            };
+
+            // --- C. SHASTRAS (Dynamic Cards) ---
+            const initShastras = () => {
+                const container = document.getElementById('shastras-container');
+                if (!container) return;
+                container.innerHTML = '';
+
+                shastrasData.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'text-card';
+                    card.innerHTML = `
+                <i class="fa-solid fa-arrow-right text-link"></i>
+                <h4>${item.title}</h4>
+                <span>${item.author}</span>
+                <p>${item.desc}</p>
+            `;
+                    container.appendChild(card);
+
+                    card.addEventListener('click', () => {
+                        modalTitle.innerText = item.title;
+                        if (modalImg) { modalImg.src = item.image; modalImg.style.display = 'block'; modalImg.style.height = "200px"; }
+
+                        modalDesc.innerHTML = `
+                    <p style="text-align: center; color: #555;"><strong>Credit:</strong> ${item.author}</p>
+                    <p style="margin-top: 15px; text-align: justify; line-height: 1.6; color: #444;">${item.detailedDesc}</p>
+                    <div style="margin-top: 20px; padding: 15px; background: #e0f7fa; border-left: 5px solid #00acc1; border-radius: 4px;">
+                        <h4 style="margin-bottom: 10px; color: #006064;">Key Teachings:</h4>
+                        <ul style="display: inline-block; text-align: left; padding-left: 20px; color: #333;">${createListHTML(item.keyPoints)}</ul>
+                    </div>
+                `;
+                        modal.style.display = 'flex';
+                    });
+                });
+            };
+
+            // --- D. GITA (Single Button) ---
+            const initGita = () => {
+                const btn = document.getElementById('gitaBtn');
+                if (!btn) return;
+
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modalTitle.innerText = gitaData.title;
+                    if (modalImg) { modalImg.src = gitaData.image; modalImg.style.display = 'block'; modalImg.style.height = "220px"; }
+
+                    modalDesc.innerHTML = `
+                <p style="text-align: center; color: #555;"><strong>Author:</strong> ${gitaData.author}</p>
+                <p style="margin-top:10px; text-align: center;">${gitaData.description}</p>
+                <h4 style="margin-top:20px; color: #2c3e50;">Core Teachings:</h4>
+                <ul style="display: inline-block; text-align: left; margin-top: 5px; padding-left: 20px; color: #444;">${createListHTML(gitaData.highlights)}</ul>
+                <div style="margin: 20px 0; padding: 12px; background: #fff8e1; border-left: 4px solid #ffb300; border-radius: 4px; text-align: center;">
+                    <strong>The Essence:</strong> <span style="font-style: italic; color: #555;">${gitaData.focus}</span>
+                </div>
+                <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
+                <h3 style="color: #d35400; margin-bottom: 15px; text-align: center;">Chapter Summary</h3>
+                <div class="story-container" style="text-align: left; padding: 0 5px;">${createStoryHTML(gitaData.fullStory)}</div>
+            `;
+                    modal.style.display = 'flex';
+                });
+            };
+
+            // ==========================================
+            // 4. INITIALIZATION & OBSERVER
+            // ==========================================
+
+            // Initialize all sections
+            initVedas();
+            initEpics();
+            initShastras();
+            initGita();
+
+            // Intersection Observer for Animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.section-header').forEach(el => observer.observe(el));
+        });
     </script>
 
 </body>
+
 </html>
