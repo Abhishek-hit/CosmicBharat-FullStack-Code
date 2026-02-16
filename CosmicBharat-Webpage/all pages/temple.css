@@ -184,3 +184,102 @@
             .marvel-card { flex-direction: column; }
             .marvel-img-placeholder { min-height: 250px; }
         }
+
+        /* Style Grid */
+
+/* Style Card */
+
+.style-btn {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+/* =========================================
+   MODAL POPUP STYLES (Universal)
+   ========================================= */
+
+/* 1. Background Overlay (Dhundhla Parda) */
+.modal-overlay {
+    display: none; /* Default Hidden */
+    position: fixed; /* Screen par chipka rahega */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Dark Overlay */
+    backdrop-filter: blur(5px); /* Piche ka content blur */
+    z-index: 99999; /* Sabse upar dikhega */
+    justify-content: center; /* Horizontal Center */
+    align-items: center; /* Vertical Center */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Jab JS se 'display: flex' set hoga, tab ye opacity 1 hogi */
+.modal-overlay[style*="display: flex"] {
+    opacity: 1;
+}
+
+/* 2. White Box (Main Content) */
+.modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    max-height: 85vh; /* Screen height ka 85% */
+    overflow-y: auto; /* Scrollbar enable */
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: popupSlide 0.4s ease-out;
+}
+
+@keyframes popupSlide {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 3. Close Button (X) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 10;
+    background: #fff; /* Image ke upar dikhne ke liye */
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.close-btn:hover {
+    color: #e74c3c;
+    background: #f4f4f4;
+}
+
+/* 4. Modal Image */
+#modalImg {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: none; /* JS show karega */
+}
+
+/* 5. Typography */
+#modalTitle {
+    color: #2c3e50;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: serif;
+}
