@@ -408,7 +408,7 @@ body {
     /* CLAMP: Mobile (2.5rem) -> PC (6.5rem) */
     font-size: clamp(2.5rem, 8vw + 1rem, 6.5rem);
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     background: linear-gradient(to right, #fff, var(--gold), #fff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -425,7 +425,7 @@ body {
     letter-spacing: 1px;
     opacity: 0;
     animation: fadeInUp 1.5s forwards 1.5s;
-    line-height: 1.6;
+    line-height: 1.1;
 }
 
 @keyframes fadeInUp {

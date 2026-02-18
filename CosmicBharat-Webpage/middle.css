@@ -8,22 +8,26 @@
 }
 
 /* --- GLOBAL RESET TO PREVENT SCROLL ISSUES --- */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Fog animation horizontal scroll rokne ke liye */
+    overflow-x: hidden;
+    
+    
+   
+    /* Fog animation horizontal scroll rokne ke liye */
 }
 
-/* --- ATMOSPHERE --- */
-.atmosphere {
+/* --- ATMOSPHERE --- .atmosphere {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: radial-gradient(circle at 50% 120%, #2a0f05, #000);
-}
+  background: transparent;
+} */
 
-.fog {
+/* .fog {
     position: absolute;
     width: 300%;
     height: 100%;
@@ -33,32 +37,40 @@ body, html {
     opacity: 0.3;
     bottom: 0;
     pointer-events: none; /* Mouse clicks pass through fog */
-}
+/* } */
 
-@keyframes fogMove {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
+/* @keyframes fogMove {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+} */
 
 
 /* --- MAIN CONTAINER (Fluid Grid) --- */
 .soul-section {
     position: relative;
     width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: clamp(40px, 8vh, 80px) 5%; /* Padding adjusts with screen height */
-    
+    max-width: 1600px;
+  
+    padding: clamp(40px, 8vh, 80px) 5%;
+    /* Padding adjusts with screen height */
+margin: 0 auto;
     display: grid;
     /* MAGIC LINE: Bina Media Query ke Responsive Grid */
     /* Agar screen 600px se badi hai to 2 columns, nahi to 1 column */
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 550px), 1fr));
-    
-    gap: clamp(40px, 5vw, 80px); /* Gap adjusts with screen width */
+
+    gap: clamp(40px, 5vw, 80px);
+    /* Gap adjusts with screen width */
     align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.4);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+    /* background: rgba(0, 0, 0, 0.4); */
+     background: radial-gradient(circle at center, #1a0b2e 0%, #000000 70%);
     backdrop-filter: blur(5px);
     overflow: hidden;
 }
@@ -67,12 +79,14 @@ body, html {
 .narrative {
     position: relative;
     z-index: 2;
-    text-align: left; /* Default alignment */
+    text-align: left;
+    /* Default alignment */
 }
 
 /* Ornament Animation */
 .ornament {
-    font-size: clamp(1.5rem, 3vw, 2rem); /* Fluid Size */
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    /* Fluid Size */
     color: var(--gold-rich);
     margin-bottom: 10px;
     opacity: 0.8;
@@ -81,8 +95,17 @@ body, html {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
 }
 
 /* Fluid Headline */
@@ -116,23 +139,26 @@ body, html {
 /* --- TRINITY GRID (Bubbles) --- */
 .trinity-grid {
     display: flex;
-    flex-wrap: wrap; /* Jagah kam hone par niche gir jayenge */
+    flex-wrap: wrap;
+    /* Jagah kam hone par niche gir jayenge */
     gap: clamp(20px, 4vw, 40px);
-    justify-content: center; /* Center align on mobile */
+    justify-content: center;
+    /* Center align on mobile */
 }
 
 .tri-card {
     text-align: center;
     position: relative;
     /* Card width fluid rakhna */
-    width: min(150px, 28vw); 
+    width: min(150px, 28vw);
 }
 
 .tri-circle {
     /* Width height responsive */
     width: 100%;
-    aspect-ratio: 1 / 1; /* Hamesha Gol rahega */
-    
+    aspect-ratio: 1 / 1;
+    /* Hamesha Gol rahega */
+
     border-radius: 50%;
     border: 1px solid var(--gold-rich);
     margin: 0 auto 15px;
@@ -140,7 +166,8 @@ body, html {
     align-items: center;
     justify-content: center;
     font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(1.2rem, 3vw, 2rem); /* Text andar ka bhi resize hoga */
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    /* Text andar ka bhi resize hoga */
     color: var(--gold-rich);
     box-shadow: 0 0 30px var(--saffron-dust);
     transition: 0.5s;
@@ -160,7 +187,9 @@ body, html {
 }
 
 @keyframes spin {
-    100% { transform: rotate(360deg); }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .tri-card:hover .tri-circle {
@@ -195,15 +224,23 @@ body, html {
     /* IMPORTANT FOR RESPONSIVENESS: */
     /* Maximum 400px, lekin mobile par screen ka 90% width lega */
     width: min(400px, 80vw);
-    aspect-ratio: 1 / 1; /* Square shape maintain karega resize hone par */
-    
+    aspect-ratio: 1 / 1;
+    /* Square shape maintain karega resize hone par */
+
     transform-style: preserve-3d;
     animation: floatEngine 6s ease-in-out infinite;
 }
 
 @keyframes floatEngine {
-    0%, 100% { transform: translateY(0) rotateX(10deg); }
-    50% { transform: translateY(-20px) rotateX(-10deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) rotateX(10deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotateX(-10deg);
+    }
 }
 
 /* 1. The Rotating Rings */
@@ -232,7 +269,7 @@ body, html {
     width: 80%;
     height: 80%;
     /* Centering trick inside absolute parent */
-    top: 10%; 
+    top: 10%;
     left: 10%;
 }
 
@@ -248,8 +285,13 @@ body, html {
 }
 
 @keyframes spin3D {
-    0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
-    100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
+    0% {
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+
+    100% {
+        transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg);
+    }
 }
 
 /* 2. The Core (Center) */
@@ -258,7 +300,8 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%; /* Relative to parent engine */
+    width: 40%;
+    /* Relative to parent engine */
     height: 40%;
     display: flex;
     align-items: center;
@@ -270,20 +313,28 @@ body, html {
 .floating-symbol {
     position: absolute;
     /* Symbol size scales with engine size */
-    font-size: clamp(3rem, 15vw, 5rem); 
+    font-size: clamp(3rem, 15vw, 5rem);
     color: #fff;
     filter: drop-shadow(0 0 20px var(--gold-rich)) drop-shadow(0 0 40px var(--cyan));
     animation: pulseSymbol 3s infinite alternate;
 }
 
 @keyframes pulseSymbol {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(1.2); opacity: 1; }
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
 }
 
 .sanskrit-mantra {
     font-family: 'Tiro Devanagari Hindi', serif;
-    font-size: clamp(1rem, 5vw, 1.8rem); /* Fluid Font */
+    font-size: clamp(1rem, 5vw, 1.8rem);
+    /* Fluid Font */
     color: var(--gold-rich);
     position: absolute;
     white-space: nowrap;
@@ -291,7 +342,8 @@ body, html {
 }
 
 .m1 {
-    top: -40%; /* Percentage logic taaki resize pe hile nahi */
+    top: -40%;
+    /* Percentage logic taaki resize pe hile nahi */
     animation: floatText 4s ease-in-out infinite alternate;
 }
 
@@ -301,6 +353,13 @@ body, html {
 }
 
 @keyframes floatText {
-    0% { transform: translateY(0); opacity: 0.5; }
-    100% { transform: translateY(-10px); opacity: 1; }
+    0% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
 }

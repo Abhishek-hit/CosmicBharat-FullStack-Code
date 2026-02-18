@@ -1,0 +1,263 @@
+/* --- COSMIC SECTION ISOLATED CSS (FLUID & RESPONSIVE) --- */
+
+/* 1. Wrapper Setup (Acts like the Body for this section) */
+#cosmic-wrapper {
+    /* Local Variables definition */
+    --bg-dark: #050505;
+    --gold: #FFD700;
+    --gold-dim: #b8860b;
+    --glass: rgba(20, 20, 20, 0.7);
+    --text: #e0e0e0;
+
+    /* Container Styles */
+    position: relative;
+    width: 100%;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    overflow: hidden; /* Stars bahar na nikle */
+    box-sizing: border-box;
+    /* Background yahan se hata diya taaki global layer handle kare */
+}
+
+/* Reset sirf is wrapper ke andar */
+#cosmic-wrapper *,
+#cosmic-wrapper *::before,
+#cosmic-wrapper *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Background Layer (Scoped) */
+#cosmic-wrapper .global-cosmic-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Content ke peeche */
+    /* YE HAI MAIN BACKGROUND JO AB SAB ME DIKHEGA */
+    background: radial-gradient(circle at center, #1a0b2e 0%, #000000 70%);
+    overflow: hidden;
+}
+
+/* 3. Stars Animation */
+/* #cosmic-wrapper .star-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+}
+
+#cosmic-wrapper .stars-small {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: 10vw 10vh #fff, 20vw 80vh #fff, 40vw 30vh #fff, 80vw 10vh #fff,
+        90vw 90vh #fff, 10vw 50vh #fff, 50vw 50vh #fff, 60vw 20vh #fff;
+    animation: moveStars 100s linear infinite;
+    opacity: 0.5;
+}
+
+#cosmic-wrapper .stars-gold {
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: 15vw 15vh var(--gold), 30vw 60vh var(--gold), 70vw 40vh var(--gold);
+    animation: moveStars 150s linear infinite reverse;
+    opacity: 0.8;
+    filter: blur(1px);
+} */
+
+/* 4. Hero Section */
+#cosmic-wrapper .hero-cosmic {
+    position: relative;
+    min-height: 40vh; /* Responsive Height */
+    padding: 60px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* CHANGE: Background ko transparent kiya taki peeche wala dikhe */
+    background: transparent; 
+    perspective: 1000px;
+    z-index: 2;
+}
+
+/* Text Content Fluid Typography */
+#cosmic-wrapper .hero-content {
+    z-index: 10;
+    text-align: center;
+    mix-blend-mode: hard-light;
+    width: 100%;
+}
+
+#cosmic-wrapper .eyebrow-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    letter-spacing: clamp(5px, 2vw, 12px);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 15px;
+    animation: slideDown 1s ease-out;
+}
+
+#cosmic-wrapper .main-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 700;
+    color: transparent;
+    background: linear-gradient(180deg, #fff 0%, #FFD700 40%, #B8860B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+    animation: zoomIn 1.5s cubic-bezier(0, 0, 0.2, 1);
+    line-height: 1.1;
+    margin: 0;
+}
+
+#cosmic-wrapper .sub-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #ccc;
+    margin-top: 25px;
+    line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 2s ease-in forwards;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 5. Facts Section (Fluid Layout) */
+#cosmic-wrapper .facts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(40px, 8vh, 80px) 20px;
+    position: relative;
+    z-index: 10;
+}
+
+#cosmic-wrapper .fact-row {
+    display: flex;
+    flex-wrap: wrap; /* Important for responsiveness */
+    align-items: center;
+    gap: clamp(30px, 5vw, 60px);
+    margin-bottom: clamp(80px, 15vh, 150px);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s all ease;
+}
+
+#cosmic-wrapper .fact-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#cosmic-wrapper .fact-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* 6. Cards Styling */
+#cosmic-wrapper .fact-img-box {
+    flex: 1 1 400px; /* Fluid wrapping logic */
+    position: relative;
+    height: clamp(300px, 50vh, 400px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    width: 100%;
+}
+
+#cosmic-wrapper .fact-img {
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    transition: 0.5s transform;
+}
+
+#cosmic-wrapper .fact-img-box:hover .fact-img {
+    transform: scale(1.1);
+}
+
+#cosmic-wrapper .fact-text-box {
+    flex: 1 1 400px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    width: 100%;
+}
+
+#cosmic-wrapper .fact-number {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: rgba(255, 255, 255, 0.05);
+    font-weight: 700;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    z-index: -1;
+}
+
+#cosmic-wrapper .fact-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--gold);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    line-height: 1.2;
+}
+
+#cosmic-wrapper .fact-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+}
+
+#cosmic-wrapper .fact-desc {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+#cosmic-wrapper .mystery-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-size: 0.8rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animations */
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; filter: blur(10px); }
+    to { transform: scale(1); opacity: 1; filter: blur(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
