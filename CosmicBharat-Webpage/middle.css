@@ -62,9 +62,9 @@ margin: 0 auto;
     display: grid;
     /* MAGIC LINE: Bina Media Query ke Responsive Grid */
     /* Agar screen 600px se badi hai to 2 columns, nahi to 1 column */
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
 
-    gap: clamp(10px, 5vw, 80px);
+    gap: clamp(40px, 5vw, 80px);
     /* Gap adjusts with screen width */
     align-items: center;
     /* border-top: 1px solid rgba(255, 255, 255, 0.1);
