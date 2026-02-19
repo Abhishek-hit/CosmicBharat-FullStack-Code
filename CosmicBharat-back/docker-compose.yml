@@ -1,0 +1,42 @@
+version: '3.3'
+
+services:
+#  db service
+  db-service:
+    container_name: my-database-container
+    image: mongo:6.0
+    restart: always
+
+#  backend service
+  backend-service:
+    container_name: CosmicBharat
+    build:
+      context: .
+    image: cosmicbharat:v1
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      db-service:
+        condition: service_healthy
+
+#volume
+volumes:
+  db_data:
+
+# Network
+networks:
+  my-app-network:
+    driver: bridge
+
+#database service
+
+
+
+
+
+
+
+
+
