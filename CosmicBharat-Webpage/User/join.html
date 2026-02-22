@@ -1,228 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pravesh | BharatRoots</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Pravesh | CosmicBharat</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --gold: #FFD700;
             --gold-dim: #b8860b;
-            --glass: rgba(0, 0, 0, 0.7);
+            --glass: rgba(10, 10, 15, 0.65);
             --white: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        /* --- 1. BODY AS THE GALAXY BACKGROUND --- */
         body {
             font-family: 'Outfit', sans-serif;
             height: 100vh;
             overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
-            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* Moving Galaxy Background on Body */
+            background-color: #050505;
+            background-image:
+                radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0, 0, 0, 0)),
+                radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 90px 40px, var(--gold), rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 160px 120px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(circle at 50% 50%, rgba(30, 10, 60, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(184, 134, 11, 0.15) 0%, transparent 40%);
+            background-size: 200px 200px, 200px 200px, 300px 300px, 250px 250px, 150% 150%, 100% 100%;
+            animation: cosmicMove 60s linear infinite;
         }
 
-        /* --- 1. DOUBLE BUFFER SLIDESHOW (The Fix) --- */
-        .bg-layer {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            transition: opacity 2s ease-in-out, transform 8s ease-out; /* Smooth Fade & Zoom */
-            z-index: 0;
-            opacity: 0;
-            transform: scale(1);
+        @keyframes cosmicMove {
+            0% {
+                background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, center, center;
+            }
+
+            100% {
+                background-position: -400px -400px, 400px 400px, -600px 600px, 500px -500px, center, center;
+            }
         }
 
-        .bg-layer.active {
-            opacity: 1;
-            transform: scale(1.1); /* Zoom Effect when active */
-            z-index: 1;
+        /* Depth overlay (Fixed over body) */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
         }
-
-        /* Texture Overlay (To darken images slightly) */
-        .texture-overlay {
-            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
-            z-index: 2; pointer-events: none;
-        }
-
 
         /* --- 2. CENTER GLASS CARD --- */
         .glass-box {
-            position: relative; z-index: 10;
-            width: 420px; padding: 40px;
+            position: relative;
+            z-index: 10;
+            width: 420px;
+            padding: 40px;
             background: var(--glass);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-top: 1px solid rgba(255, 215, 0, 0.4);
             border-radius: 20px;
-            box-shadow: 0 0 60px rgba(0,0,0,0.9);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(255, 215, 0, 0.05);
             text-align: center;
         }
 
-        .logo i { font-size: 2.5rem; color: var(--gold); filter: drop-shadow(0 0 10px var(--gold)); margin-bottom: 10px; }
-        .logo h1 { font-family: 'Cinzel', serif; color: white; font-size: 2rem; font-weight: 700; margin-bottom: 5px; }
-        .logo p { color: #ccc; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; }
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo i {
+            font-size: 3rem;
+            color: var(--gold);
+            filter: drop-shadow(0 0 15px var(--gold));
+            margin-bottom: 10px;
+            animation: slowSpin 20s linear infinite;
+        }
+
+        @keyframes slowSpin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .logo h1 {
+            font-family: 'Cinzel', serif;
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .logo p {
+            color: #aaa;
+            font-size: 0.80rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
 
         /* Tabs */
-        .tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 25px; }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+        }
+
         .tab-btn {
-            flex: 1; background: none; border: none; padding: 10px; color: #888;
-            font-family: 'Cinzel', serif; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 12px;
+            color: #777;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
         }
-        .tab-btn.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
-        .tab-btn:hover { color: white; }
 
-        /* Inputs */
-        .form-area { display: none; animation: fadeIn 0.5s ease; }
-        .form-area.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tab-btn.active {
+            color: var(--gold);
+        }
 
-        .inp-group { position: relative; margin-bottom: 25px; text-align: left; }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold);
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: white;
+        }
+
+        /* --- FIX: FORM AREA (No jumping on load) --- */
+        .form-area {
+            display: none;
+            opacity: 0;
+            /* Hidden by default */
+        }
+
+        .form-area.active {
+            display: block;
+            opacity: 1;
+            /* Sirf opacity change hogi, layout shift nahi hoga */
+            animation: fadeInOnly 0.3s ease-in;
+        }
+
+        @keyframes fadeInOnly {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .inp-group {
+            position: relative;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
         .inp {
-            width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 15px 12px 40px; border-radius: 8px; color: white; outline: none; transition: 0.3s;
-            font-size: 1rem; font-family: 'Outfit', sans-serif;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px 15px 14px 45px;
+            border-radius: 8px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
         }
-        .inp:focus { border-color: var(--gold); background: rgba(0,0,0,0.6); box-shadow: 0 0 15px rgba(255, 215, 0, 0.15); }
-        .icon { position: absolute; left: 12px; top: 14px; color: #999; transition: 0.3s; }
-        .inp:focus + .icon { color: var(--gold); }
+
+        .inp::placeholder {
+            color: #666;
+        }
+
+        .inp:focus {
+            border-color: var(--gold);
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+        }
+
+        .icon {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            color: #666;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .inp:focus+.icon {
+            color: var(--gold);
+            filter: drop-shadow(0 0 5px var(--gold));
+        }
 
         /* Button */
         .btn-gold {
-            width: 100%; padding: 14px; border: none; border-radius: 50px;
-            background: linear-gradient(135deg, #b8860b, #FFD700, #b8860b);
-            background-size: 200%; color: #000; font-weight: bold; font-family: 'Cinzel', serif;
-            font-size: 1.1rem; cursor: pointer; transition: 0.4s; margin-top: 5px;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #b8860b, #FFD700, #b8860b);
+            background-size: 200%;
+            color: #000;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 10px;
         }
-        .btn-gold:hover { background-position: right; box-shadow: 0 0 25px rgba(255, 215, 0, 0.4); transform: scale(1.02); }
-        .links { margin-top: 20px; font-size: 0.85rem; color: #bbb; }
-        .links span { color: var(--gold); cursor: pointer; text-decoration: underline; }
+
+        .btn-gold:hover {
+            background-position: right;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .links {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .links span {
+            color: var(--gold);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .links span:hover {
+            text-shadow: 0 0 8px var(--gold);
+        }
     </style>
 </head>
-<body>
 
-    <div class="bg-layer active" id="bg1"></div>
-    <div class="bg-layer" id="bg2"></div>
-    
-    <div class="texture-overlay"></div>
+<body>
 
     <div class="glass-box">
         <div class="logo">
-            <i class="fa-solid fa-dharmachakra"></i>
-            <h1>BharatRoots</h1>
-            <p>The Cosmic Connection</p>
+            <i class="fa-solid fa-infinity brand-icon"></i>
+            <h1>CosmicBharat</h1>
+            <p>Eternal • Scientific • Divine</p>
         </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="toggleForm('login', this)">Pravesh</button>
-            <button class="tab-btn" onclick="toggleForm('join', this)">Aarambh</button>
+            <button class="tab-btn active" onclick="toggleForm('login', this)">Login</button>
+            <button class="tab-btn" onclick="toggleForm('join', this)">Register</button>
         </div>
 
         <div id="login" class="form-area active">
             <form onsubmit="event.preventDefault();">
                 <div class="inp-group">
-                    <input type="text" class="inp" placeholder="User ID" required>
-                    <i class="fa-solid fa-user icon"></i>
+                    <input type="text" class="inp" placeholder="Cosmic ID" required>
+                    <i class="fa-solid fa-user-astronaut icon"></i>
                 </div>
                 <div class="inp-group">
-                    <input type="password" class="inp" placeholder="Gupt Key" required>
+                    <input type="password" class="inp" placeholder="Password" required>
                     <i class="fa-solid fa-key icon"></i>
                 </div>
-                <button class="btn-gold">Enter Temple</button>
-                <div class="links">Forgot Key? <span>Restore</span></div>
+                <button class="btn-gold">Enter Portal</button>
+                <div class="links">Forgot password <span>Retrieve</span></div>
             </form>
         </div>
 
         <div id="join" class="form-area">
             <form onsubmit="event.preventDefault();">
                 <div class="inp-group">
-                    <input type="text" class="inp" placeholder="Full Name" required>
-                    <i class="fa-solid fa-scroll icon"></i>
+                    <input type="text" class="inp" placeholder="Real Name" required>
+                    <i class="fa-solid fa-signature icon"></i>
                 </div>
                 <div class="inp-group">
-                    <input type="email" class="inp" placeholder="Email Address" required>
+                    <input type="email" class="inp" placeholder="Cosmic Mail" required>
                     <i class="fa-solid fa-envelope icon"></i>
                 </div>
                 <div class="inp-group">
-                    <input type="password" class="inp" placeholder="Create Key" required>
+                    <input type="password" class="inp" placeholder="Forget Password" required>
                     <i class="fa-solid fa-lock icon"></i>
                 </div>
-                <button class="btn-gold">Start Journey</button>
+                <button class="btn-gold">Begin Journey</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Image List (High Quality)
-        const images = [
-            'https://images.unsplash.com/photo-1564101166683-1463e27306e9?q=80&w=1974&auto=format&fit=crop', // Temple
-            'https://images.unsplash.com/photo-1605556793467-3333da07d727?q=80&w=1974&auto=format&fit=crop', // Diya
-            'https://images.unsplash.com/photo-1608630732800-47b744d2847c?q=80&w=1935&auto=format&fit=crop', // Scripture
-            'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2070&auto=format&fit=crop'  // Cosmic
-        ];
-
-        let currentIndex = 0;
-        let activeLayer = 1; // 1 or 2
-        const bg1 = document.getElementById('bg1');
-        const bg2 = document.getElementById('bg2');
-
-        // Initial Setup
-        bg1.style.backgroundImage = `url('${images[0]}')`;
-        bg2.style.backgroundImage = `url('${images[1]}')`; // Preload next
-
-        function changeSlide() {
-            // Calculate next image index
-            currentIndex = (currentIndex + 1) % images.length;
-            const nextImage = images[(currentIndex + 1) % images.length];
-
-            if (activeLayer === 1) {
-                // Fade into BG2
-                bg2.style.opacity = '1';
-                bg2.style.transform = 'scale(1.1)'; // Zoom
-                bg2.style.zIndex = '1';
-
-                bg1.style.opacity = '0';
-                bg1.style.transform = 'scale(1)'; // Reset Zoom
-                bg1.style.zIndex = '0';
-                
-                // Prepare BG1 for next time (after transition is done)
-                setTimeout(() => {
-                    bg1.style.backgroundImage = `url('${nextImage}')`;
-                }, 2000); // Wait for 2s transition
-
-                activeLayer = 2;
-            } else {
-                // Fade into BG1
-                bg1.style.opacity = '1';
-                bg1.style.transform = 'scale(1.1)'; // Zoom
-                bg1.style.zIndex = '1';
-
-                bg2.style.opacity = '0';
-                bg2.style.transform = 'scale(1)'; // Reset Zoom
-                bg2.style.zIndex = '0';
-
-                // Prepare BG2 for next time
-                setTimeout(() => {
-                    bg2.style.backgroundImage = `url('${nextImage}')`;
-                }, 2000);
-
-                activeLayer = 1;
-            }
-        }
-
-        // Change image every 5 seconds
-        setInterval(changeSlide, 5000);
-
-        // --- FORM TOGGLE LOGIC ---
+        // Form Toggle Logic - Super simple, no jumps
         function toggleForm(id, btn) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+
             document.querySelectorAll('.form-area').forEach(f => f.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
     </script>
 
 </body>
+
 </html>

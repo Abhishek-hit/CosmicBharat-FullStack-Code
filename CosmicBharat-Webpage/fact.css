@@ -164,6 +164,7 @@
 #cosmic-wrapper .fact-img-box {
     flex: 1 1 400px; /* Fluid wrapping logic */
     position: relative;
+    
     height: clamp(300px, 50vh, 400px);
     border-radius: 20px;
     overflow: hidden;
@@ -175,7 +176,7 @@
 #cosmic-wrapper .fact-img {
     width: 100%;
     height: 100%;
-    object-fit:contain;
+    /* object-fit:cover; */
     transition: 0.5s transform;
 }
 

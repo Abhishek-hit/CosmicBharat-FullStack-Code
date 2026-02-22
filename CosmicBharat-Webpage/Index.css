@@ -481,11 +481,11 @@ body {
 
 /* 2. Main Footer */
 .foundation-footer {
-    background-color: var(--f-void);
+  background: radial-gradient(circle at center, #1a0b2e 0%, #000000 70%);
     color: var(--f-text);
     position: relative;
     padding-top: 80px;
-    background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
+    /* background-image: url('https://www.transparenttextures.com/patterns/black-scales.png'); */
     border-top: 5px solid var(--f-gold);
     overflow: hidden;
     /* Mandala bahar na nikle */
@@ -509,7 +509,7 @@ body {
 
 /* Center Crest */
 .center-crest {
-    margin-top: 1.2%;
+    margin-top: 2.5%;
     position: absolute;
     top: -40px;
     left: 50%;
@@ -549,14 +549,14 @@ body {
 }
 
 /* Footer Content Scaling */
-.f-brand h2 {
+/* .f-brand h2 {
     font-family: 'Cinzel', serif;
-    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 4vw, 2rem);
     color: var(--f-gold);
     margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-}
+    letter-spacing: 2px; */
+/* } */
 
 .f-brand p {
     font-family: 'Outfit', sans-serif;
@@ -704,19 +704,20 @@ body {
     box-shadow: 0 0 15px var(--f-gold);
 }
 
-/* Bottom Bar (Flex Wrap) */
-.base-bar {
-    background: #000;
-    padding: 25px 5%;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
+/* Bottom Bar (Flex Wrap)
+.base-bar { */
+    /* background: #000; */
+    /* padding: 25px 5%; */
+    /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+    /* display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.85rem;
     color: #666;
     flex-wrap: wrap;
+    width: 1250px; */
     /* Auto wrap on mobile */
-    gap: 20px;
+    /* gap: 20px;
 }
 
 .base-links a {
@@ -728,10 +729,10 @@ body {
 
 .base-links a:hover {
     color: var(--f-gold);
-}
+} */
 
 /* Mobile Alignment for Bottom Bar */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .base-bar {
         flex-direction: column;
         text-align: center;
@@ -740,4 +741,4 @@ body {
     .base-links a {
         margin: 0 10px;
     }
-}
+} */
