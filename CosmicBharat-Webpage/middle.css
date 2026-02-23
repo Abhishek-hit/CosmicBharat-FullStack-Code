@@ -139,19 +139,21 @@ html {
 /* --- TRINITY GRID (Bubbles) --- */
 .trinity-grid {
     display: flex;
-    flex-wrap: wrap;
-    margin-left: -20%;
-    /* Jagah kam hone par niche gir jayenge */
-    gap: clamp(20px, 4vw, 30px);
+    flex-wrap: nowrap; /* YAHAN CHANGE KIYA HAI - Ab ye niche nahi girenge */
+    gap: clamp(10px, 2vw, 30px); /* Gap thoda kam kiya taaki chhoti screen par fit ho jayein */
+    justify-content: flex-start; 
+    align-items: center;
+    width: 100%;
+    margin-top: 30px; 
     justify-content: center;
-    /* Center align on mobile */
 }
 
 .tri-card {
     text-align: center;
     position: relative;
-    /* Card width fluid rakhna */
-    width: min(150px, 28vw);
+    /* Minimum size 100px se 80px kar diya taaki nowrap hone par screen se bahar na nikle */
+    width: clamp(80px, 20vw, 150px); 
+  
 }
 
 .tri-circle {

@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sacred Geography - BharatRoots</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600&family=Tiro+Sanskrit&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="geo.css">
-    
+
 </head>
+
 <body>
 
-    <nav>
+    <!-- <nav>
         <a href="#" class="logo"><i class="fa-solid fa-map"></i> BharatRoots</a>
         <div class="nav-links">
             <a href="index.html" class="back-btn">Back Home</a>
         </div>
-    </nav>
+    </nav> -->
 
     <section class="hero">
         <div class="sanskrit-shloka">उत्तरं यत्समुद्रस्य हिमाद्रेश्चैव दक्षिणम् ।</div>
         <h1>Bhu-Mandala <br><span>Sacred Geography</span></h1>
-        <p>Explore the land where history was written. Map the ancient names of rivers, cities, and forests to their modern locations.</p>
+        <p>Explore the land where history was written. Map the ancient names of rivers, cities, and forests to their
+            modern locations.</p>
     </section>
 
-   <div class="dictionary-section">
-        <h2 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 20px;">The Great Dictionary of Places</h2>
+    <div class="dictionary-section">
+        <h2 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 20px;">The Great Dictionary of
+            Places</h2>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search Modern Name (e.g., Patna, Delhi, Indus)..." onkeyup="filterTable()">
+            <input type="text" id="searchInput" placeholder="Search Modern Name (e.g., Patna, Delhi, Indus)..."
+                onkeyup="filterTable()">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
@@ -44,140 +51,43 @@
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-                    </tbody>
+                </tbody>
             </table>
         </div>
     </div>
+    <!-- rivers ke liye -->
 
     <h2 class="category-title">Nadi Stuti <span>The Sacred Rivers</span></h2>
-    <div class="river-grid">
-        
-        <div class="river-card">
-            <div class="river-img-box">
-                <img src="https://images.unsplash.com/photo-1593106458390-c3676a7913c8?q=80&w=600" alt="Indus">
-            </div>
-            <div class="river-content">
-                <h3 class="ancient-name">Sindhu</h3>
-                <span class="modern-name">Modern: Indus River</span>
-                <p class="river-desc">The cradle of the Indus Valley Civilization. The name 'India' and 'Hindu' are geographically derived from this river.</p>
-                <a href="#" class="btn-map">View on Map <i class="fa-solid fa-location-arrow"></i></a>
-            </div>
-        </div>
-
-        <div class="river-card">
-            <div class="river-img-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Sarasvati_river_map.jpg/640px-Sarasvati_river_map.jpg" alt="Saraswati">
-            </div>
-            <div class="river-content">
-                <h3 class="ancient-name">Saraswati</h3>
-                <span class="modern-name">Modern: Lost / Ghaggar</span>
-                <p class="river-desc">The mightiest river of the Rigveda. It dried up around 1900 BCE due to tectonic shifts, leading to the decline of Harappan cities.</p>
-                <a href="#" class="btn-map">Read History <i class="fa-solid fa-book-open"></i></a>
-            </div>
-        </div>
-
-        <div class="river-card">
-            <div class="river-img-box">
-                <img src="https://images.unsplash.com/photo-1625126596347-2c6224303c27?q=80&w=600" alt="Narmada">
-            </div>
-            <div class="river-content">
-                <h3 class="ancient-name">Rewa</h3>
-                <span class="modern-name">Modern: Narmada</span>
-                <p class="river-desc">One of the oldest rivers in India. Fossils found in the Narmada valley suggest human habitation for over 100,000 years.</p>
-                <a href="#" class="btn-map">View on Map <i class="fa-solid fa-location-arrow"></i></a>
-            </div>
-        </div>
+    <div class="river-grid" id="dynamic-rivers">
     </div>
-
+    <!-- cities ke liye -->
     <h2 class="category-title">Janapadas <span>Lost Kingdoms & Cities</span></h2>
-    <div class="city-grid">
-        
-        <div class="city-card">
-            <div class="flip-inner">
-                <div class="flip-front">
-                    <div class="city-sanskrit">Indraprastha</div>
-                    <div class="city-sub">Capital of Pandavas</div>
-                    <p style="margin-top: 20px; color: #aaa; font-size: 0.8rem;">(Hover to Reveal)</p>
-                </div>
-                <div class="flip-back">
-                    <div class="city-modern-title">New Delhi</div>
-                    <p>Located near Purana Qila. Excavations have revealed pottery from the Mahabharata era.</p>
-                    <button class="btn-flip-action">See Location</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="city-card">
-            <div class="flip-inner">
-                <div class="flip-front">
-                    <div class="city-sanskrit">Pataliputra</div>
-                    <div class="city-sub">Capital of Empires</div>
-                    <p style="margin-top: 20px; color: #aaa; font-size: 0.8rem;">(Hover to Reveal)</p>
-                </div>
-                <div class="flip-back">
-                    <div class="city-modern-title">Patna</div>
-                    <p>The capital of Mauryan and Gupta empires. Once the largest city in the ancient world.</p>
-                    <button class="btn-flip-action">See Location</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="city-card">
-            <div class="flip-inner">
-                <div class="flip-front">
-                    <div class="city-sanskrit">Avantika</div>
-                    <div class="city-sub">City of Time</div>
-                    <p style="margin-top: 20px; color: #aaa; font-size: 0.8rem;">(Hover to Reveal)</p>
-                </div>
-                <div class="flip-back">
-                    <div class="city-modern-title">Ujjain</div>
-                    <p>Seat of Emperor Vikramaditya and a center for ancient astronomy (Zero Meridian of India).</p>
-                    <button class="btn-flip-action">See Location</button>
-                </div>
-            </div>
-        </div>
+    <div class="city-grid" id="dynamic-cities">
     </div>
+    <!-- mountain ke liye -->
 
     <h2 class="category-title">Aranya & Parvat <span>Forests & Mountains</span></h2>
-    <div class="nature-grid">
-        
-        <div class="nature-card">
-            <div class="nature-img">
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600" alt="Himalaya">
-            </div>
-            <div class="nature-icon"><i class="fa-solid fa-mountain"></i></div>
-            <div class="nature-content">
-                <h3 class="nature-title">Himavan</h3>
-                <span class="nature-sub">The Himalayas</span>
-                <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 15px;">"Abode of Snow". The spiritual guardian of the North and source of Ganga, Yamuna, and Brahmaputra.</p>
-                <button class="btn-legend">Read Mythology</button>
-            </div>
-        </div>
-
-        <div class="nature-card">
-            <div class="nature-img">
-                <img src="https://images.unsplash.com/photo-1448375240586-dfd8f3793371?q=80&w=600" alt="Forest">
-            </div>
-            <div class="nature-icon"><i class="fa-solid fa-tree"></i></div>
-            <div class="nature-content">
-                <h3 class="nature-title">Dandakaranya</h3>
-                <span class="nature-sub">Chhattisgarh / Odisha</span>
-                <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 15px;">The "Forest of Punishment". Lord Rama spent a significant part of his 14-year exile here.</p>
-                <button class="btn-legend">View Exile Map</button>
-            </div>
-        </div>
+    <div class="nature-grid" id="dynamic-nature">
     </div>
 
     <div class="fact-section">
         <i class="fa-solid fa-scroll fact-icon"></i>
-        <p class="fact-text">"Did you know? The ancient city of <strong>Varanasi (Kashi)</strong> is contemporary with Babylon and Nineveh, but while they are ruins, Kashi is still thriving."</p>
+        <p class="fact-text">"Did you know? The ancient city of <strong>Varanasi (Kashi)</strong> is contemporary with
+            Babylon and Nineveh, but while they are ruins, Kashi is still thriving."</p>
     </div>
 
-    <footer>
-        &copy; 2025 BharatRoots Geography Division.
-    </footer>
+    <div id="cosmicModal" class="cosmic-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" class="modal-title">Title</h2>
+            <div id="modalSubtitle" class="modal-subtitle">Subtitle</div>
+            <div id="modalBody" class="modal-body">
+                Detailed description will load here...
+            </div>
+        </div>
+    </div>
 
-    
+
     <script>
         // --- DATABASE FOR DICTIONARY ---
         const geoData = [
@@ -216,8 +126,8 @@
 
         function filterTable() {
             const input = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = geoData.filter(item => 
-                item.modern.toLowerCase().includes(input) || 
+            const filtered = geoData.filter(item =>
+                item.modern.toLowerCase().includes(input) ||
                 item.ancient.toLowerCase().includes(input) ||
                 item.desc.toLowerCase().includes(input)
             );
@@ -227,7 +137,185 @@
         // Initial Load
         loadTable(geoData);
 
+
+        // 1. DATA WITH FULL DESCRIPTION ADDED
+        const riverData = [
+            {
+                ancientName: "Sindhu",
+                modernName: "Modern: Indus River",
+                desc: "The cradle of the Indus Valley Civilization. The name 'India' is derived from it.",
+                fullDesc: "The Sindhu (Indus) river is one of the longest rivers in Asia. It originates in the Tibetan Plateau, flows through Ladakh, and forms the backbone of the ancient Harappan Civilization. Advanced ancient cities like Mohenjo-Daro and Harappa flourished on its banks. The hymns of the Rigveda frequently praise its mighty flow.",
+                img: "https://images.unsplash.com/photo-1593106458390-c3676a7913c8?q=80&w=600",
+                btnText: "Read More"
+            },
+            {
+                ancientName: "Saraswati",
+                modernName: "Modern: Lost / Ghaggar-Hakra",
+                desc: "The mightiest river of the Rigveda. Dried up around 1900 BCE.",
+                fullDesc: "Saraswati is the most glorified river in the ancient Vedas, described as a mighty, roaring river flowing from the mountains to the sea. Tectonic shifts and climate change caused it to dry up around 1900 BCE. Modern satellite imagery and ISRO's mapping have discovered its ancient underground paleochannel in the Thar desert.",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Sarasvati_river_map.jpg/640px-Sarasvati_river_map.jpg",
+                btnText: "Read More"
+            },
+            {
+                ancientName: "Rewa",
+                modernName: "Modern: Narmada",
+                desc: "One of the oldest rivers in India. Fossils show 100,000+ years of habitation.",
+                fullDesc: "Unlike most Indian rivers that flow east, the Narmada flows west through a rift valley. It is considered older than the river Ganga. The Narmada valley has yielded some of the oldest human fossils in South Asia, including the famous 'Narmada Human' (Homo erectus), proving the deep antiquity of human civilization in Bharat.",
+                img: "https://images.unsplash.com/photo-1625126596347-2c6224303c27?q=80&w=600",
+                btnText: "Read More"
+            }
+        ];
+
+        const cityData = [
+            {
+                ancientName: "Indraprastha",
+                subtitle: "Capital of Pandavas",
+                modernName: "New Delhi",
+                desc: "Located near Purana Qila. Excavations show Mahabharata era pottery.",
+                fullDesc: "Built by the Pandavas in the Mahabharata epic, Indraprastha was described as an architectural marvel created by Vishwakarma and Maya Danava. Archaeological digs near Delhi's Purana Qila have unearthed 'Painted Grey Ware' pottery, which historians date precisely to the Mahabharata period.",
+                btnText: "Explore Details"
+            },
+            {
+                ancientName: "Pataliputra",
+                subtitle: "Capital of Empires",
+                modernName: "Patna",
+                desc: "The capital of Mauryan and Gupta empires. Once the largest city globally.",
+                fullDesc: "Founded by Ajatashatru, Pataliputra became the seat of power for the great Mauryan Empire under Chandragupta and Ashoka. Greek ambassador Megasthenes described it as the greatest city in the world, enclosed by massive wooden walls and 64 gates. It remained a center of power, trade, and learning for nearly 1000 years.",
+                btnText: "Explore Details"
+            },
+            {
+                ancientName: "Avantika",
+                subtitle: "City of Time",
+                modernName: "Ujjain",
+                desc: "Seat of Vikramaditya and center for ancient astronomy.",
+                fullDesc: "Avantika (Ujjain) is one of the seven sacred cities of Bharat. It was the Prime Meridian for ancient Indian astronomers, serving as the 'Greenwich of India'. The legendary Emperor Vikramaditya ruled from here, and the great poet Kalidasa composed his masterpieces in this city's magnificent courts.",
+                btnText: "Explore Details"
+            }
+        ];
+        // 1. ADD NATURE DATA
+        const natureData = [
+            {
+                ancientName: "Himavan",
+                modernName: "The Himalayas",
+                desc: "\"Abode of Snow\". The spiritual guardian of the North and source of Ganga, Yamuna, and Brahmaputra.",
+                fullDesc: "In ancient texts, Himavan is personified as the king of the mountains and the father of Goddess Parvati (Shiva's consort) and Goddess Ganga. Beyond mythology, the Himalayas act as a massive climatic shield for the Indian subcontinent and hold the most sacred pilgrimage sites like Kedarnath, Badrinath, and Mount Kailash.",
+                img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600",
+                iconClass: "fa-mountain",
+                btnText: "Read Mythology"
+            },
+            {
+                ancientName: "Dandakaranya",
+                modernName: "Chhattisgarh / Odisha",
+                desc: "The \"Forest of Punishment\". Lord Rama spent a significant part of his 14-year exile here.",
+                fullDesc: "Dandakaranya is a vast, spiritually charged forest mentioned in the epic Ramayana. It was the home of deadly Rakshasas and revered sages performing tapasya. It spans parts of modern-day Chhattisgarh, Odisha, Maharashtra, and Andhra Pradesh. Many pivotal events, including the abduction of Mata Sita by Ravana, took place in this dense jungle.",
+                img: "https://images.unsplash.com/photo-1448375240586-dfd8f3793371?q=80&w=600",
+                iconClass: "fa-tree",
+                btnText: "View Exile Details"
+            }
+        ];
+
+
+        // 2. RENDER THE CARDS
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Render Rivers (Added index to the map function and onclick event)
+            const riverContainer = document.getElementById("dynamic-rivers");
+            riverContainer.innerHTML = riverData.map((river, index) => `
+            <div class="river-card">
+                <div class="river-img-box">
+                    <img src="${river.img}" alt="${river.ancientName}">
+                </div>
+                <div class="river-content">
+                    <h3 class="ancient-name">${river.ancientName}</h3>
+                    <span class="modern-name">${river.modernName}</span>
+                    <p class="river-desc">${river.desc}</p>
+                    <button class="btn-map" onclick="openModal('river', ${index})">${river.btnText} <i class="fa-solid fa-book-open"></i></button>
+                </div>
+            </div>
+        `).join('');
+
+            // Render Cities (Added index to the map function and onclick event)
+            const cityContainer = document.getElementById("dynamic-cities");
+            cityContainer.innerHTML = cityData.map((city, index) => `
+            <div class="city-card">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="city-sanskrit">${city.ancientName}</div>
+                        <div class="city-sub">${city.subtitle}</div>
+                        <p style="margin-top: 20px; color: #aaa; font-size: 0.8rem;">(Hover to Reveal)</p>
+                    </div>
+                    <div class="flip-back">
+                        <div class="city-modern-title">${city.modernName}</div>
+                        <p>${city.desc}</p>
+                        <button class="btn-flip-action" onclick="openModal('city', ${index})">${city.btnText}</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+            const natureContainer = document.getElementById("dynamic-nature");
+            natureContainer.innerHTML = natureData.map((nature, index) => `
+        <div class="nature-card">
+            <div class="nature-img">
+                <img src="${nature.img}" alt="${nature.ancientName}">
+            </div>
+            <div class="nature-icon"><i class="fa-solid ${nature.iconClass}"></i></div>
+            <div class="nature-content">
+                <h3 class="nature-title">${nature.ancientName}</h3>
+                <span class="nature-sub">${nature.modernName}</span>
+                <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 15px;">${nature.desc}</p>
+                <button class="btn-legend" onclick="openModal('nature', ${index})">${nature.btnText}</button>
+            </div>
+        </div>
+    `).join('');
+        });
+
+
+        // 3. MODAL LOGIC (Popup Open/Close)
+        // MODAL LOGIC (Updated to handle 'nature' type)
+        function openModal(type, index) {
+            let data;
+
+            // Check karo user ne kis section ke button par click kiya hai
+            if (type === 'river') {
+                data = riverData[index];
+            } else if (type === 'city') {
+                data = cityData[index];
+            } else if (type === 'nature') {
+                data = natureData[index];
+            }
+
+            // Put data inside the modal
+            document.getElementById('modalTitle').innerText = data.ancientName;
+            document.getElementById('modalSubtitle').innerText = data.modernName || data.subtitle;
+            document.getElementById('modalBody').innerHTML = `<p>${data.fullDesc}</p>`;
+
+            // Show the modal with a smooth animation
+            const modal = document.getElementById('cosmicModal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+        //mountaon
+
+        function closeModal() {
+            const modal = document.getElementById('cosmicModal');
+            modal.classList.remove('show');
+            // Animation khatam hone ke baad display none kar do
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        // Modal ke bahar dark area par click karne se bhi popup band ho jaye
+        window.onclick = function (event) {
+            const modal = document.getElementById('cosmicModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
     </script>
 
 </body>
+
 </html>

@@ -51,14 +51,32 @@ body {
     filter: blur(40px);
 }
 
+/* --- ORIGINAL LOAD ANIMATION + NEW HOVER TRANSITIONS --- */
 .hero h1 {
     font-family: 'Cinzel', serif;
     font-size: 4.5rem;
     margin-bottom: 20px;
-    background: linear-gradient(to bottom, #fff, var(--temple-gold));
+    /* Gradient ko lamba kiya hai taaki hover par color flow kare */
+    background: linear-gradient(to bottom, #fff, var(--temple-gold), #fff);
+    background-size: 100% 200%;
+    /* Gradient move karne ke liye jagah */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: slideUp 1s ease-out;
+    /* Hover ke liye ultra-smooth transition */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.5s ease,
+        background-position 0.6s ease;
+}
+
+/* --- THE MAGIC HOVER FOR H1 --- */
+.hero h1:hover {
+    transform: scale(1.03);
+    /* Halka sa 3D pop-out */
+    background-position: bottom;
+    /* Gold color upar se niche move karega */
+    /* Temple Gold ka ek divine glowing aura */
+    filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
 .hero p {
@@ -68,6 +86,21 @@ body {
     font-size: 1.3rem;
     line-height: 1.6;
     animation: slideUp 1.2s ease-out;
+    /* Text lift aur glow ke liye transition */
+    transition: color 0.4s ease,
+        transform 0.4s ease,
+        text-shadow 0.4s ease;
+}
+
+/* --- THE MAGIC HOVER FOR PARAGRAPH --- */
+.hero p:hover {
+    color: #ffffff;
+    /* Grey se pure white chamkega */
+    transform: translateY(-3px);
+    /* Halka sa hawa me uthega */
+    /* Text ke piche soft temple-gold aur white light */
+    text-shadow: 0 5px 15px rgba(255, 255, 255, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.2);
 }
 
 @keyframes fadeIn {
@@ -93,6 +126,7 @@ body {
 }
 
 /* --- Philosophy --- */
+/* --- THE SACRED CONTAINER --- */
 .philosophy {
     max-width: 1000px;
     margin: 10px auto 50px;
@@ -103,6 +137,27 @@ body {
     background: linear-gradient(180deg, rgba(212, 175, 55, 0.05), transparent);
     position: relative;
     overflow: hidden;
+    /* Smooth transitions for Hover effects */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- CONTAINER HOVER MAGIC (The Divine Glow) --- */
+.philosophy:hover {
+    transform: translateY(-8px);
+    /* Box hawa me smoothly uthega */
+    border-color: rgba(212, 175, 55, 0.8);
+    /* Border bright gold ho jayegi */
+    /* Background ka gold tint thoda aur badh jayega */
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.12), transparent);
+
+    /* 3-Layered Premium Glow */
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        /* 1. Deep Black Shadow (Box ko 3D pop dene ke liye) */
+        0 0 25px rgba(212, 175, 55, 0.3),
+        /* 2. Outer Golden Aura (Bahar ka glow) */
+        inset 0 0 40px rgba(212, 175, 55, 0.1);
+    /* 3. Inner Cosmic Glow (Box ke andar ki chamak) */
 }
 
 .philosophy::before {
