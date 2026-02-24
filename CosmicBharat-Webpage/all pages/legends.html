@@ -1,253 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legends & Warriors - BharatRoots</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600&family=Rye&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;600&family=Rye&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-war: #0a0202; /* Deep blood red/black */
+            --bg-war: #0a0202;
             --gold: #ffd700;
             --crimson: #ff0033;
             --steel: #b0c4de;
             --text-white: #e0e0e0;
-            --card-glass: rgba(255, 0, 51, 0.05);
+            --card-glass: rgba(20, 5, 5, 0.9);
             --border-war: rgba(255, 0, 51, 0.3);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-war);
             color: var(--text-white);
-            /* Grunge Texture for Battlefield feel */
             background-image: url('https://www.transparenttextures.com/patterns/black-scales.png');
             overflow-x: hidden;
         }
 
-        /* --- Nav --- */
-        nav {
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
-            position: sticky; top: 0; z-index: 1000;
-        }
-        .logo {
-            font-family: 'Cinzel', serif; font-size: 26px; font-weight: 800; color: var(--gold);
-            text-decoration: none; display: flex; align-items: center; gap: 10px;
-            text-shadow: 0 0 10px var(--crimson);
-        }
-        .back-btn {
-            color: white; text-decoration: none; border: 1px solid var(--crimson);
-            padding: 8px 25px; border-radius: 0; transform: skew(-20deg); transition: 0.3s;
-            background: rgba(255, 0, 51, 0.1);
-        }
-        .back-btn span { display: block; transform: skew(20deg); font-weight: 700; text-transform: uppercase; }
-        .back-btn:hover { background: var(--crimson); box-shadow: 0 0 20px var(--crimson); }
-
         /* --- Hero --- */
         .hero {
-            text-align: center; padding: 120px 20px 80px; position: relative;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
         }
+
         .hero-sword {
-            font-size: 6rem; color: var(--steel); margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px var(--crimson)); animation: floatSword 4s ease-in-out infinite;
+            font-size: 5rem;
+            color: var(--steel);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px var(--crimson));
+            animation: floatSword 4s ease-in-out infinite;
             transform: rotate(45deg);
         }
-        @keyframes floatSword { 0%, 100% { transform: translateY(0) rotate(45deg); } 50% { transform: translateY(-20px) rotate(45deg); } }
+
+        @keyframes floatSword {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(45deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(45deg);
+            }
+        }
 
         .hero h1 {
-            font-family: 'Cinzel', serif; font-size: 5rem; margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin-bottom: 10px;
             background: linear-gradient(to bottom, #fff, var(--crimson));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
         .hero-sub {
-            font-family: 'Rye', serif; color: var(--gold); font-size: 1.5rem; letter-spacing: 4px; text-transform: uppercase;
-            margin-bottom: 30px; display: block;
+            font-family: 'Rye', serif;
+            color: var(--gold);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
         }
-        .hero p { color: #aaa; max-width: 700px; margin: 0 auto; font-size: 1.2rem; }
 
-        /* --- THE LEGEND CARDS (Cinematic Style) --- */
+        .hero p {
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- GRID MAGIC --- */
         .legends-container {
-            padding: 50px 5%; max-width: 1400px; margin: 0 auto;
+            padding: 50px 2%;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
+        /* --- THE PORTRAIT CARDS --- */
         .legend-card {
-            display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 0;
-            background: #0f0505; border: 1px solid var(--border-war);
-            margin-bottom: 100px; position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            background: var(--card-glass);
+            border: 1px solid var(--border-war);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .legend-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(255, 0, 51, 0.3);
+        }
+
+        .legend-visual {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-war);
+        }
+
+        .legend-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(80%) contrast(1.2) brightness(0.8);
             transition: 0.5s;
         }
-        .legend-card:hover { transform: scale(1.02); border-color: var(--gold); }
 
-        /* Visual Side */
-        .legend-visual {
-            position: relative; overflow: hidden; min-height: 500px;
-            border-right: 1px solid var(--border-war);
+        .legend-card:hover .legend-img {
+            filter: grayscale(0%) contrast(1.1) brightness(1);
+            transform: scale(1.05);
         }
-        .legend-img {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(80%) contrast(1.2) brightness(0.7);
-            transition: 0.7s;
-        }
-        .legend-card:hover .legend-img { filter: grayscale(0%) contrast(1.1) brightness(1); transform: scale(1.1); }
-        
-        /* Overlay Era Badge */
+
         .era-badge {
-            position: absolute; top: 20px; left: 20px; background: var(--crimson); color: #fff;
-            padding: 5px 15px; font-family: 'Cinzel', serif; font-weight: 700; font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 2;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--crimson);
+            color: #fff;
+            padding: 4px 10px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            border-radius: 3px;
         }
 
-        /* Content Side */
+        /* Content Area */
         .legend-content {
-            padding: 60px 50px; position: relative;
-            background: linear-gradient(135deg, rgba(20, 5, 5, 0.9), rgba(10, 0, 0, 0.95));
-        }
-        
-        /* Watermark */
-        .bg-watermark {
-            position: absolute; right: 20px; bottom: 20px; font-size: 15rem;
-            color: rgba(255, 0, 51, 0.03); pointer-events: none; transform: rotate(-10deg);
+            padding: 25px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .warrior-title { font-size: 1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+        .warrior-title {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
         .warrior-name {
-            font-family: 'Cinzel', serif; font-size: 3.5rem; color: #fff; margin: 10px 0 20px;
-            line-height: 1; text-shadow: 0 5px 10px rgba(0,0,0,0.8);
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.1;
         }
+
         .war-cry {
-            font-family: 'Tiro Sanskrit', serif; color: var(--crimson); font-size: 1.4rem; margin-bottom: 20px;
-            border-left: 4px solid var(--gold); padding-left: 15px; font-style: italic;
+            font-family: 'Tiro Sanskrit', serif;
+            color: var(--crimson);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--gold);
+            padding-left: 10px;
+            font-style: italic;
         }
-        
-        .warrior-desc { color: #ccc; font-size: 1rem; line-height: 1.7; margin-bottom: 40px; max-width: 90%; }
 
-        /* Stats Grid */
         .stats-box {
-            display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;
+            margin-bottom: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
         }
-        .stat h4 { font-family: 'Cinzel', serif; color: var(--text-white); font-size: 0.9rem; margin-bottom: 5px; }
-        .stat span { color: var(--gold); font-size: 1.1rem; font-weight: 600; }
-        .stat i { color: var(--crimson); margin-right: 5px; }
 
-        /* Action Buttons */
-        .action-area { margin-top: 40px; display: flex; gap: 20px; }
-        
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .stat h4 {
+            font-family: 'Cinzel', serif;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .stat h4 i {
+            color: var(--crimson);
+            margin-right: 5px;
+            width: 15px;
+        }
+
+        .stat span {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .action-area {
+            margin-top: auto;
+        }
+
         .btn-story {
-            padding: 12px 30px; background: transparent; border: 1px solid var(--gold); color: var(--gold);
-            font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 5px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
         }
-        .btn-story:hover { background: var(--gold); color: #000; box-shadow: 0 0 20px var(--gold); }
 
-        /* Alternate Layout */
-        .legend-card.alt { grid-template-columns: 1.2fr 0.8fr; }
-        .legend-card.alt .legend-visual { order: 2; border-right: none; border-left: 1px solid var(--border-war); }
-        .legend-card.alt .legend-content { order: 1; text-align: right; }
-        .legend-card.alt .war-cry { border-left: none; border-right: 4px solid var(--gold); padding-left: 0; padding-right: 15px; }
-        .legend-card.alt .stats-box { justify-content: flex-end; }
-        .legend-card.alt .bg-watermark { left: 20px; right: auto; transform: rotate(10deg); }
-        .legend-card.alt .action-area { justify-content: flex-end; }
+        .btn-story:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--gold);
+        }
 
-        /* --- Modal (Story) --- */
+        /* --- Modal (Pop-up) Styles --- */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95);
-            z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: 0.5s;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.5s;
         }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
         .modal-box {
-            background: #0a0202; border: 1px solid var(--gold); padding: 50px; width: 80%; max-width: 900px;
-            max-height: 80vh; overflow-y: auto; position: relative; box-shadow: 0 0 50px rgba(255, 0, 51, 0.2);
+            background: #0a0202;
+            border: 1px solid var(--gold);
+            padding: 40px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 0, 51, 0.2);
+            border-radius: 10px;
         }
-        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: #fff; cursor: pointer; transition: 0.3s; }
-        .modal-close:hover { color: var(--crimson); transform: rotate(90deg); }
-        
-        .m-title { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--gold); margin-bottom: 10px; }
-        .m-era { color: var(--crimson); font-weight: bold; margin-bottom: 30px; display: block; letter-spacing: 2px; }
-        .m-text { font-size: 1.1rem; line-height: 1.8; color: #ccc; }
 
-        footer { text-align: center; padding: 50px; border-top: 1px solid var(--border-war); color: #666; margin-top: 100px; }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-        @media (max-width: 900px) {
-            .legend-card, .legend-card.alt { grid-template-columns: 1fr; }
-            .legend-visual { height: 300px; min-height: 300px; order: 1 !important; border: none; border-bottom: 1px solid var(--border-war); }
-            .legend-content { order: 2 !important; text-align: left !important; }
-            .stats-box { flex-wrap: wrap; justify-content: flex-start !important; }
-            .war-cry { border-left: 4px solid var(--gold) !important; border-right: none !important; padding-left: 15px !important; padding-right: 0 !important; }
-            .action-area { justify-content: flex-start !important; }
-            .hero h1 { font-size: 3.5rem; }
+        .modal-close:hover {
+            color: var(--crimson);
+            transform: rotate(90deg);
+        }
+
+        .m-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+            line-height: 1.1;
+        }
+
+        .m-era {
+            color: var(--crimson);
+            font-weight: bold;
+            margin-bottom: 25px;
+            display: block;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        .m-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #ccc;
         }
     </style>
 </head>
-<body>
 
-    <!-- <nav>
-        <a href="#" class="logo"><i class="fa-solid fa-shield-halved"></i> BharatRoots</a>
-        <a href="index.html" class="back-btn"><span>Back Home</span></a>
-    </nav> -->
+<body>
 
     <section class="hero">
         <i class="fa-solid fa-khanda hero-sword"></i>
         <h1>Legends of <span>Valor</span></h1>
         <span class="hero-sub">Veer Bhogya Vasundhara</span>
-        <p>The Brave shall inherit the Earth. Discover the stories of the warriors who protected Dharma with their blood and steel.</p>
+        <p>The Brave shall inherit the Earth. Discover the stories of the warriors who protected Dharma with their blood
+            and steel.</p>
     </section>
 
     <div class="legends-container">
-
         <div class="legend-card">
             <div class="legend-visual">
                 <span class="era-badge">1630 - 1680 CE</span>
-                <img src="https://images.unsplash.com/photo-1620326863755-36996545911d?q=80&w=800" class="legend-img" alt="Shivaji"> </div>
+                <img src="https://images.unsplash.com/photo-1620326863755-36996545911d?q=80&w=600" class="legend-img"
+                    alt="Shivaji">
+            </div>
             <div class="legend-content">
-                <i class="fa-solid fa-horse-head bg-watermark"></i>
-                <span class="warrior-title">The Father of Indian Navy</span>
+                <span class="warrior-title">Father of Navy</span>
                 <h2 class="warrior-name">Chhatrapati Shivaji</h2>
                 <div class="war-cry">"Har Har Mahadev!"</div>
-                <p class="warrior-desc">
-                    He challenged the mighty Mughal Empire with a handful of soldiers. Pioneering <strong>Guerilla Warfare (Ganimi Kava)</strong>, he built forts on land and sea to protect Swarajya. He was not just a king, but a master strategist who prioritized the welfare of farmers and women.
-                </p>
-                
                 <div class="stats-box">
-                    <div class="stat"><h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Strategy</span></div>
-                    <div class="stat"><h4><i class="fa-solid fa-gavel"></i> Weapon</h4><span>Bhavani Sword</span></div>
-                    <div class="stat"><h4><i class="fa-solid fa-crown"></i> Legacy</h4><span>Hindavi Swarajya</span></div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Guerilla Warfare</span>
+                    </div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-gavel"></i> Weapon</h4><span>Bhavani Sword</span>
+                    </div>
                 </div>
-
                 <div class="action-area">
-                    <a href="#" class="btn-story" onclick="openStory('shivaji')">Read Chronicle <i class="fa-solid fa-scroll"></i></a>
+                    <a href="javascript:void(0)" class="btn-story" onclick="openStory('shivaji')">Read Chronicle</a>
                 </div>
             </div>
         </div>
 
-        <div class="legend-card alt">
+        <div class="legend-card">
             <div class="legend-visual">
                 <span class="era-badge">1540 - 1597 CE</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Chandragupta_Maurya_Statue.jpg" class="legend-img" alt="Pratap"> </div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Chandragupta_Maurya_Statue.jpg"
+                    class="legend-img" alt="Pratap">
+            </div>
             <div class="legend-content">
-                <i class="fa-solid fa-shield-cat bg-watermark"></i>
-                <span class="warrior-title">The Lion of Mewar</span>
+                <span class="warrior-title">Lion of Mewar</span>
                 <h2 class="warrior-name">Maharana Pratap</h2>
-                <div class="war-cry">"My head bows only to Eklingji."</div>
-                <p class="warrior-desc">
-                    While all other kings surrendered to Akbar, Pratap stood alone. In the <strong>Battle of Haldighati</strong>, he fought with a spear weighing 80kg. He lived in the forest, ate grass rotis, but never compromised his freedom. He is the ultimate symbol of self-respect.
-                </p>
-                
+                <div class="war-cry">"Death before slavery."</div>
                 <div class="stats-box">
-                    <div class="stat"><h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Resilience</span></div>
-                    <div class="stat"><h4><i class="fa-solid fa-horse"></i> Companion</h4><span>Chetak</span></div>
-                    <div class="stat"><h4><i class="fa-solid fa-crown"></i> Legacy</h4><span>Undying Freedom</span></div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Resilience</span>
+                    </div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-horse"></i> Companion</h4><span>Chetak</span>
+                    </div>
                 </div>
-
                 <div class="action-area">
-                    <a href="#" class="btn-story" onclick="openStory('pratap')">Read Chronicle <i class="fa-solid fa-scroll"></i></a>
+                    <a href="javascript:void(0)" class="btn-story" onclick="openStory('pratap')">Read Chronicle</a>
                 </div>
             </div>
         </div>
@@ -255,54 +388,98 @@
         <div class="legend-card">
             <div class="legend-visual">
                 <span class="era-badge">321 - 297 BCE</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Pataliputra_capital.jpg" class="legend-img" alt="Chandragupta"> </div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Pataliputra_capital.jpg"
+                    class="legend-img" alt="Chandragupta">
+            </div>
             <div class="legend-content">
-                <i class="fa-solid fa-chess-rook bg-watermark"></i>
-                <span class="warrior-title">The First Emperor</span>
-                <h2 class="warrior-name">Chandragupta Maurya</h2>
+                <span class="warrior-title">First Emperor</span>
+                <h2 class="warrior-name">Chandragupta</h2>
                 <div class="war-cry">"United We Stand."</div>
-                <p class="warrior-desc">
-                    From a commoner to the Emperor of Akhand Bharat. Guided by the genius of <strong>Chanakya</strong>, he defeated the Greek general Seleucus Nicator and the corrupt Nanda dynasty. He established a unified administration that ran from Afghanistan to Bengal.
-                </p>
-                
                 <div class="stats-box">
-                    <div class="stat"><h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Speed & Spies</span></div>
-                    <div class="stat"><h4><i class="fa-solid fa-user-graduate"></i> Mentor</h4><span>Chanakya</span></div>
-                    <div class="stat"><h4><i class="fa-solid fa-crown"></i> Legacy</h4><span>Unified India</span></div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Speed & Spies</span>
+                    </div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-user-graduate"></i> Mentor</h4><span>Chanakya</span>
+                    </div>
                 </div>
-
                 <div class="action-area">
-                    <a href="#" class="btn-story" onclick="openStory('chandra')">Read Chronicle <i class="fa-solid fa-scroll"></i></a>
+                    <a href="javascript:void(0)" class="btn-story" onclick="openStory('chandra')">Read Chronicle</a>
                 </div>
             </div>
         </div>
 
-        <div class="legend-card alt">
+        <div class="legend-card">
             <div class="legend-visual">
-                <span class="era-badge">Mahabharata Era</span>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Abhimanyu_chakravyuha.jpg/640px-Abhimanyu_chakravyuha.jpg" class="legend-img" alt="Abhimanyu">
+                <span class="era-badge">Mahabharata</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Abhimanyu_chakravyuha.jpg/640px-Abhimanyu_chakravyuha.jpg"
+                    class="legend-img" alt="Abhimanyu">
             </div>
             <div class="legend-content">
-                <i class="fa-solid fa-dharmachakra bg-watermark"></i>
-                <span class="warrior-title">The Youngest Hero</span>
+                <span class="warrior-title">Youngest Hero</span>
                 <h2 class="warrior-name">Veer Abhimanyu</h2>
                 <div class="war-cry">"Courage needs no age."</div>
-                <p class="warrior-desc">
-                    At 16, he pierced the impenetrable <strong>Chakravyuha</strong> formation. Knowing how to enter but not exit, he fought the greatest warriors of the era alone. Even after losing his weapons, he fought with a chariot wheel. His sacrifice changed the course of the war.
-                </p>
-                
                 <div class="stats-box">
-                    <div class="stat"><h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Fearlessness</span></div>
-                    <div class="stat"><h4><i class="fa-solid fa-bullseye"></i> Skill</h4><span>Archery</span></div>
-                    <div class="stat"><h4><i class="fa-solid fa-crown"></i> Legacy</h4><span>Sacrifice</span></div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-bullseye"></i> Skill</h4><span>Archery</span>
+                    </div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-crown"></i> Feat</h4><span>Chakravyuha</span>
+                    </div>
                 </div>
-
                 <div class="action-area">
-                    <a href="#" class="btn-story" onclick="openStory('abhimanyu')">Read Chronicle <i class="fa-solid fa-scroll"></i></a>
+                    <a href="javascript:void(0)" class="btn-story" onclick="openStory('abhimanyu')">Read Chronicle</a>
                 </div>
             </div>
         </div>
 
+        <div class="legend-card">
+            <div class="legend-visual">
+                <span class="era-badge">1660 CE</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Baji_Prabhu_Deshpande.jpg"
+                    class="legend-img" alt="Baji Prabhu">
+            </div>
+            <div class="legend-content">
+                <span class="warrior-title">The Iron Wall</span>
+                <h2 class="warrior-name">Baji Prabhu</h2>
+                <div class="war-cry">"Until the King is safe!"</div>
+                <div class="stats-box">
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Dual Swords</span>
+                    </div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-shield"></i> Battle</h4><span>Pawankhind</span>
+                    </div>
+                </div>
+                <div class="action-area">
+                    <a href="javascript:void(0)" class="btn-story" onclick="openStory('baji')">Read Chronicle</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend-card">
+            <div class="legend-visual">
+                <span class="era-badge">1828 - 1858 CE</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Rani_of_jhansi.jpg" class="legend-img"
+                    alt="Lakshmibai">
+            </div>
+            <div class="legend-content">
+                <span class="warrior-title">Warrior Queen</span>
+                <h2 class="warrior-name">Rani Lakshmibai</h2>
+                <div class="war-cry">"Main Jhansi nahi dungi!"</div>
+                <div class="stats-box">
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-chess-knight"></i> Strength</h4><span>Cavalry Combat</span>
+                    </div>
+                    <div class="stat">
+                        <h4><i class="fa-solid fa-crown"></i> Legacy</h4><span>First Freedom War</span>
+                    </div>
+                </div>
+                <div class="action-area">
+                    <a href="javascript:void(0)" class="btn-story" onclick="openStory('rani')">Read Chronicle</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal-overlay" id="modal">
@@ -315,10 +492,6 @@
             </div>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 BharatRoots. The Legacy Lives On.
-    </footer>
 
     <script>
         const stories = {
@@ -341,12 +514,22 @@
                 name: "Veer Abhimanyu",
                 era: "Mahabharata (Dwapara Yuga)",
                 text: "Abhimanyu was the son of Arjuna and Subhadra. He was the nephew of Lord Krishna. He is famous for his role in the Kurukshetra War, where he entered the Chakravyuha battle formation. He fought valiantly against the Kaurava warriors including Drona, Karna, Duryodhana, and Dushasana. He held them off single-handedly, allowing the Pandava army to regroup."
+            },
+            baji: {
+                name: "Baji Prabhu Deshpande",
+                era: "Maratha Empire (1660 CE)",
+                text: "Baji Prabhu was a commander of Shivaji Maharaj. During the escape from Panhala fort, Baji Prabhu and 300 soldiers held off 10,000 enemy troops at the narrow pass of Pawankhind. Grievously wounded, he refused to die until he heard the cannon fire confirming his king had reached safety."
+            },
+            rani: {
+                name: "Rani Lakshmibai",
+                era: "Rebellion of 1857",
+                text: "The Queen of Jhansi was one of the leading figures of the Indian Rebellion of 1857. Refusing to cede her kingdom to the British East India Company under the 'Doctrine of Lapse', she tied her infant son to her back and fought fiercely on horseback, becoming a symbol of resistance."
             }
         };
 
         function openStory(key) {
             const data = stories[key];
-            if(data) {
+            if (data) {
                 document.getElementById('m-name').innerText = data.name;
                 document.getElementById('m-era').innerText = data.era;
                 document.getElementById('m-text').innerText = data.text;
@@ -358,10 +541,12 @@
             document.getElementById('modal').classList.remove('active');
         }
 
-        window.onclick = function(e) {
+        // Close modal when clicking outside the box
+        window.onclick = function (e) {
             if (e.target == document.getElementById('modal')) closeModal();
         }
     </script>
 
 </body>
+
 </html>

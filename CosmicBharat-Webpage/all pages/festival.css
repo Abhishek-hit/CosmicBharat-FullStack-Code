@@ -101,7 +101,127 @@
         .cal-sanskrit { font-family: 'Cinzel', serif; font-weight: 700; display: block; margin-bottom: 5px; color: var(--festive-gold); transition: 0.3s; }
         .cal-item:hover .cal-sanskrit { color: #000; }
         .cal-eng { font-size: 0.85rem; opacity: 0.8; }
+/* --- INDIVIDUAL FESTIVALS SECTION --- */
+        .individual-fest-section {
+            padding: 80px 20px;
+            --card-bg: rgba(40, 20, 10, 0.6);
+            position: relative;
+        }
 
+        .ind-fest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* The Premium Card Base */
+        .ind-fest-card {
+            background: linear-gradient(145deg, rgba(30, 15, 8, 0.8), rgba(15, 5, 2, 0.9));
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 204, 0, 0.05);
+            /* Soft shadow normal state */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Inner Glow Border (Premium Magic) */
+        .card-glow-border {
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px; /* Thickness of glow border */
+            background: linear-gradient(135deg, var(--festive-orange), transparent, var(--festive-gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+
+        .ind-fest-card:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(145deg, rgba(40, 20, 10, 0.9), rgba(20, 8, 4, 1));
+            box-shadow: 0 15px 40px rgba(255, 94, 0, 0.15);
+        }
+
+        .ind-fest-card:hover .card-glow-border {
+            opacity: 1; /* Shows the glowing gradient border on hover */
+        }
+
+        /* Icon Styling */
+        .f-icon-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.5s;
+        }
+
+        .ind-fest-card:hover .f-icon-wrap {
+            transform: scale(1.15) rotate(5deg);
+            background: rgba(255, 94, 0, 0.1);
+            border-color: var(--festive-gold);
+            box-shadow: inset 0 0 20px rgba(255, 204, 0, 0.2);
+        }
+
+        /* Title */
+        .f-name {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Dedication Ribbon */
+        .f-dedication {
+            background: linear-gradient(90deg, transparent, rgba(255, 94, 0, 0.15), transparent);
+            text-align: center;
+            padding: 8px 0;
+            margin-bottom: 25px;
+            border-top: 1px solid rgba(255, 204, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+            color: var(--festive-gold);
+            font-size: 0.9rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .f-dedication span {
+            color: #fff;
+            opacity: 0.7;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-right: 5px;
+        }
+
+        /* Reason/Significance Text */
+        .f-reason {
+            color: var(--text-grey);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .f-reason strong {
+            color: var(--festive-orange);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
         /* --- Festival Cards (Enhanced) --- */
         .fest-grid {
             max-width: 1300px; margin: 0 auto 100px; padding: 0 20px;
