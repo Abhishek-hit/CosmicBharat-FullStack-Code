@@ -52,8 +52,10 @@
     <!-- science used by it -->
 
     <div class="anatomy-section">
-        <h2 class="section-heading" style="font-size: 2.5rem;">Science of the Structure</h2>
-        <p style="color: #888; margin-bottom: 30px;">Every part of a temple has a scientific purpose.</p>
+        <div class="anatomy-section-title">
+            <h2 class="" style="font-size: 2.5rem; ">Science of the Structure</h2>
+            <p style="color: #888; ">Every part of a temple has a scientific purpose.</p>
+        </div>
         <div class="anatomy-grid">
             <div class="part-card">
                 <i class="fa-solid fa-cube part-icon"></i>
@@ -81,9 +83,9 @@
             <div id="modalDescription">Description here...</div>
         </div>
     </div>
-    <footer>
+    <!-- <footer>
         &copy; 2025 BharatRoots Architecture Division.
-    </footer>
+    </footer> -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -111,7 +113,7 @@
                 {
                     "title": "Nagara Style",
                     "icon": "fa-solid fa-mountain",
-                    "image": "https://images.unsplash.com/photo-1544207240-8b1025eb7aeb?q=80&w=600",
+                    "image": "Images/Nagra.png",
                     "desc": "Prevalent in North India. Characterized by curvilinear towers ('Shikharas').",
                     "detailedDesc": "The Nagara style is distinct to North India. The temples are built on a stone platform (Jagati). The most prominent feature is the **Shikhara** (a mountain-like spire) that curves inwards as it rises.",
                     "features": [
@@ -125,7 +127,7 @@
                 {
                     "title": "Dravida Style",
                     "icon": "fa-solid fa-layer-group",
-                    "image": "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=600",
+                    "image": "Images/Dravina.png",
                     "desc": "Prevalent in South India. Known for pyramid-shaped towers and grand gateways.",
                     "detailedDesc": "The Dravida style flourished in South India. Unlike Nagara, these temples are enclosed within compound walls. The main tower is called **Vimana**, and the entrance gateway is called **Gopuram**.",
                     "features": [
@@ -139,7 +141,7 @@
                 {
                     "title": "Vesara Style",
                     "icon": "fa-solid fa-link",
-                    "image": "https://images.unsplash.com/photo-1621829636437-0f8456db4065?q=80&w=600",
+                    "image": "Images/vesra.png",
                     "desc": "A hybrid fusion of Nagara and Dravida styles, mostly found in the Deccan region.",
                     "detailedDesc": "Vesara is a hybrid style found in the Deccan region (Karnataka). It combines the Shikhara of North India and the Vimana of South India. These temples are often star-shaped.",
                     "features": [
@@ -177,6 +179,7 @@
                         if (modalImg) {
                             modalImg.src = item.image;
                             modalImg.style.display = 'block';
+                               
                         }
 
                         const featuresHTML = item.features.map(f => `<li style="margin-bottom:6px;">${f}</li>`).join('');
@@ -200,82 +203,82 @@
 
             initStyles();
 
-// // ==========================================
-    // 4. DATA: ENGINEERING MARVELS
-    // ==========================================
-    const marvelsData = [
-        {
-            "title": "Konark Sun Temple",
-            "location": "Odisha",
-            "image": "https://images.unsplash.com/photo-1544207240-8b1025eb7aeb?q=80&w=600",
-            "icon": "fa-solid fa-sun",
-            "desc": "Designed as a giant chariot with 24 wheels that act as accurate sundials.",
-            "tag": "Ancient Astronomy", // Special Tag
-            "tagIcon": "fa-solid fa-clock",
-            "detailedDesc": "The Konark Sun Temple is a massive representation of the Sun God's chariot. It has 24 intricately carved stone wheels which are actually **sundials**. They can calculate time accurately to the minute, day, and night just by the shadow cast by the sun.",
-            "facts": [
-                "24 Wheels represent the hours of the day.",
-                "7 Horses represent the days of the week.",
-                "Built using Iron Beams and Magnets.",
-                "UNESCO World Heritage Site."
-            ]
-        },
-        {
-            "title": "Brihadeeswarar Temple",
-            "location": "Thanjavur, Tamil Nadu",
-            "image": "https://images.unsplash.com/photo-1621829636437-0f8456db4065?q=80&w=600",
-            "icon": "fa-solid fa-building-columns",
-            "desc": "The world's first complete granite temple. The apex stone weighs 80 tons.",
-            "tag": "Structural Mystery",
-            "tagIcon": "fa-solid fa-question",
-            "detailedDesc": "Completed in 1010 AD by Raja Raja Chola I. It is a mystery how the **80-ton Kumbam (capstone)** was lifted to the top of the 216-feet tower without modern cranes. Theory suggests a 6km long earthen ramp was used to roll the stone up.",
-            "facts": [
-                "Made entirely of Granite (Interlocking stones, no cement).",
-                "The shadow of the main tower never falls on the ground at noon.",
-                "One of the tallest temple towers (Vimana) in the world.",
-                "Survived 6 earthquakes."
-            ]
-        },
-        {
-            "title": "Kailasa Temple",
-            "location": "Ellora, Maharashtra",
-            "image": "https://images.unsplash.com/photo-1590053164860-252989c95b6e?q=80&w=600",
-            "icon": "fa-solid fa-gem",
-            "desc": "The only temple in the world carved from the top down out of a single rock mountain.",
-            "tag": "Civil Engineering Miracle",
-            "tagIcon": "fa-solid fa-hammer",
-            "detailedDesc": "The Kailasa Temple is the largest monolithic structure in the world. Unlike regular buildings built from the ground up, this was carved **vertically (Top-Down)** from a single basalt cliff. Over 200,000 tons of rock were scooped out with chisels and hammers.",
-            "facts": [
-                "Carved from a single rock (Monolithic).",
-                "Zero mistakes allowed (You can't add stone back).",
-                "Complex drainage system and rainwater harvesting.",
-                "Estimated to take 100 years, but finished in 18 years."
-            ]
-        }
-    ];
+            // // ==========================================
+            // 4. DATA: ENGINEERING MARVELS
+            // ==========================================
+            const marvelsData = [
+                {
+                    "title": "Konark Sun Temple",
+                    "location": "Odisha",
+                    "image": "Images/konark.png",
+                    "icon": "fa-solid fa-sun",
+                    "desc": "Designed as a giant chariot with 24 wheels that act as accurate sundials.",
+                    "tag": "Ancient Astronomy", // Special Tag
+                    "tagIcon": "fa-solid fa-clock",
+                    "detailedDesc": "The Konark Sun Temple is a massive representation of the Sun God's chariot. It has 24 intricately carved stone wheels which are actually **sundials**. They can calculate time accurately to the minute, day, and night just by the shadow cast by the sun.",
+                    "facts": [
+                        "24 Wheels represent the hours of the day.",
+                        "7 Horses represent the days of the week.",
+                        "Built using Iron Beams and Magnets.",
+                        "UNESCO World Heritage Site."
+                    ]
+                },
+                {
+                    "title": "Brihadeeswarar Temple",
+                    "location": "Thanjavur, Tamil Nadu",
+                    "image": "Images/Bradeswar.png",
+                    "icon": "fa-solid fa-building-columns",
+                    "desc": "The world's first complete granite temple. The apex stone weighs 80 tons.",
+                    "tag": "Structural Mystery",
+                    "tagIcon": "fa-solid fa-question",
+                    "detailedDesc": "Completed in 1010 AD by Raja Raja Chola I. It is a mystery how the **80-ton Kumbam (capstone)** was lifted to the top of the 216-feet tower without modern cranes. Theory suggests a 6km long earthen ramp was used to roll the stone up.",
+                    "facts": [
+                        "Made entirely of Granite (Interlocking stones, no cement).",
+                        "The shadow of the main tower never falls on the ground at noon.",
+                        "One of the tallest temple towers (Vimana) in the world.",
+                        "Survived 6 earthquakes."
+                    ]
+                },
+                {
+                    "title": "Kailasa Temple",
+                    "location": "Ellora, Maharashtra",
+                    "image": "Images/kailash.png",
+                    "icon": "fa-solid fa-gem",
+                    "desc": "The only temple in the world carved from the top down out of a single rock mountain.",
+                    "tag": "Civil Engineering Miracle",
+                    "tagIcon": "fa-solid fa-hammer",
+                    "detailedDesc": "The Kailasa Temple is the largest monolithic structure in the world. Unlike regular buildings built from the ground up, this was carved **vertically (Top-Down)** from a single basalt cliff. Over 200,000 tons of rock were scooped out with chisels and hammers.",
+                    "facts": [
+                        "Carved from a single rock (Monolithic).",
+                        "Zero mistakes allowed (You can't add stone back).",
+                        "Complex drainage system and rainwater harvesting.",
+                        "Estimated to take 100 years, but finished in 18 years."
+                    ]
+                }
+            ];
 
-    // ==========================================
-    // 5. LOGIC: RENDER MARVELS
-    // ==========================================
+            // ==========================================
+            // 5. LOGIC: RENDER MARVELS
+            // ==========================================
 
-    const initMarvels = () => {
-        const container = document.getElementById('marvels-grid');
-        if (!container) return;
+            const initMarvels = () => {
+                const container = document.getElementById('marvels-grid');
+                if (!container) return;
 
-        container.innerHTML = ''; // Clean container
-        
-        // CSS Grid Styles Inject karna (Agar CSS file me nahi hai to)
-      
+                container.innerHTML = ''; // Clean container
 
-        marvelsData.forEach(item => {
-            // A. Create Card Element
-            const card = document.createElement('div');
-            card.className = 'marvel-card'; // Tumhari existing CSS class
-            
-            // Special Tag Logic (Sirf tab dikhega jab data me tag ho)
-           // Special Tag Logic (Responsive Fix)
-const tagHTML = item.tag 
-    ? `<div class="science-tag" style="
+                // CSS Grid Styles Inject karna (Agar CSS file me nahi hai to)
+
+
+                marvelsData.forEach(item => {
+                    // A. Create Card Element
+                    const card = document.createElement('div');
+                    card.className = 'marvel-card'; // Tumhari existing CSS class
+
+                    // Special Tag Logic (Sirf tab dikhega jab data me tag ho)
+                    // Special Tag Logic (Responsive Fix)
+                    const tagHTML = item.tag
+                        ? `<div class="science-tag" style="
         display: inline-flex; 
         align-items: center; 
         gap: 8px; 
@@ -293,12 +296,12 @@ const tagHTML = item.tag
         white-space: nowrap;       /* Text ek line me rahega */
        ">
          <i class="${item.tagIcon}"></i> ${item.tag}
-       </div>` 
-    : '';
+       </div>`
+                        : '';
 
-            // Card HTML Structure
-            // Card HTML Structure (Clean - No extra CSS)
-            card.innerHTML = `
+                    // Card HTML Structure
+                    // Card HTML Structure (Clean - No extra CSS)
+                    card.innerHTML = `
                 <div class="marvel-img-placeholder" style="background-image: url('${item.image}');">
                     <i class="${item.icon}"></i>
                 </div>
@@ -318,33 +321,33 @@ const tagHTML = item.tag
                     </a>
                 </div>
             `;
-            container.appendChild(card);
+                    container.appendChild(card);
 
-            // B. Click Event (Popup Logic)
-            const btn = card.querySelector('.explore-btn');
-            
-            // Button default click roko
-            btn.addEventListener('click', (e) => { e.preventDefault(); });
+                    // B. Click Event (Popup Logic)
+                    const btn = card.querySelector('.explore-btn');
 
-            // Pure card par click listener
-            card.addEventListener('click', () => {
-                
-                // 1. Popup Title & Image Set Karna
-                modalTitle.innerText = item.title;
-                if(modalImg) {
-                    modalImg.src = item.image;
-                    modalImg.style.display = 'block';
-                    modalImg.style.height = "250px";
-                    modalImg.style.objectFit = "cover";
-                    modalImg.style.borderRadius = "8px";
-                    modalImg.style.border = "none";
-                }
+                    // Button default click roko
+                    btn.addEventListener('click', (e) => { e.preventDefault(); });
 
-                // 2. Facts List HTML Banana
-                const factsHTML = item.facts.map(f => `<li style="margin-bottom: 8px;">${f}</li>`).join('');
+                    // Pure card par click listener
+                    card.addEventListener('click', () => {
 
-                // 3. Popup Content (Red Theme for Engineering)
-                modalDesc.innerHTML = `
+                        // 1. Popup Title & Image Set Karna
+                        modalTitle.innerText = item.title;
+                        if (modalImg) {
+                            modalImg.src = item.image;
+                            modalImg.style.display = 'block';
+                            modalImg.style.height = "250px";
+                            modalImg.style.objectFit = "cover";
+                            modalImg.style.borderRadius = "8px";
+                            modalImg.style.border = "none";
+                        }
+
+                        // 2. Facts List HTML Banana
+                        const factsHTML = item.facts.map(f => `<li style="margin-bottom: 8px;">${f}</li>`).join('');
+
+                        // 3. Popup Content (Red Theme for Engineering)
+                        modalDesc.innerHTML = `
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #7f8c8d;">
                         <i class="fa-solid fa-map-pin"></i> <strong>Location:</strong> ${item.location}
                     </div>
@@ -363,14 +366,14 @@ const tagHTML = item.tag
                     </div>
                 `;
 
-                // 4. Modal Show Karna
-                modal.style.display = 'flex';
-            });
-        });
-    };
+                        // 4. Modal Show Karna
+                        modal.style.display = 'flex';
+                    });
+                });
+            };
 
-    // Initialize Function call zaroor karna
-    initMarvels();
+            // Initialize Function call zaroor karna
+            initMarvels();
 
         });
 

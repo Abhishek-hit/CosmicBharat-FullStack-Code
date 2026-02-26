@@ -153,6 +153,7 @@ html {
     position: relative;
     /* Minimum size 100px se 80px kar diya taaki nowrap hone par screen se bahar na nikle */
     width: clamp(80px, 20vw, 150px); 
+    cursor: text;
   
 }
 
@@ -195,12 +196,12 @@ html {
     }
 }
 
-.tri-card:hover .tri-circle {
+/* .tri-card:hover .tri-circle {
     transform: scale(1.1);
     background: rgba(238, 205, 163, 0.1);
     box-shadow: 0 0 50px var(--saffron-dust);
     color: #fff;
-}
+} */
 
 .tri-label {
     font-size: clamp(0.7rem, 2vw, 0.9rem);

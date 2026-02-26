@@ -215,6 +215,30 @@ body {
     /* Padding fixed: removed huge 300px padding */
     padding: 80px 20px;
     position: relative;
+
+}
+.section-title-timeline{
+    margin-left: 15%;
+}
+
+.section-title-timeline h2 {
+    font-family: 'Cinzel', serif;
+    /* IMPORTANT: Scales from 2.5rem (Mobile) to 4.5rem (PC) */
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--vidya-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}
+
+.section-title-timeline p {
+    color: var(--text-grey);
+    /* Width logic: Max 800px, otherwise 90% of screen */
+    width: min(800px, 90%);
+    
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
 }
 
 .timeline {

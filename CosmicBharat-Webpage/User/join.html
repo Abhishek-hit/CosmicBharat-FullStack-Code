@@ -8,6 +8,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;500&display=swap"
         rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Outfit:wght@300;500;700&family=Tiro+Sanskrit&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -16,6 +20,14 @@
             --gold-dim: #b8860b;
             --glass: rgba(10, 10, 15, 0.65);
             --white: #ffffff;
+            --saffron: #ff5e00;
+            --text-white: #ffffff;
+            --text-grey: #b0b0b0;
+            --border-glow: rgba(255, 215, 0, 0.3);
+            --gold-pure: #ffc800;
+            --gold-prime: #ffcc00;
+            --saffron-fire: #ff4800;
+            --cosmic-cyan: #00f2ff;
         }
 
         * {
@@ -104,22 +116,7 @@
             }
         }
 
-        .logo h1 {
-            font-family: 'Cinzel', serif;
-            color: white;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            letter-spacing: 2px;
-        }
-
-        .logo p {
-            color: #aaa;
-            font-size: 0.80rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
+       
 
         /* Tabs */
         .tabs {
@@ -266,6 +263,54 @@
         .links span:hover {
             text-shadow: 0 0 8px var(--gold);
         }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .main-title {
+            font-family: 'Cinzel Decorative', serif;
+            /* Main Title scales automatically */
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Gradients */
+        .text-cosmic {
+            background: linear-gradient(to bottom, #fff, var(--cosmic-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        .text-bharat {
+            background: linear-gradient(to bottom, var(--gold-prime), var(--saffron-fire));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+        }
+
+        .brand-tagline {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            margin-top: 4px;
+            margin-left: 2px;
+        }
     </style>
 </head>
 
@@ -274,8 +319,12 @@
     <div class="glass-box">
         <div class="logo">
             <i class="fa-solid fa-infinity brand-icon"></i>
-            <h1>CosmicBharat</h1>
-            <p>Eternal • Scientific • Divine</p>
+            <div class="brand-text">
+                <div class="main-title">
+                    <span class="text-cosmic">Cosmic</span><span class="text-bharat">Bharat</span>
+                </div>
+                <div class="brand-tagline">Unveiling • The Eternal • Legacy</div>
+            </div>
         </div>
 
         <div class="tabs">
