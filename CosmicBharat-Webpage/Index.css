@@ -742,3 +742,50 @@ body {
         margin: 0 10px;
     }
 } */
+
+/* 🤖 Navbar AI Oracle Button */
+.ai-nav-btn {
+    background: rgba(138, 43, 226, 0.1); /* हल्का पर्पल बैकग्राउंड */
+    border: 1px solid #8a2be2;
+    color: #00f3ff; /* स्यान रंग का टेक्स्ट */
+    padding: 8px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    margin-left: 10px; /* Join Us से थोड़ी दूरी के लिए */
+}
+
+.ai-nav-btn i {
+    color: #00f3ff; /* मैजिक स्पार्कल आइकॉन का रंग */
+    font-size: 16px;
+    animation: pulseIcon 2s infinite alternate;
+}
+
+.ai-nav-btn:hover {
+    background: rgba(0, 243, 255, 0.15);
+    border-color: #00f3ff;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* आइकॉन को हल्का सा चमकाने के लिए एनिमेशन */
+@keyframes pulseIcon {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.2); opacity: 1; text-shadow: 0 0 10px #00f3ff; }
+}
+
+/* Mobile के लिए एडजस्टमेंट (अगर स्क्रीन छोटी हो) */
+@media (max-width: 768px) {
+    .ai-nav-btn {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
