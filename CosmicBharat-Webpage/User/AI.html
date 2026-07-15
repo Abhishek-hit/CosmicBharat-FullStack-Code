@@ -190,11 +190,11 @@
         <button class="glass-btn" onclick="submitTextQuery()">✨ Seek Wisdom</button>
     </div>
 
-    <button class="glass-btn stop-btn" id="stop-btn" onclick="stopEverything()">🛑 Stop Connection</button>
+    <button class="glass-btn stop-btn" id="stop-btn" onclick="stopEverything()"> Stop Connection</button>
     <script src="config.js"></script>
     <script>
 
-        // 🔑 अपनी API Key यहाँ रखें
+        //  अपनी API Key यहाँ रखें
 
 
         const typeWriterElement = document.getElementById('typewriter');
@@ -206,11 +206,11 @@
 
         let isAIActive = false;
 
-        // ⏳ NEW: Live Countdown Variables
+        //  NEW: Live Countdown Variables
         let cooldownTime = 0;
         let cooldownInterval = null;
 
-        // 📝 Initial Greeting
+        //  Initial Greeting
         const textToType = "How do you wish to converse?";
         let index = 0;
         function typeIntro() {
@@ -264,7 +264,7 @@
             recognition.lang = 'en-IN';
 
             window.startVoiceMode = function () {
-                // 🛑 क्लिक करते ही पहले चेक करो कि टाइमर चल रहा है या नहीं
+                //  क्लिक करते ही पहले चेक करो कि टाइमर चल रहा है या नहीं
                 if (cooldownTime > 0) {
                     showCooldownWarning();
                     return; // माइक को ऑन मत होने दो
@@ -293,9 +293,9 @@
             console.warn("Speech API not supported in this browser.");
         }
 
-        // ⌨️ Text Mode Logic
+        //  Text Mode Logic
         window.startTextMode = function () {
-            // 🛑 यहाँ भी क्लिक करते ही पहले चेक करो
+            //  यहाँ भी क्लिक करते ही पहले चेक करो
             if (cooldownTime > 0) {
                 showCooldownWarning();
                 return;
@@ -322,21 +322,21 @@
             }
         });
 
-        // 🧠 Core Logic to Handle Query
+        // Core Logic to Handle Query
         async function handleUserQuery(query) {
             isAIActive = true;
             stopBtn.style.display = "flex";
             core.className = 'cosmic-core';
             typeWriterElement.innerHTML = "You asked: <br> <span style='color: #00f3ff;'>\"" + query + "\"</span><br><br><span style='font-size:16px; color:#8a2be2;'>Consulting the Cosmic Archives... ✨</span>";
 
-            // ⏳ रिक्वेस्ट भेजने से ठीक पहले टाइमर चालू कर दो
+            //  रिक्वेस्ट भेजने से ठीक पहले टाइमर चालू कर दो
             startCooldownTimer();
 
             const aiResponse = await fetchGeminiResponse(query);
             simulateAIReply(aiResponse);
         }
 
-        // 🚀 REAL AI MAGIC: Auto-Detecting API & Calling Google Gemini
+        //  REAL AI MAGIC: Auto-Detecting API & Calling Google Gemini
         async function fetchGeminiResponse(userQuery) {
             try {
                 const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`;
@@ -357,7 +357,7 @@
                 }
 
                 const modelName = workingModel.name;
-                console.log("✅ Auto-selected Model:", modelName);
+                console.log(" Auto-selected Model:", modelName);
 
                 const url = `https://generativelanguage.googleapis.com/v1beta/${modelName}:generateContent?key=${GEMINI_API_KEY}`;
 
@@ -394,7 +394,7 @@ Query: "${userQuery}"`;
             }
         }
 
-        // 🤖 Text-to-Speech Output
+        //  Text-to-Speech Output
         function simulateAIReply(responseText) {
             if (!isAIActive) return;
 
@@ -423,7 +423,7 @@ Query: "${userQuery}"`;
             typeResponse();
         }
 
-        // 🛑 Stop Everything
+        //  Stop Everything
         window.stopEverything = function (customMessage = "Cosmic link paused. What next?") {
             isAIActive = false;
             if (recognition) recognition.stop();
