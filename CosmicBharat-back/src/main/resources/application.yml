@@ -3,10 +3,8 @@ server:
 
 spring:
   application:
-    name: "COSMIC-BHARAT"
+    name: COSMIC-BHARAT
+
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: CosmicBharat
-
+      uri: mongodb+srv://abhishek539700_db_user:VKaqecTIGZghsROh@cluster0.my3oemr.mongodb.net/CosmicBharat?retryWrites=true&w=majority&appName=Cluster0
